@@ -26,19 +26,292 @@ public class PanelMesas extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jPasswordField1 = new javax.swing.JPasswordField();
+        btnMesa1 = new javax.swing.JPanel();
+        panelStatusMesa1 = new javax.swing.JPanel();
+        txtStatusMesa1 = new javax.swing.JLabel();
+        icoMesa = new javax.swing.JLabel();
+        txtMesa1 = new javax.swing.JLabel();
+        btnMesa2 = new javax.swing.JPanel();
+        panelStatusMesa2 = new javax.swing.JPanel();
+        txtStatusMesa2 = new javax.swing.JLabel();
+        txtMesa2 = new javax.swing.JLabel();
+        icoMesa1 = new javax.swing.JLabel();
+        btnMesa3 = new javax.swing.JPanel();
+        txtMesa3 = new javax.swing.JLabel();
+        icoMesa2 = new javax.swing.JLabel();
+        panelStatusMesa3 = new javax.swing.JPanel();
+        txtStatusMesa3 = new javax.swing.JLabel();
+        btnMesa4 = new javax.swing.JPanel();
+        txtMesa4 = new javax.swing.JLabel();
+        icoMesa3 = new javax.swing.JLabel();
+        panelStatusMesa4 = new javax.swing.JPanel();
+        txtStatusMesa4 = new javax.swing.JLabel();
+        btnMesa5 = new javax.swing.JPanel();
+        txtMesa5 = new javax.swing.JLabel();
+        icoMesa4 = new javax.swing.JLabel();
+        panelStatusMesa5 = new javax.swing.JPanel();
+        txtStatusMesa5 = new javax.swing.JLabel();
+        btnParaLlevar = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        bgFondo = new javax.swing.JLabel();
+
+        jPasswordField1.setText("jPasswordField1");
+
+        setPreferredSize(new java.awt.Dimension(1024, 768));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnMesa1.setBackground(new java.awt.Color(255, 255, 255));
+        btnMesa1.setPreferredSize(new java.awt.Dimension(460, 140));
+        btnMesa1.setLayout(new java.awt.BorderLayout());
+
+        panelStatusMesa1.setBackground(new java.awt.Color(0, 208, 31));
+        panelStatusMesa1.setPreferredSize(new java.awt.Dimension(60, 140));
+
+        txtStatusMesa1.setForeground(new java.awt.Color(255, 255, 255));
+        txtStatusMesa1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtStatusMesa1.setText("Disponible");
+
+        javax.swing.GroupLayout panelStatusMesa1Layout = new javax.swing.GroupLayout(panelStatusMesa1);
+        panelStatusMesa1.setLayout(panelStatusMesa1Layout);
+        panelStatusMesa1Layout.setHorizontalGroup(
+            panelStatusMesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtStatusMesa1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        panelStatusMesa1Layout.setVerticalGroup(
+            panelStatusMesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtStatusMesa1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
+
+        btnMesa1.add(panelStatusMesa1, java.awt.BorderLayout.LINE_END);
+
+        icoMesa.setForeground(new java.awt.Color(0, 0, 0));
+        icoMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoMesas.png"))); // NOI18N
+        btnMesa1.add(icoMesa, java.awt.BorderLayout.LINE_START);
+
+        txtMesa1.setBackground(new java.awt.Color(255, 255, 255));
+        txtMesa1.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
+        txtMesa1.setForeground(new java.awt.Color(0, 0, 0));
+        txtMesa1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtMesa1.setText("Mesa 1");
+        txtMesa1.setToolTipText("");
+        btnMesa1.add(txtMesa1, java.awt.BorderLayout.CENTER);
+
+        add(btnMesa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 30, -1, -1));
+
+        btnMesa2.setBackground(new java.awt.Color(255, 255, 255));
+        btnMesa2.setPreferredSize(new java.awt.Dimension(460, 140));
+        btnMesa2.setLayout(new java.awt.BorderLayout());
+
+        panelStatusMesa2.setBackground(new java.awt.Color(239, 68, 68));
+        panelStatusMesa2.setPreferredSize(new java.awt.Dimension(60, 140));
+
+        txtStatusMesa2.setForeground(new java.awt.Color(255, 255, 255));
+        txtStatusMesa2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtStatusMesa2.setText("Ocupada");
+
+        javax.swing.GroupLayout panelStatusMesa2Layout = new javax.swing.GroupLayout(panelStatusMesa2);
+        panelStatusMesa2.setLayout(panelStatusMesa2Layout);
+        panelStatusMesa2Layout.setHorizontalGroup(
+            panelStatusMesa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtStatusMesa2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
+        panelStatusMesa2Layout.setVerticalGroup(
+            panelStatusMesa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtStatusMesa2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+        );
+
+        btnMesa2.add(panelStatusMesa2, java.awt.BorderLayout.LINE_END);
+
+        txtMesa2.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
+        txtMesa2.setForeground(new java.awt.Color(0, 0, 0));
+        txtMesa2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtMesa2.setText("Mesa 2");
+        btnMesa2.add(txtMesa2, java.awt.BorderLayout.CENTER);
+
+        icoMesa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoMesas.png"))); // NOI18N
+        btnMesa2.add(icoMesa1, java.awt.BorderLayout.LINE_START);
+
+        add(btnMesa2, new org.netbeans.lib.awtextra.AbsoluteConstraints(519, 30, -1, -1));
+
+        btnMesa3.setBackground(new java.awt.Color(255, 255, 255));
+        btnMesa3.setPreferredSize(new java.awt.Dimension(460, 140));
+        btnMesa3.setLayout(new java.awt.BorderLayout());
+
+        txtMesa3.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
+        txtMesa3.setForeground(new java.awt.Color(0, 0, 0));
+        txtMesa3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtMesa3.setText("Mesa 3");
+        btnMesa3.add(txtMesa3, java.awt.BorderLayout.CENTER);
+
+        icoMesa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoMesas.png"))); // NOI18N
+        btnMesa3.add(icoMesa2, java.awt.BorderLayout.LINE_START);
+
+        panelStatusMesa3.setBackground(new java.awt.Color(0, 208, 31));
+        panelStatusMesa3.setPreferredSize(new java.awt.Dimension(60, 140));
+
+        txtStatusMesa3.setForeground(new java.awt.Color(255, 255, 255));
+        txtStatusMesa3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtStatusMesa3.setText("Disponible");
+
+        javax.swing.GroupLayout panelStatusMesa3Layout = new javax.swing.GroupLayout(panelStatusMesa3);
+        panelStatusMesa3.setLayout(panelStatusMesa3Layout);
+        panelStatusMesa3Layout.setHorizontalGroup(
+            panelStatusMesa3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtStatusMesa3, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
+        panelStatusMesa3Layout.setVerticalGroup(
+            panelStatusMesa3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtStatusMesa3, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+        );
+
+        btnMesa3.add(panelStatusMesa3, java.awt.BorderLayout.LINE_END);
+
+        add(btnMesa3, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 185, -1, -1));
+
+        btnMesa4.setBackground(new java.awt.Color(255, 255, 255));
+        btnMesa4.setPreferredSize(new java.awt.Dimension(460, 140));
+        btnMesa4.setLayout(new java.awt.BorderLayout());
+
+        txtMesa4.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
+        txtMesa4.setForeground(new java.awt.Color(0, 0, 0));
+        txtMesa4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtMesa4.setText("Mesa 4");
+        btnMesa4.add(txtMesa4, java.awt.BorderLayout.CENTER);
+
+        icoMesa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoMesas.png"))); // NOI18N
+        btnMesa4.add(icoMesa3, java.awt.BorderLayout.LINE_START);
+
+        panelStatusMesa4.setBackground(new java.awt.Color(0, 208, 31));
+        panelStatusMesa4.setPreferredSize(new java.awt.Dimension(60, 140));
+
+        txtStatusMesa4.setForeground(new java.awt.Color(255, 255, 255));
+        txtStatusMesa4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtStatusMesa4.setText("Disponible");
+
+        javax.swing.GroupLayout panelStatusMesa4Layout = new javax.swing.GroupLayout(panelStatusMesa4);
+        panelStatusMesa4.setLayout(panelStatusMesa4Layout);
+        panelStatusMesa4Layout.setHorizontalGroup(
+            panelStatusMesa4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtStatusMesa4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
+        panelStatusMesa4Layout.setVerticalGroup(
+            panelStatusMesa4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtStatusMesa4, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+        );
+
+        btnMesa4.add(panelStatusMesa4, java.awt.BorderLayout.LINE_END);
+
+        add(btnMesa4, new org.netbeans.lib.awtextra.AbsoluteConstraints(519, 185, -1, -1));
+
+        btnMesa5.setBackground(new java.awt.Color(255, 255, 255));
+        btnMesa5.setPreferredSize(new java.awt.Dimension(460, 140));
+        btnMesa5.setLayout(new java.awt.BorderLayout());
+
+        txtMesa5.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
+        txtMesa5.setForeground(new java.awt.Color(0, 0, 0));
+        txtMesa5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtMesa5.setText("Mesa 5");
+        btnMesa5.add(txtMesa5, java.awt.BorderLayout.CENTER);
+
+        icoMesa4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoMesas.png"))); // NOI18N
+        btnMesa5.add(icoMesa4, java.awt.BorderLayout.LINE_START);
+
+        panelStatusMesa5.setBackground(new java.awt.Color(0, 208, 31));
+        panelStatusMesa5.setToolTipText("");
+        panelStatusMesa5.setPreferredSize(new java.awt.Dimension(60, 140));
+
+        txtStatusMesa5.setForeground(new java.awt.Color(255, 255, 255));
+        txtStatusMesa5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtStatusMesa5.setText("Disponible");
+
+        javax.swing.GroupLayout panelStatusMesa5Layout = new javax.swing.GroupLayout(panelStatusMesa5);
+        panelStatusMesa5.setLayout(panelStatusMesa5Layout);
+        panelStatusMesa5Layout.setHorizontalGroup(
+            panelStatusMesa5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtStatusMesa5, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+        );
+        panelStatusMesa5Layout.setVerticalGroup(
+            panelStatusMesa5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtStatusMesa5, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+        );
+
+        btnMesa5.add(panelStatusMesa5, java.awt.BorderLayout.LINE_END);
+
+        add(btnMesa5, new org.netbeans.lib.awtextra.AbsoluteConstraints(287, 340, -1, -1));
+
+        btnParaLlevar.setBackground(new java.awt.Color(255, 255, 130));
+        btnParaLlevar.setPreferredSize(new java.awt.Dimension(460, 120));
+        btnParaLlevar.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoParaLlevar.png"))); // NOI18N
+        btnParaLlevar.add(jLabel1, java.awt.BorderLayout.LINE_START);
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Para llevar");
+        btnParaLlevar.add(jLabel2, java.awt.BorderLayout.CENTER);
+
+        add(btnParaLlevar, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 635, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoAtras.png"))); // NOI18N
+        jButton1.setText("Regresar");
+        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
+        jButton1.setIconTextGap(15);
+        jButton1.setPreferredSize(new java.awt.Dimension(186, 42));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 713, -1, -1));
+
+        bgFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
+        add(bgFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bgFondo;
+    private javax.swing.JPanel btnMesa1;
+    private javax.swing.JPanel btnMesa2;
+    private javax.swing.JPanel btnMesa3;
+    private javax.swing.JPanel btnMesa4;
+    private javax.swing.JPanel btnMesa5;
+    private javax.swing.JPanel btnParaLlevar;
+    private javax.swing.JLabel icoMesa;
+    private javax.swing.JLabel icoMesa1;
+    private javax.swing.JLabel icoMesa2;
+    private javax.swing.JLabel icoMesa3;
+    private javax.swing.JLabel icoMesa4;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPanel panelStatusMesa1;
+    private javax.swing.JPanel panelStatusMesa2;
+    private javax.swing.JPanel panelStatusMesa3;
+    private javax.swing.JPanel panelStatusMesa4;
+    private javax.swing.JPanel panelStatusMesa5;
+    private javax.swing.JLabel txtMesa1;
+    private javax.swing.JLabel txtMesa2;
+    private javax.swing.JLabel txtMesa3;
+    private javax.swing.JLabel txtMesa4;
+    private javax.swing.JLabel txtMesa5;
+    private javax.swing.JLabel txtStatusMesa1;
+    private javax.swing.JLabel txtStatusMesa2;
+    private javax.swing.JLabel txtStatusMesa3;
+    private javax.swing.JLabel txtStatusMesa4;
+    private javax.swing.JLabel txtStatusMesa5;
     // End of variables declaration//GEN-END:variables
 }
