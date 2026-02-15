@@ -55,7 +55,7 @@ public class PanelMesas extends javax.swing.JPanel {
         btnParaLlevar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnRegresar = new javax.swing.JButton();
         bgFondo = new javax.swing.JLabel();
 
         jPasswordField1.setText("jPasswordField1");
@@ -257,28 +257,27 @@ public class PanelMesas extends javax.swing.JPanel {
 
         add(btnParaLlevar, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 635, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoAtras.png"))); // NOI18N
-        jButton1.setText("Regresar");
-        jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
-        jButton1.setIconTextGap(15);
-        jButton1.setPreferredSize(new java.awt.Dimension(186, 42));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegresar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoAtras.png"))); // NOI18N
+        btnRegresar.setText("Regresar");
+        btnRegresar.setIconTextGap(15);
+        btnRegresar.setPreferredSize(new java.awt.Dimension(186, 42));
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegresarActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 713, -1, -1));
+        add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 713, -1, -1));
 
         bgFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
         add(bgFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -289,12 +288,12 @@ public class PanelMesas extends javax.swing.JPanel {
     private javax.swing.JPanel btnMesa4;
     private javax.swing.JPanel btnMesa5;
     private javax.swing.JPanel btnParaLlevar;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel icoMesa;
     private javax.swing.JLabel icoMesa1;
     private javax.swing.JLabel icoMesa2;
     private javax.swing.JLabel icoMesa3;
     private javax.swing.JLabel icoMesa4;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField1;
