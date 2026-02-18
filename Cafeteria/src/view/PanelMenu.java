@@ -123,7 +123,7 @@ public class PanelMenu extends javax.swing.JPanel {
         jLabel6.setText("Pedidos");
         PanelTOTAL.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 610, 110, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imagenFondo.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
         jLabel1.setText("Mesas");
         jLabel1.setPreferredSize(new java.awt.Dimension(1024, 768));
         PanelTOTAL.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));

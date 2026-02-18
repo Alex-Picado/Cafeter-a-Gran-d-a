@@ -59,6 +59,7 @@ public class panelAgregarProducto extends javax.swing.JPanel {
         txtID.setBackground(new java.awt.Color(255, 255, 255));
         txtID.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtID.setForeground(new java.awt.Color(0, 0, 0));
+        txtID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDActionPerformed(evt);
@@ -79,6 +80,7 @@ public class panelAgregarProducto extends javax.swing.JPanel {
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -88,6 +90,7 @@ public class panelAgregarProducto extends javax.swing.JPanel {
         boxCategoria.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         boxCategoria.setForeground(new java.awt.Color(0, 0, 0));
         boxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        boxCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
@@ -95,6 +98,7 @@ public class panelAgregarProducto extends javax.swing.JPanel {
 
         txtPrecio.setBackground(new java.awt.Color(255, 255, 255));
         txtPrecio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtPrecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecioActionPerformed(evt);
@@ -108,6 +112,7 @@ public class panelAgregarProducto extends javax.swing.JPanel {
         txtStock.setBackground(new java.awt.Color(255, 255, 255));
         txtStock.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtStock.setForeground(new java.awt.Color(0, 0, 0));
+        txtStock.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStockActionPerformed(evt);
@@ -188,7 +193,7 @@ public class panelAgregarProducto extends javax.swing.JPanel {
                 .addComponent(btnSubirImg)
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistrar)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 890, 760));

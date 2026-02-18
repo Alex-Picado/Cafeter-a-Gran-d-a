@@ -26,19 +26,325 @@ public class PanelPedido extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelFondoTotal = new javax.swing.JPanel();
+        panelPedidoFondo = new javax.swing.JPanel();
+        panelInfoPedido = new javax.swing.JPanel();
+        lblTextoPedido = new javax.swing.JLabel();
+        lblNumeroPedido = new javax.swing.JLabel();
+        lblTextoUbicacion = new javax.swing.JLabel();
+        lblUbicacion = new javax.swing.JLabel();
+        lblTextoFecha = new javax.swing.JLabel();
+        lblFechaHora = new javax.swing.JLabel();
+        scrollListaProductos = new javax.swing.JScrollPane();
+        panelListaProductos = new javax.swing.JPanel();
+        lblAvisoSinProductosEnPedido = new javax.swing.JLabel();
+        panelHeader = new javax.swing.JPanel();
+        lblTituloPedido = new javax.swing.JLabel();
+        btnLiberarMesa = new javax.swing.JButton();
+        btnAgregarProductos = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
+        panelBotones = new javax.swing.JPanel();
+        btnVerFactura = new javax.swing.JButton();
+        btnGuardarPedido = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        btnDividir = new javax.swing.JButton();
+        lblTextoTotal = new javax.swing.JLabel();
+        lblTotal = new javax.swing.JLabel();
+        labelFondoImagen = new javax.swing.JLabel();
+
+        panelFondoTotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panelPedidoFondo.setBackground(new java.awt.Color(255, 255, 255));
+
+        panelInfoPedido.setBackground(new java.awt.Color(242, 243, 245));
+
+        lblTextoPedido.setBackground(new java.awt.Color(0, 0, 0));
+        lblTextoPedido.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        lblTextoPedido.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoPedido.setText("Pedido:");
+
+        lblNumeroPedido.setBackground(new java.awt.Color(102, 102, 102));
+        lblNumeroPedido.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        lblNumeroPedido.setForeground(new java.awt.Color(63, 63, 63));
+        lblNumeroPedido.setText("#00014");
+
+        lblTextoUbicacion.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        lblTextoUbicacion.setForeground(new java.awt.Color(30, 30, 30));
+        lblTextoUbicacion.setText("Ubicación: ");
+
+        lblUbicacion.setBackground(new java.awt.Color(63, 63, 63));
+        lblUbicacion.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        lblUbicacion.setForeground(new java.awt.Color(63, 63, 63));
+        lblUbicacion.setText("Mesa 2");
+
+        lblTextoFecha.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        lblTextoFecha.setForeground(new java.awt.Color(30, 30, 30));
+        lblTextoFecha.setText("Fecha:");
+
+        lblFechaHora.setBackground(new java.awt.Color(102, 102, 102));
+        lblFechaHora.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
+        lblFechaHora.setForeground(new java.awt.Color(63, 63, 63));
+        lblFechaHora.setText("16/02/2026 8:46 pm");
+
+        javax.swing.GroupLayout panelInfoPedidoLayout = new javax.swing.GroupLayout(panelInfoPedido);
+        panelInfoPedido.setLayout(panelInfoPedidoLayout);
+        panelInfoPedidoLayout.setHorizontalGroup(
+            panelInfoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoPedidoLayout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addGroup(panelInfoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelInfoPedidoLayout.createSequentialGroup()
+                        .addComponent(lblTextoFecha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblFechaHora))
+                    .addGroup(panelInfoPedidoLayout.createSequentialGroup()
+                        .addComponent(lblTextoUbicacion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblUbicacion))
+                    .addGroup(panelInfoPedidoLayout.createSequentialGroup()
+                        .addComponent(lblTextoPedido)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblNumeroPedido)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        panelInfoPedidoLayout.setVerticalGroup(
+            panelInfoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelInfoPedidoLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(panelInfoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTextoPedido)
+                    .addComponent(lblNumeroPedido))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelInfoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTextoUbicacion)
+                    .addComponent(lblUbicacion))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelInfoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTextoFecha)
+                    .addComponent(lblFechaHora))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        scrollListaProductos.setBackground(new java.awt.Color(255, 255, 255));
+        scrollListaProductos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        scrollListaProductos.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        panelListaProductos.setBackground(new java.awt.Color(255, 255, 255));
+        panelListaProductos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        panelListaProductos.setLayout(new javax.swing.BoxLayout(panelListaProductos, javax.swing.BoxLayout.Y_AXIS));
+
+        lblAvisoSinProductosEnPedido.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblAvisoSinProductosEnPedido.setForeground(new java.awt.Color(0, 0, 0));
+        lblAvisoSinProductosEnPedido.setText("No hay productos en el pedido ");
+        panelListaProductos.add(lblAvisoSinProductosEnPedido);
+
+        scrollListaProductos.setViewportView(panelListaProductos);
+
+        panelHeader.setBackground(new java.awt.Color(31, 42, 56));
+
+        lblTituloPedido.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lblTituloPedido.setForeground(new java.awt.Color(255, 255, 255));
+        lblTituloPedido.setText("Pedido #14 — Mesa 2 ");
+
+        btnLiberarMesa.setBackground(new java.awt.Color(103, 72, 217));
+        btnLiberarMesa.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnLiberarMesa.setForeground(new java.awt.Color(255, 255, 255));
+        btnLiberarMesa.setText("Liberar mesa");
+        btnLiberarMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLiberarMesaActionPerformed(evt);
+            }
+        });
+
+        btnAgregarProductos.setBackground(new java.awt.Color(17, 186, 130));
+        btnAgregarProductos.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnAgregarProductos.setForeground(new java.awt.Color(255, 255, 255));
+        btnAgregarProductos.setText("Agregar producto");
+
+        btnVolver.setBackground(new java.awt.Color(107, 114, 128));
+        btnVolver.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Regresar");
+
+        javax.swing.GroupLayout panelHeaderLayout = new javax.swing.GroupLayout(panelHeader);
+        panelHeader.setLayout(panelHeaderLayout);
+        panelHeaderLayout.setHorizontalGroup(
+            panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelHeaderLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
+                .addComponent(lblTituloPedido)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLiberarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAgregarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
+        panelHeaderLayout.setVerticalGroup(
+            panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelHeaderLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTituloPedido)
+                    .addComponent(btnLiberarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAgregarProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVolver))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        panelBotones.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnVerFactura.setBackground(new java.awt.Color(103, 127, 235));
+        btnVerFactura.setFont(new java.awt.Font("Segoe UI", 0, 46)); // NOI18N
+        btnVerFactura.setForeground(new java.awt.Color(255, 255, 255));
+        btnVerFactura.setText("Ver factura");
+
+        btnGuardarPedido.setBackground(new java.awt.Color(245, 159, 10));
+        btnGuardarPedido.setFont(new java.awt.Font("Segoe UI", 0, 46)); // NOI18N
+        btnGuardarPedido.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardarPedido.setText("Guardar");
+        btnGuardarPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarPedidoActionPerformed(evt);
+            }
+        });
+
+        btnCancelar.setBackground(new java.awt.Color(240, 67, 67));
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 46)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("Cancelar");
+
+        btnDividir.setBackground(new java.awt.Color(236, 68, 239));
+        btnDividir.setFont(new java.awt.Font("Segoe UI", 0, 46)); // NOI18N
+        btnDividir.setForeground(new java.awt.Color(255, 255, 255));
+        btnDividir.setText("Dividir");
+
+        lblTextoTotal.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        lblTextoTotal.setForeground(new java.awt.Color(51, 255, 51));
+        lblTextoTotal.setText("Total:");
+
+        lblTotal.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        lblTotal.setForeground(new java.awt.Color(51, 255, 51));
+        lblTotal.setText("₡0");
+
+        javax.swing.GroupLayout panelBotonesLayout = new javax.swing.GroupLayout(panelBotones);
+        panelBotones.setLayout(panelBotonesLayout);
+        panelBotonesLayout.setHorizontalGroup(
+            panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelBotonesLayout.createSequentialGroup()
+                .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBotonesLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnVerFactura)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDividir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(24, 24, 24)
+                        .addComponent(btnGuardarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancelar))
+                    .addGroup(panelBotonesLayout.createSequentialGroup()
+                        .addGap(655, 655, 655)
+                        .addComponent(lblTextoTotal)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        panelBotonesLayout.setVerticalGroup(
+            panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonesLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTextoTotal)
+                    .addComponent(lblTotal))
+                .addGap(18, 18, 18)
+                .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVerFactura)
+                    .addComponent(btnDividir)
+                    .addComponent(btnGuardarPedido)
+                    .addComponent(btnCancelar))
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout panelPedidoFondoLayout = new javax.swing.GroupLayout(panelPedidoFondo);
+        panelPedidoFondo.setLayout(panelPedidoFondoLayout);
+        panelPedidoFondoLayout.setHorizontalGroup(
+            panelPedidoFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPedidoFondoLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(panelPedidoFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelInfoPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(scrollListaProductos)
+                    .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        panelPedidoFondoLayout.setVerticalGroup(
+            panelPedidoFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPedidoFondoLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(panelHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(panelInfoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollListaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        panelFondoTotal.add(panelPedidoFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 30, 949, 720));
+
+        labelFondoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
+        labelFondoImagen.setToolTipText("");
+        panelFondoTotal.add(labelFondoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(panelFondoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(panelFondoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnLiberarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiberarMesaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLiberarMesaActionPerformed
+
+    private void btnGuardarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPedidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarPedidoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarProductos;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnDividir;
+    private javax.swing.JButton btnGuardarPedido;
+    private javax.swing.JButton btnLiberarMesa;
+    private javax.swing.JButton btnVerFactura;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JLabel labelFondoImagen;
+    private javax.swing.JLabel lblAvisoSinProductosEnPedido;
+    private javax.swing.JLabel lblFechaHora;
+    private javax.swing.JLabel lblNumeroPedido;
+    private javax.swing.JLabel lblTextoFecha;
+    private javax.swing.JLabel lblTextoPedido;
+    private javax.swing.JLabel lblTextoTotal;
+    private javax.swing.JLabel lblTextoUbicacion;
+    private javax.swing.JLabel lblTituloPedido;
+    private javax.swing.JLabel lblTotal;
+    private javax.swing.JLabel lblUbicacion;
+    private javax.swing.JPanel panelBotones;
+    private javax.swing.JPanel panelFondoTotal;
+    private javax.swing.JPanel panelHeader;
+    private javax.swing.JPanel panelInfoPedido;
+    private javax.swing.JPanel panelListaProductos;
+    private javax.swing.JPanel panelPedidoFondo;
+    private javax.swing.JScrollPane scrollListaProductos;
     // End of variables declaration//GEN-END:variables
 }
