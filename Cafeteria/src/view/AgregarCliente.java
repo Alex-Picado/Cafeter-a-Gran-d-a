@@ -29,6 +29,7 @@ public class AgregarCliente extends javax.swing.JPanel {
         direccionLabelText = new javax.swing.JLabel();
         colorLabelForDatosCliente = new javax.swing.JPanel();
         datosClienteLabelText = new javax.swing.JLabel();
+        btnRegresarPanelDatosCliente = new javax.swing.JButton();
         direccionTextField = new javax.swing.JTextField();
         identificacionTextField = new javax.swing.JTextField();
         identificacionLabelText = new javax.swing.JLabel();
@@ -58,9 +59,20 @@ public class AgregarCliente extends javax.swing.JPanel {
         add(direccionLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
 
         colorLabelForDatosCliente.setBackground(new java.awt.Color(31, 42, 56));
+        colorLabelForDatosCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         datosClienteLabelText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         datosClienteLabelText.setText("Datos del Cliente");
+
+        btnRegresarPanelDatosCliente.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegresarPanelDatosCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnRegresarPanelDatosCliente.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegresarPanelDatosCliente.setText("Regresar");
+        btnRegresarPanelDatosCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarPanelDatosClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout colorLabelForDatosClienteLayout = new javax.swing.GroupLayout(colorLabelForDatosCliente);
         colorLabelForDatosCliente.setLayout(colorLabelForDatosClienteLayout);
@@ -69,14 +81,18 @@ public class AgregarCliente extends javax.swing.JPanel {
             .addGroup(colorLabelForDatosClienteLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(datosClienteLabelText)
-                .addContainerGap(841, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 663, Short.MAX_VALUE)
+                .addComponent(btnRegresarPanelDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         colorLabelForDatosClienteLayout.setVerticalGroup(
             colorLabelForDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(colorLabelForDatosClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(datosClienteLabelText)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(colorLabelForDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(datosClienteLabelText)
+                    .addComponent(btnRegresarPanelDatosCliente))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(colorLabelForDatosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 50));
@@ -200,28 +216,32 @@ public class AgregarCliente extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnRegresarPanelDatosClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPanelDatosClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegresarPanelDatosClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -231,6 +251,7 @@ public class AgregarCliente extends javax.swing.JPanel {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnRegresarPanelDatosCliente;
     private javax.swing.JPanel colorLabelForDatosCliente;
     private javax.swing.JLabel correoElectronicoLabelText;
     private javax.swing.JTextField correoElectronicoTextField;
