@@ -8,12 +8,12 @@ package view;
  *
  * @author OniRuls
  */
-public class AgregarCliente extends javax.swing.JPanel {
+public class PanelGestionarClientes extends javax.swing.JPanel {
 
     /**
      * Creates new form AgregarCliente
      */
-    public AgregarCliente() {
+    public PanelGestionarClientes() {
         initComponents();
     }
 
@@ -29,6 +29,7 @@ public class AgregarCliente extends javax.swing.JPanel {
         direccionLabelText = new javax.swing.JLabel();
         colorLabelForDatosCliente = new javax.swing.JPanel();
         datosClienteLabelText = new javax.swing.JLabel();
+        btnRegresarPanelDatosCliente = new javax.swing.JButton();
         direccionTextField = new javax.swing.JTextField();
         identificacionTextField = new javax.swing.JTextField();
         identificacionLabelText = new javax.swing.JLabel();
@@ -58,9 +59,21 @@ public class AgregarCliente extends javax.swing.JPanel {
         add(direccionLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
 
         colorLabelForDatosCliente.setBackground(new java.awt.Color(31, 42, 56));
+        colorLabelForDatosCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         datosClienteLabelText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        datosClienteLabelText.setForeground(new java.awt.Color(255, 255, 255));
         datosClienteLabelText.setText("Datos del Cliente");
+
+        btnRegresarPanelDatosCliente.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegresarPanelDatosCliente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnRegresarPanelDatosCliente.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegresarPanelDatosCliente.setText("Regresar");
+        btnRegresarPanelDatosCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarPanelDatosClienteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout colorLabelForDatosClienteLayout = new javax.swing.GroupLayout(colorLabelForDatosCliente);
         colorLabelForDatosCliente.setLayout(colorLabelForDatosClienteLayout);
@@ -68,15 +81,19 @@ public class AgregarCliente extends javax.swing.JPanel {
             colorLabelForDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(colorLabelForDatosClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(datosClienteLabelText)
-                .addContainerGap(841, Short.MAX_VALUE))
+                .addComponent(datosClienteLabelText, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 608, Short.MAX_VALUE)
+                .addComponent(btnRegresarPanelDatosCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         colorLabelForDatosClienteLayout.setVerticalGroup(
             colorLabelForDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(colorLabelForDatosClienteLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(datosClienteLabelText)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addGroup(colorLabelForDatosClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(datosClienteLabelText)
+                    .addComponent(btnRegresarPanelDatosCliente))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         add(colorLabelForDatosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 50));
@@ -91,13 +108,13 @@ public class AgregarCliente extends javax.swing.JPanel {
         identificacionLabelText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         identificacionLabelText.setForeground(new java.awt.Color(255, 255, 255));
         identificacionLabelText.setText("Identificación:");
-        add(identificacionLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+        add(identificacionLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 80, 170, -1));
 
         telefonoLabelText.setBackground(new java.awt.Color(255, 255, 255));
         telefonoLabelText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         telefonoLabelText.setForeground(new java.awt.Color(255, 255, 255));
         telefonoLabelText.setText("Telefono:");
-        add(telefonoLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, -1, -1));
+        add(telefonoLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 130, 110, -1));
 
         tipoDeCedulaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(tipoDeCedulaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 230, -1));
@@ -124,7 +141,7 @@ public class AgregarCliente extends javax.swing.JPanel {
         correoElectronicoLabelText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         correoElectronicoLabelText.setForeground(new java.awt.Color(255, 255, 255));
         correoElectronicoLabelText.setText("Correo Electronico:");
-        add(correoElectronicoLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        add(correoElectronicoLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 250, 210, -1));
 
         correoElectronicoTextField.setBackground(new java.awt.Color(255, 255, 255));
         add(correoElectronicoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 230, -1));
@@ -200,28 +217,34 @@ public class AgregarCliente extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnRegresarPanelDatosClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPanelDatosClienteActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("menu");
+    }//GEN-LAST:event_btnRegresarPanelDatosClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -231,6 +254,7 @@ public class AgregarCliente extends javax.swing.JPanel {
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnRegresarPanelDatosCliente;
     private javax.swing.JPanel colorLabelForDatosCliente;
     private javax.swing.JLabel correoElectronicoLabelText;
     private javax.swing.JTextField correoElectronicoTextField;

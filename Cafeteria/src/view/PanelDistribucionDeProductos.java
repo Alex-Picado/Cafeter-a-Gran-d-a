@@ -40,7 +40,7 @@ public class PanelDistribucionDeProductos extends javax.swing.JPanel {
         panelListaPersonas.setForeground(new java.awt.Color(255, 255, 255));
         panelListaPersonas.setLayout(new javax.swing.BoxLayout(panelListaPersonas, javax.swing.BoxLayout.Y_AXIS));
 
-        panelHeader.setBackground(new java.awt.Color(153, 153, 153));
+        panelHeader.setBackground(new java.awt.Color(255, 255, 255));
         panelHeader.setMaximumSize(new java.awt.Dimension(620, 32767));
 
         lblTextoProducto.setBackground(new java.awt.Color(255, 255, 255));

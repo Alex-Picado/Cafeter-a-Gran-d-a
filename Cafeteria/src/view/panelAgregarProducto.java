@@ -8,12 +8,12 @@ package view;
  *
  * @author cchin
  */
-public class panelAgregarProducto extends javax.swing.JPanel {
+public class PanelAgregarProducto extends javax.swing.JPanel {
 
     /**
      * Creates new form panelAgregarProducto
      */
-    public panelAgregarProducto() {
+    public PanelAgregarProducto() {
         initComponents();
     }
 
@@ -26,35 +26,38 @@ public class panelAgregarProducto extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        labelID = new javax.swing.JLabel();
+        panelFondoTotal = new javax.swing.JPanel();
+        panelFondoCentral = new javax.swing.JPanel();
+        lblTextoAgregarProducto = new javax.swing.JLabel();
+        lblTextoId = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         btnNumpad = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lblTextoNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        lblTextoCategoria = new javax.swing.JLabel();
         boxCategoria = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
+        lblTextoPrecio = new javax.swing.JLabel();
         txtPrecio = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        lblTextoStock = new javax.swing.JLabel();
         txtStock = new javax.swing.JTextField();
         btnRegistrar = new javax.swing.JButton();
         btnSubirImg = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
+        lblrTextoGestionarCategoria = new javax.swing.JLabel();
+        btnGestionarCategorias = new javax.swing.JButton();
+        lblImagenFondo = new javax.swing.JLabel();
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelFondoTotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        panelFondoCentral.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setText("Agregar Producto");
+        lblTextoAgregarProducto.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
+        lblTextoAgregarProducto.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoAgregarProducto.setText("Agregar Producto");
 
-        labelID.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        labelID.setForeground(new java.awt.Color(0, 0, 0));
-        labelID.setText("ID");
+        lblTextoId.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        lblTextoId.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoId.setText("ID");
 
         txtID.setBackground(new java.awt.Color(255, 255, 255));
         txtID.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -74,17 +77,17 @@ public class panelAgregarProducto extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Nombre");
+        lblTextoNombre.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        lblTextoNombre.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoNombre.setText("Nombre");
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Categoría");
+        lblTextoCategoria.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        lblTextoCategoria.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoCategoria.setText("Categoría");
 
         boxCategoria.setBackground(new java.awt.Color(255, 255, 255));
         boxCategoria.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -92,9 +95,9 @@ public class panelAgregarProducto extends javax.swing.JPanel {
         boxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         boxCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel5.setText("Precio");
+        lblTextoPrecio.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        lblTextoPrecio.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoPrecio.setText("Precio");
 
         txtPrecio.setBackground(new java.awt.Color(255, 255, 255));
         txtPrecio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -105,9 +108,9 @@ public class panelAgregarProducto extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel6.setText("Stock");
+        lblTextoStock.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
+        lblTextoStock.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoStock.setText("Stock");
 
         txtStock.setBackground(new java.awt.Color(255, 255, 255));
         txtStock.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -134,82 +137,120 @@ public class panelAgregarProducto extends javax.swing.JPanel {
         btnSubirImg.setForeground(new java.awt.Color(255, 255, 255));
         btnSubirImg.setText("Subir Imagen");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        btnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegresar.setText("Regresar");
+        btnRegresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+
+        lblrTextoGestionarCategoria.setForeground(new java.awt.Color(0, 0, 0));
+        lblrTextoGestionarCategoria.setText("Gestionar categorías:");
+
+        btnGestionarCategorias.setBackground(new java.awt.Color(153, 204, 255));
+        btnGestionarCategorias.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnGestionarCategorias.setForeground(new java.awt.Color(0, 0, 0));
+        btnGestionarCategorias.setText("Gestionar categorías");
+
+        javax.swing.GroupLayout panelFondoCentralLayout = new javax.swing.GroupLayout(panelFondoCentral);
+        panelFondoCentral.setLayout(panelFondoCentralLayout);
+        panelFondoCentralLayout.setHorizontalGroup(
+            panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFondoCentralLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSubirImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtNombre)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(txtID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNumpad, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtPrecio)
-                    .addComponent(txtStock)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(labelID)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel6)
-                            .addComponent(boxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 388, Short.MAX_VALUE))
-                    .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                        .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnSubirImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNombre)
+                            .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                                .addComponent(txtID)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnNumpad, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtPrecio)
+                            .addComponent(txtStock)
+                            .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                                .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTextoId)
+                                    .addComponent(lblTextoCategoria)
+                                    .addComponent(lblTextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblTextoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblTextoStock, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                                        .addComponent(boxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(90, 90, 90)
+                                        .addComponent(lblrTextoGestionarCategoria)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnGestionarCategorias)))
+                                .addGap(0, 17, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                        .addComponent(lblTextoAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panelFondoCentralLayout.setVerticalGroup(
+            panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFondoCentralLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(labelID)
+                .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                        .addComponent(lblTextoAgregarProducto)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoCentralLayout.createSequentialGroup()
+                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                .addComponent(lblTextoId)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnNumpad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtID))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel3)
+                .addComponent(lblTextoNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addComponent(lblTextoCategoria)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(boxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(boxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblrTextoGestionarCategoria)
+                    .addComponent(btnGestionarCategorias))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
+                .addComponent(lblTextoPrecio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel6)
+                .addComponent(lblTextoStock)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSubirImg)
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistrar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 890, 760));
+        panelFondoTotal.add(panelFondoCentral, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 890, 760));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        lblImagenFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
+        panelFondoTotal.add(lblImagenFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelFondoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelFondoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -219,6 +260,8 @@ public class panelAgregarProducto extends javax.swing.JPanel {
 
     private void btnNumpadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNumpadActionPerformed
         // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("padNumerico");
     }//GEN-LAST:event_btnNumpadActionPerformed
 
     private void txtPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioActionPerformed
@@ -231,23 +274,33 @@ public class panelAgregarProducto extends javax.swing.JPanel {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("productos");
     }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("productos"); 
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> boxCategoria;
+    private javax.swing.JButton btnGestionarCategorias;
     private javax.swing.JButton btnNumpad;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JButton btnSubirImg;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel labelID;
+    private javax.swing.JLabel lblImagenFondo;
+    private javax.swing.JLabel lblTextoAgregarProducto;
+    private javax.swing.JLabel lblTextoCategoria;
+    private javax.swing.JLabel lblTextoId;
+    private javax.swing.JLabel lblTextoNombre;
+    private javax.swing.JLabel lblTextoPrecio;
+    private javax.swing.JLabel lblTextoStock;
+    private javax.swing.JLabel lblrTextoGestionarCategoria;
+    private javax.swing.JPanel panelFondoCentral;
+    private javax.swing.JPanel panelFondoTotal;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPrecio;

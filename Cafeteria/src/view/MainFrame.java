@@ -3,18 +3,37 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+
+import java.awt.CardLayout;
+
 /**
  *
  * @author eidan
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    private CardLayout cardLayout;
+
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
-    }
+
+        cardLayout = (CardLayout) panelContenedor.getLayout();
+
+        panelContenedor.add(panelFondoTotal, "inicio");
+        panelContenedor.add(new PanelMenu(), "menu");
+        panelContenedor.add(new PanelMesas(), "mesas");
+        panelContenedor.add(new PanelProductos(), "productos");
+        panelContenedor.add(new PanelGestionarClientes(), "clientes");
+        panelContenedor.add(new PanelAgregarProducto(), "agregarProducto");
+        panelContenedor.add(new PanelReportesYEstadisticas(), "reportes");
+        panelContenedor.add(new PanelPedido(), "pedidos");
+        panelContenedor.add(new PanelHistorialVentas(), "historial");
+                panelContenedor.add(new PanelPadNumerico(), "padNumerico");
+
+    }   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -25,19 +44,22 @@ public class MainFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelContenedor = new javax.swing.JPanel();
+        panelFondoTotal = new javax.swing.JPanel();
         labelTitulo = new javax.swing.JLabel();
         btnIniciar = new javax.swing.JButton();
         labelFondoTotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelContenedor.setLayout(new java.awt.CardLayout());
+
+        panelFondoTotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelTitulo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         labelTitulo.setForeground(new java.awt.Color(255, 255, 255));
         labelTitulo.setText("Cafetería Gran Dia");
-        jPanel1.add(labelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, -1, -1));
+        panelFondoTotal.add(labelTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, -1, -1));
 
         btnIniciar.setBackground(new java.awt.Color(255, 255, 255));
         btnIniciar.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
@@ -48,20 +70,28 @@ public class MainFrame extends javax.swing.JFrame {
                 btnIniciarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 280, -1));
+        panelFondoTotal.add(btnIniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 280, -1));
 
         labelFondoTotal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
-        jPanel1.add(labelFondoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        panelFondoTotal.add(labelFondoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        panelContenedor.add(panelFondoTotal, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panelContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -69,7 +99,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
         // TODO add your handling code here:
+        mostrar("menu");
     }//GEN-LAST:event_btnIniciarActionPerformed
+
+    public void mostrar(String nombre) {
+        cardLayout.show(panelContenedor, nombre);
+    }
 
     /**
      * @param args the command line arguments
@@ -108,8 +143,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciar;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelFondoTotal;
     private javax.swing.JLabel labelTitulo;
+    private javax.swing.JPanel panelContenedor;
+    private javax.swing.JPanel panelFondoTotal;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,19 +26,94 @@ public class PanelPersonaDentroDeDistribucion extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        panelFondoTotal = new javax.swing.JPanel();
+        lblIconoPersona = new javax.swing.JLabel();
+        lblPersona = new javax.swing.JLabel();
+        btnMenos = new javax.swing.JButton();
+        btnMas = new javax.swing.JButton();
+        lblProductosLlevados = new javax.swing.JLabel();
+
+        panelFondoTotal.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblIconoPersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imgPersonaIcon.png"))); // NOI18N
+
+        lblPersona.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lblPersona.setForeground(new java.awt.Color(0, 0, 0));
+        lblPersona.setText("Persona 1");
+
+        btnMenos.setBackground(new java.awt.Color(204, 204, 204));
+        btnMenos.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        btnMenos.setForeground(new java.awt.Color(51, 51, 51));
+        btnMenos.setText("-");
+
+        btnMas.setBackground(new java.awt.Color(204, 204, 204));
+        btnMas.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        btnMas.setForeground(new java.awt.Color(51, 51, 51));
+        btnMas.setText("+");
+        btnMas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasActionPerformed(evt);
+            }
+        });
+
+        lblProductosLlevados.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblProductosLlevados.setForeground(new java.awt.Color(0, 0, 0));
+        lblProductosLlevados.setText("2");
+
+        javax.swing.GroupLayout panelFondoTotalLayout = new javax.swing.GroupLayout(panelFondoTotal);
+        panelFondoTotal.setLayout(panelFondoTotalLayout);
+        panelFondoTotalLayout.setHorizontalGroup(
+            panelFondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFondoTotalLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lblIconoPersona)
+                .addGap(18, 18, 18)
+                .addComponent(lblPersona)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 247, Short.MAX_VALUE)
+                .addComponent(btnMenos, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblProductosLlevados)
+                .addGap(18, 18, 18)
+                .addComponent(btnMas, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(67, 67, 67))
+        );
+        panelFondoTotalLayout.setVerticalGroup(
+            panelFondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFondoTotalLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(panelFondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblPersona)
+                        .addComponent(btnMenos)
+                        .addComponent(btnMas)
+                        .addComponent(lblProductosLlevados))
+                    .addComponent(lblIconoPersona))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 578, Short.MAX_VALUE)
+            .addComponent(panelFondoTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 48, Short.MAX_VALUE)
+            .addComponent(panelFondoTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMas;
+    private javax.swing.JButton btnMenos;
+    private javax.swing.JLabel lblIconoPersona;
+    private javax.swing.JLabel lblPersona;
+    private javax.swing.JLabel lblProductosLlevados;
+    private javax.swing.JPanel panelFondoTotal;
     // End of variables declaration//GEN-END:variables
 }

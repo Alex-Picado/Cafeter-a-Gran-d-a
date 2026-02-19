@@ -28,10 +28,10 @@ public class PanelMesas extends javax.swing.JPanel {
 
         jPasswordField1 = new javax.swing.JPasswordField();
         btnMesa1 = new javax.swing.JPanel();
-        panelStatusMesa1 = new javax.swing.JPanel();
-        txtStatusMesa1 = new javax.swing.JLabel();
         icoMesa = new javax.swing.JLabel();
         txtMesa1 = new javax.swing.JLabel();
+        panelStatusMesa1 = new javax.swing.JPanel();
+        txtStatusMesa1 = new javax.swing.JLabel();
         btnMesa2 = new javax.swing.JPanel();
         panelStatusMesa2 = new javax.swing.JPanel();
         txtStatusMesa2 = new javax.swing.JLabel();
@@ -65,7 +65,21 @@ public class PanelMesas extends javax.swing.JPanel {
 
         btnMesa1.setBackground(new java.awt.Color(255, 255, 255));
         btnMesa1.setPreferredSize(new java.awt.Dimension(460, 140));
+        btnMesa1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMesa1MouseClicked(evt);
+            }
+        });
         btnMesa1.setLayout(new java.awt.BorderLayout());
+
+        icoMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoMesas.png"))); // NOI18N
+        btnMesa1.add(icoMesa, java.awt.BorderLayout.LINE_START);
+
+        txtMesa1.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
+        txtMesa1.setForeground(new java.awt.Color(0, 0, 0));
+        txtMesa1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtMesa1.setText("Mesa 1");
+        btnMesa1.add(txtMesa1, java.awt.BorderLayout.CENTER);
 
         panelStatusMesa1.setBackground(new java.awt.Color(0, 208, 31));
         panelStatusMesa1.setPreferredSize(new java.awt.Dimension(60, 140));
@@ -82,27 +96,20 @@ public class PanelMesas extends javax.swing.JPanel {
         );
         panelStatusMesa1Layout.setVerticalGroup(
             panelStatusMesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtStatusMesa1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(txtStatusMesa1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
 
         btnMesa1.add(panelStatusMesa1, java.awt.BorderLayout.LINE_END);
-
-        icoMesa.setForeground(new java.awt.Color(0, 0, 0));
-        icoMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoMesas.png"))); // NOI18N
-        btnMesa1.add(icoMesa, java.awt.BorderLayout.LINE_START);
-
-        txtMesa1.setBackground(new java.awt.Color(255, 255, 255));
-        txtMesa1.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
-        txtMesa1.setForeground(new java.awt.Color(0, 0, 0));
-        txtMesa1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtMesa1.setText("Mesa 1");
-        txtMesa1.setToolTipText("");
-        btnMesa1.add(txtMesa1, java.awt.BorderLayout.CENTER);
 
         add(btnMesa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 30, -1, -1));
 
         btnMesa2.setBackground(new java.awt.Color(255, 255, 255));
         btnMesa2.setPreferredSize(new java.awt.Dimension(460, 140));
+        btnMesa2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMesa2MouseClicked(evt);
+            }
+        });
         btnMesa2.setLayout(new java.awt.BorderLayout());
 
         panelStatusMesa2.setBackground(new java.awt.Color(239, 68, 68));
@@ -138,6 +145,11 @@ public class PanelMesas extends javax.swing.JPanel {
 
         btnMesa3.setBackground(new java.awt.Color(255, 255, 255));
         btnMesa3.setPreferredSize(new java.awt.Dimension(460, 140));
+        btnMesa3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMesa3MouseClicked(evt);
+            }
+        });
         btnMesa3.setLayout(new java.awt.BorderLayout());
 
         txtMesa3.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
@@ -173,6 +185,11 @@ public class PanelMesas extends javax.swing.JPanel {
 
         btnMesa4.setBackground(new java.awt.Color(255, 255, 255));
         btnMesa4.setPreferredSize(new java.awt.Dimension(460, 140));
+        btnMesa4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMesa4MouseClicked(evt);
+            }
+        });
         btnMesa4.setLayout(new java.awt.BorderLayout());
 
         txtMesa4.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
@@ -208,6 +225,11 @@ public class PanelMesas extends javax.swing.JPanel {
 
         btnMesa5.setBackground(new java.awt.Color(255, 255, 255));
         btnMesa5.setPreferredSize(new java.awt.Dimension(460, 140));
+        btnMesa5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMesa5MouseClicked(evt);
+            }
+        });
         btnMesa5.setLayout(new java.awt.BorderLayout());
 
         txtMesa5.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
@@ -244,6 +266,11 @@ public class PanelMesas extends javax.swing.JPanel {
 
         btnParaLlevar.setBackground(new java.awt.Color(255, 255, 130));
         btnParaLlevar.setPreferredSize(new java.awt.Dimension(460, 120));
+        btnParaLlevar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnParaLlevarMouseClicked(evt);
+            }
+        });
         btnParaLlevar.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoParaLlevar.png"))); // NOI18N
@@ -277,7 +304,40 @@ public class PanelMesas extends javax.swing.JPanel {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("menu");
     }//GEN-LAST:event_btnRegresarActionPerformed
+
+    private void btnMesa2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesa2MouseClicked
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_btnMesa2MouseClicked
+
+    private void btnMesa3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesa3MouseClicked
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_btnMesa3MouseClicked
+
+    private void btnMesa4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesa4MouseClicked
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_btnMesa4MouseClicked
+
+    private void btnMesa5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesa5MouseClicked
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_btnMesa5MouseClicked
+
+    private void btnMesa1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesa1MouseClicked
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_btnMesa1MouseClicked
+
+    private void btnParaLlevarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnParaLlevarMouseClicked
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_btnParaLlevarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

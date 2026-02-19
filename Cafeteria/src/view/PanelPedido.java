@@ -105,7 +105,7 @@ public class PanelPedido extends javax.swing.JPanel {
                         .addComponent(lblTextoPedido)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblNumeroPedido)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(654, Short.MAX_VALUE))
         );
         panelInfoPedidoLayout.setVerticalGroup(
             panelInfoPedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,6 +136,8 @@ public class PanelPedido extends javax.swing.JPanel {
         lblAvisoSinProductosEnPedido.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblAvisoSinProductosEnPedido.setForeground(new java.awt.Color(0, 0, 0));
         lblAvisoSinProductosEnPedido.setText("No hay productos en el pedido ");
+        lblAvisoSinProductosEnPedido.setMaximumSize(new java.awt.Dimension(450, 32));
+        lblAvisoSinProductosEnPedido.setPreferredSize(new java.awt.Dimension(450, 32));
         panelListaProductos.add(lblAvisoSinProductosEnPedido);
 
         scrollListaProductos.setViewportView(panelListaProductos);
@@ -165,6 +167,11 @@ public class PanelPedido extends javax.swing.JPanel {
         btnVolver.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(255, 255, 255));
         btnVolver.setText("Regresar");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelHeaderLayout = new javax.swing.GroupLayout(panelHeader);
         panelHeader.setLayout(panelHeaderLayout);
@@ -214,6 +221,11 @@ public class PanelPedido extends javax.swing.JPanel {
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 46)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnDividir.setBackground(new java.awt.Color(236, 68, 239));
         btnDividir.setFont(new java.awt.Font("Segoe UI", 0, 46)); // NOI18N
@@ -277,7 +289,7 @@ public class PanelPedido extends javax.swing.JPanel {
                     .addComponent(panelInfoPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(scrollListaProductos)
                     .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         panelPedidoFondoLayout.setVerticalGroup(
             panelPedidoFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,11 +325,25 @@ public class PanelPedido extends javax.swing.JPanel {
 
     private void btnLiberarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiberarMesaActionPerformed
         // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("mesas");
     }//GEN-LAST:event_btnLiberarMesaActionPerformed
 
     private void btnGuardarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPedidoActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnGuardarPedidoActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("mesas");
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("mesas");
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
