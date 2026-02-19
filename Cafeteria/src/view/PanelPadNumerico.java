@@ -306,6 +306,8 @@ public class PanelPadNumerico extends javax.swing.JPanel {
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("productos");
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnIrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIrActionPerformed
@@ -313,7 +315,8 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         if (listener != null) {
             listener.onAceptar(entradaCodigoDigitado.getText());
         }
-
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("agregarProducto");
     }//GEN-LAST:event_btnIrActionPerformed
 
     private void btnNumero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNumero1ActionPerformed

@@ -8,12 +8,12 @@ package view;
  *
  * @author OniRuls
  */
-public class SeleccionPago extends javax.swing.JPanel {
+public class PanelSeleccionPago extends javax.swing.JPanel {
 
     /**
      * Creates new form SeleccionPago
      */
-    public SeleccionPago() {
+    public PanelSeleccionPago() {
         initComponents();
     }
 

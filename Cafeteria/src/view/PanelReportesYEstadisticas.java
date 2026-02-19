@@ -8,12 +8,12 @@ package view;
  *
  * @author OniRuls
  */
-public class ReportesAndEstatidisticas extends javax.swing.JPanel {
+public class PanelReportesYEstadisticas extends javax.swing.JPanel {
 
     /**
      * Creates new form ReportesAndEstatidisticas
      */
-    public ReportesAndEstatidisticas() {
+    public PanelReportesYEstadisticas() {
         initComponents();
     }
 
@@ -33,15 +33,11 @@ public class ReportesAndEstatidisticas extends javax.swing.JPanel {
         panelVentasDelDia = new javax.swing.JPanel();
         imgVentasDelDiaLabel = new javax.swing.JLabel();
         ventasDelDiaLblText = new javax.swing.JLabel();
-        IconoColonVentasDia = new javax.swing.JLabel();
-        panelVentasDelMes = new javax.swing.JPanel();
-        imgVentasDelMesIcono = new javax.swing.JLabel();
-        iconoColonVentasMes = new javax.swing.JLabel();
-        imgVentasDelMesLabel1 = new javax.swing.JLabel();
+        lblMontoDeVentasDelDia = new javax.swing.JLabel();
         panelProductoMasVendido = new javax.swing.JPanel();
         imgProductoMasVendido = new javax.swing.JLabel();
         iconoProductoMasVendido = new javax.swing.JLabel();
-        iconoColonProductoMasVendido = new javax.swing.JLabel();
+        lblNombreDelProductoMasVendido = new javax.swing.JLabel();
         panelVerHistorialCompleto = new javax.swing.JPanel();
         verHistorialCompletoIcono = new javax.swing.JLabel();
         btnVerHistorialCompleto = new javax.swing.JButton();
@@ -56,12 +52,18 @@ public class ReportesAndEstatidisticas extends javax.swing.JPanel {
         panelAzulHeader.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         reportesEstadisticasLblText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        reportesEstadisticasLblText.setForeground(new java.awt.Color(255, 255, 255));
         reportesEstadisticasLblText.setText("Reportes y Estadísticas");
 
         btnRegresarReportesNdEstadisticasPanel.setBackground(new java.awt.Color(255, 255, 255));
         btnRegresarReportesNdEstadisticasPanel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRegresarReportesNdEstadisticasPanel.setForeground(new java.awt.Color(0, 0, 0));
         btnRegresarReportesNdEstadisticasPanel.setText("Regresar");
+        btnRegresarReportesNdEstadisticasPanel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarReportesNdEstadisticasPanelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelAzulHeaderLayout = new javax.swing.GroupLayout(panelAzulHeader);
         panelAzulHeader.setLayout(panelAzulHeaderLayout);
@@ -99,26 +101,27 @@ public class ReportesAndEstatidisticas extends javax.swing.JPanel {
         ventasDelDiaLblText.setForeground(new java.awt.Color(0, 0, 0));
         ventasDelDiaLblText.setText("Ventas del Dia");
 
-        IconoColonVentasDia.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        IconoColonVentasDia.setForeground(new java.awt.Color(0, 0, 0));
-        IconoColonVentasDia.setText("₡");
+        lblMontoDeVentasDelDia.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblMontoDeVentasDelDia.setForeground(new java.awt.Color(0, 0, 0));
+        lblMontoDeVentasDelDia.setText("₡3000");
 
         javax.swing.GroupLayout panelVentasDelDiaLayout = new javax.swing.GroupLayout(panelVentasDelDia);
         panelVentasDelDia.setLayout(panelVentasDelDiaLayout);
         panelVentasDelDiaLayout.setHorizontalGroup(
             panelVentasDelDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVentasDelDiaLayout.createSequentialGroup()
+            .addGroup(panelVentasDelDiaLayout.createSequentialGroup()
                 .addGap(0, 85, Short.MAX_VALUE)
                 .addGroup(panelVentasDelDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelVentasDelDiaLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(ventasDelDiaLblText))
-                    .addComponent(imgVentasDelDiaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(85, 85, 85))
-            .addGroup(panelVentasDelDiaLayout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(IconoColonVentasDia)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVentasDelDiaLayout.createSequentialGroup()
+                        .addGroup(panelVentasDelDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelVentasDelDiaLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(ventasDelDiaLblText))
+                            .addComponent(imgVentasDelDiaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(85, 85, 85))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVentasDelDiaLayout.createSequentialGroup()
+                        .addComponent(lblMontoDeVentasDelDia, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(93, 93, 93))))
         );
         panelVentasDelDiaLayout.setVerticalGroup(
             panelVentasDelDiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,53 +129,9 @@ public class ReportesAndEstatidisticas extends javax.swing.JPanel {
                 .addComponent(imgVentasDelDiaLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ventasDelDiaLblText)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(IconoColonVentasDia)
+                .addGap(18, 18, 18)
+                .addComponent(lblMontoDeVentasDelDia)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        panelVentasDelMes.setBackground(new java.awt.Color(153, 204, 255));
-        panelVentasDelMes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        imgVentasDelMesIcono.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        imgVentasDelMesIcono.setForeground(new java.awt.Color(0, 0, 0));
-        imgVentasDelMesIcono.setText("Ventas del Mes");
-
-        iconoColonVentasMes.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        iconoColonVentasMes.setForeground(new java.awt.Color(0, 0, 0));
-        iconoColonVentasMes.setText("₡");
-
-        imgVentasDelMesLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        imgVentasDelMesLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconVentasDelMes.png"))); // NOI18N
-
-        javax.swing.GroupLayout panelVentasDelMesLayout = new javax.swing.GroupLayout(panelVentasDelMes);
-        panelVentasDelMes.setLayout(panelVentasDelMesLayout);
-        panelVentasDelMesLayout.setHorizontalGroup(
-            panelVentasDelMesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelVentasDelMesLayout.createSequentialGroup()
-                .addGroup(panelVentasDelMesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelVentasDelMesLayout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addGroup(panelVentasDelMesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelVentasDelMesLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(imgVentasDelMesIcono))
-                            .addComponent(imgVentasDelMesLabel1)))
-                    .addGroup(panelVentasDelMesLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(iconoColonVentasMes)))
-                .addContainerGap(110, Short.MAX_VALUE))
-        );
-        panelVentasDelMesLayout.setVerticalGroup(
-            panelVentasDelMesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelVentasDelMesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(imgVentasDelMesLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(imgVentasDelMesIcono)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(iconoColonVentasMes)
-                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         panelProductoMasVendido.setBackground(new java.awt.Color(153, 204, 255));
@@ -185,9 +144,9 @@ public class ReportesAndEstatidisticas extends javax.swing.JPanel {
         iconoProductoMasVendido.setForeground(new java.awt.Color(0, 0, 0));
         iconoProductoMasVendido.setText("Producto Más Vendido");
 
-        iconoColonProductoMasVendido.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        iconoColonProductoMasVendido.setForeground(new java.awt.Color(0, 0, 0));
-        iconoColonProductoMasVendido.setText("₡");
+        lblNombreDelProductoMasVendido.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblNombreDelProductoMasVendido.setForeground(new java.awt.Color(0, 0, 0));
+        lblNombreDelProductoMasVendido.setText("Capuccino");
 
         javax.swing.GroupLayout panelProductoMasVendidoLayout = new javax.swing.GroupLayout(panelProductoMasVendido);
         panelProductoMasVendido.setLayout(panelProductoMasVendidoLayout);
@@ -200,10 +159,11 @@ public class ReportesAndEstatidisticas extends javax.swing.JPanel {
                         .addComponent(imgProductoMasVendido))
                     .addGroup(panelProductoMasVendidoLayout.createSequentialGroup()
                         .addGap(83, 83, 83)
-                        .addComponent(iconoProductoMasVendido))
-                    .addGroup(panelProductoMasVendidoLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(iconoColonProductoMasVendido)))
+                        .addGroup(panelProductoMasVendidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelProductoMasVendidoLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblNombreDelProductoMasVendido))
+                            .addComponent(iconoProductoMasVendido))))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         panelProductoMasVendidoLayout.setVerticalGroup(
@@ -213,8 +173,8 @@ public class ReportesAndEstatidisticas extends javax.swing.JPanel {
                 .addComponent(imgProductoMasVendido, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(iconoProductoMasVendido)
-                .addGap(18, 18, 18)
-                .addComponent(iconoColonProductoMasVendido)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblNombreDelProductoMasVendido)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -229,6 +189,11 @@ public class ReportesAndEstatidisticas extends javax.swing.JPanel {
         btnVerHistorialCompleto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnVerHistorialCompleto.setForeground(new java.awt.Color(0, 0, 0));
         btnVerHistorialCompleto.setText("Ver Historial Completo");
+        btnVerHistorialCompleto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerHistorialCompletoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelVerHistorialCompletoLayout = new javax.swing.GroupLayout(panelVerHistorialCompleto);
         panelVerHistorialCompleto.setLayout(panelVerHistorialCompletoLayout);
@@ -293,19 +258,20 @@ public class ReportesAndEstatidisticas extends javax.swing.JPanel {
         panelBlancoReportesEstadisticasLayout.setHorizontalGroup(
             panelBlancoReportesEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBlancoReportesEstadisticasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelVentasDelDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(panelVentasDelMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(panelProductoMasVendido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
-            .addGroup(panelBlancoReportesEstadisticasLayout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addComponent(panelVerHistorialCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelBlancoReportesEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelBlancoReportesEstadisticasLayout.createSequentialGroup()
+                        .addGap(71, 71, 71)
+                        .addComponent(panelVerHistorialCompleto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelBlancoReportesEstadisticasLayout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(panelVentasDelDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(104, 104, 104)
-                .addComponent(panelImprimirReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelBlancoReportesEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelImprimirReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBlancoReportesEstadisticasLayout.createSequentialGroup()
+                        .addComponent(panelProductoMasVendido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         panelBlancoReportesEstadisticasLayout.setVerticalGroup(
             panelBlancoReportesEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,13 +279,12 @@ public class ReportesAndEstatidisticas extends javax.swing.JPanel {
                 .addGap(70, 70, 70)
                 .addGroup(panelBlancoReportesEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelProductoMasVendido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelVentasDelMes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelVentasDelDia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(70, 70, 70)
                 .addGroup(panelBlancoReportesEstadisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelVerHistorialCompleto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelImprimirReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         add(panelBlancoReportesEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 980, 660));
@@ -328,27 +293,34 @@ public class ReportesAndEstatidisticas extends javax.swing.JPanel {
         add(mainPanelReportesEstadistica, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegresarReportesNdEstadisticasPanelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarReportesNdEstadisticasPanelActionPerformed
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("menu");
+    }//GEN-LAST:event_btnRegresarReportesNdEstadisticasPanelActionPerformed
+
+    private void btnVerHistorialCompletoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerHistorialCompletoActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("historial");
+    }//GEN-LAST:event_btnVerHistorialCompletoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IconoColonVentasDia;
     private javax.swing.JButton btnImprimirReporte;
     private javax.swing.JButton btnRegresarReportesNdEstadisticasPanel;
     private javax.swing.JButton btnVerHistorialCompleto;
-    private javax.swing.JLabel iconoColonProductoMasVendido;
-    private javax.swing.JLabel iconoColonVentasMes;
     private javax.swing.JLabel iconoProductoMasVendido;
     private javax.swing.JLabel imgProductoMasVendido;
     private javax.swing.JLabel imgVentasDelDiaLabel;
-    private javax.swing.JLabel imgVentasDelMesIcono;
-    private javax.swing.JLabel imgVentasDelMesLabel1;
     private javax.swing.JLabel imprimirReporteIcono;
+    private javax.swing.JLabel lblMontoDeVentasDelDia;
+    private javax.swing.JLabel lblNombreDelProductoMasVendido;
     private javax.swing.JLabel mainPanelReportesEstadistica;
     private javax.swing.JPanel panelAzulHeader;
     private javax.swing.JPanel panelBlancoReportesEstadisticas;
     private javax.swing.JPanel panelImprimirReporte;
     private javax.swing.JPanel panelProductoMasVendido;
     private javax.swing.JPanel panelVentasDelDia;
-    private javax.swing.JPanel panelVentasDelMes;
     private javax.swing.JPanel panelVerHistorialCompleto;
     private javax.swing.JLabel reportesEstadisticasLblText;
     private javax.swing.JLabel ventasDelDiaLblText;

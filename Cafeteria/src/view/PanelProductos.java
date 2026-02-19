@@ -27,18 +27,20 @@ public class PanelProductos extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        panelFondoCentral = new javax.swing.JPanel();
         panelBusqueda = new javax.swing.JPanel();
         txtBarraBusqueda = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboBoxFiltradoPorCategoria = new javax.swing.JComboBox<>();
+        ScrollLista = new javax.swing.JScrollPane();
+        panelLista = new javax.swing.JPanel();
         btnAgregarProducto = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        btnRegresar = new javax.swing.JButton();
+        labelFondoImagen = new javax.swing.JLabel();
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        panelFondoCentral.setBackground(new java.awt.Color(255, 255, 255));
 
         panelBusqueda.setBackground(new java.awt.Color(255, 255, 255));
         panelBusqueda.setLayout(new java.awt.BorderLayout());
@@ -47,6 +49,7 @@ public class PanelProductos extends javax.swing.JPanel {
         txtBarraBusqueda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtBarraBusqueda.setForeground(new java.awt.Color(0, 0, 0));
         txtBarraBusqueda.setToolTipText("Buscar por ID...");
+        txtBarraBusqueda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelBusqueda.add(txtBarraBusqueda, java.awt.BorderLayout.CENTER);
 
         btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
@@ -58,38 +61,53 @@ public class PanelProductos extends javax.swing.JPanel {
         });
         panelBusqueda.add(btnBuscar, java.awt.BorderLayout.LINE_START);
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reposteria", "Bebidas" }));
+        comboBoxFiltradoPorCategoria.setBackground(new java.awt.Color(255, 255, 255));
+        comboBoxFiltradoPorCategoria.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        comboBoxFiltradoPorCategoria.setForeground(new java.awt.Color(0, 0, 0));
+        comboBoxFiltradoPorCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reposteria", "Bebidas" }));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+        ScrollLista.setBackground(new java.awt.Color(255, 255, 255));
+        ScrollLista.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        panelLista.setBackground(new java.awt.Color(255, 255, 255));
+        panelLista.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelLista.setLayout(new javax.swing.BoxLayout(panelLista, javax.swing.BoxLayout.Y_AXIS));
+        ScrollLista.setViewportView(panelLista);
+
+        javax.swing.GroupLayout panelFondoCentralLayout = new javax.swing.GroupLayout(panelFondoCentral);
+        panelFondoCentral.setLayout(panelFondoCentralLayout);
+        panelFondoCentralLayout.setHorizontalGroup(
+            panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panelBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboBoxFiltradoPorCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(ScrollLista, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panelFondoCentralLayout.setVerticalGroup(
+            panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelFondoCentralLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1)
+                .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(comboBoxFiltradoPorCategoria)
                     .addComponent(panelBusqueda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(661, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(ScrollLista, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 62, 863, 706));
+        jPanel1.add(panelFondoCentral, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 62, 863, 706));
 
-        btnAgregarProducto.setBackground(new java.awt.Color(122, 200, 93));
+        btnAgregarProducto.setBackground(new java.awt.Color(102, 204, 0));
         btnAgregarProducto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnAgregarProducto.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarProducto.setText("Añadir Prodcuto");
+        btnAgregarProducto.setText("Añadir producto");
         btnAgregarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarProductoActionPerformed(evt);
@@ -97,23 +115,23 @@ public class PanelProductos extends javax.swing.JPanel {
         });
         jPanel1.add(btnAgregarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoAtras.png"))); // NOI18N
-        jButton1.setText("Regresar");
-        jButton1.setIconTextGap(15);
-        jButton1.setPreferredSize(new java.awt.Dimension(186, 42));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegresar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
+        btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoAtras.png"))); // NOI18N
+        btnRegresar.setText("Regresar");
+        btnRegresar.setIconTextGap(15);
+        btnRegresar.setPreferredSize(new java.awt.Dimension(186, 42));
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnRegresarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
+        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, -1, -1));
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        labelFondoImagen.setForeground(new java.awt.Color(255, 255, 255));
+        labelFondoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
+        jPanel1.add(labelFondoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -129,26 +147,32 @@ public class PanelProductos extends javax.swing.JPanel {
 
     private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
         // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("agregarProducto");
     }//GEN-LAST:event_btnAgregarProductoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("menu");
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane ScrollLista;
     private javax.swing.JButton btnAgregarProducto;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton btnRegresar;
+    private javax.swing.JComboBox<String> comboBoxFiltradoPorCategoria;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel labelFondoImagen;
     private javax.swing.JPanel panelBusqueda;
+    private javax.swing.JPanel panelFondoCentral;
+    private javax.swing.JPanel panelLista;
     private javax.swing.JTextField txtBarraBusqueda;
     // End of variables declaration//GEN-END:variables
 }

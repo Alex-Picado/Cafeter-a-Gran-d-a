@@ -8,12 +8,12 @@ package view;
  *
  * @author OniRuls
  */
-public class HistorialVentas extends javax.swing.JPanel {
+public class PanelHistorialVentas extends javax.swing.JPanel {
 
     /**
      * Creates new form HistorialVentas
      */
-    public HistorialVentas() {
+    public PanelHistorialVentas() {
         initComponents();
     }
 
@@ -49,6 +49,11 @@ public class HistorialVentas extends javax.swing.JPanel {
         btnRegresarPanelHistorialVentas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRegresarPanelHistorialVentas.setForeground(new java.awt.Color(0, 0, 0));
         btnRegresarPanelHistorialVentas.setText("Regresar");
+        btnRegresarPanelHistorialVentas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarPanelHistorialVentasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelHistorialVentasAzulLayout = new javax.swing.GroupLayout(panelHistorialVentasAzul);
         panelHistorialVentasAzul.setLayout(panelHistorialVentasAzulLayout);
@@ -94,6 +99,12 @@ public class HistorialVentas extends javax.swing.JPanel {
         fondoOpacoForHistorialVentasPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
         add(fondoOpacoForHistorialVentasPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnRegresarPanelHistorialVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPanelHistorialVentasActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("reportes");
+    }//GEN-LAST:event_btnRegresarPanelHistorialVentasActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

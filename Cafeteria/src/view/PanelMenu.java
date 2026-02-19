@@ -30,9 +30,9 @@ public class PanelMenu extends javax.swing.JPanel {
         btnMesas = new javax.swing.JButton();
         LabelBienvenidoAlSistema = new javax.swing.JLabel();
         btnProductos = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnClientes = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnReportes = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -68,15 +68,15 @@ public class PanelMenu extends javax.swing.JPanel {
         });
         PanelTOTAL.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoUsuarios.png"))); // NOI18N
-        jButton2.setPreferredSize(new java.awt.Dimension(128, 128));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnClientes.setBackground(new java.awt.Color(255, 255, 255));
+        btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoUsuarios.png"))); // NOI18N
+        btnClientes.setPreferredSize(new java.awt.Dimension(128, 128));
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnClientesActionPerformed(evt);
             }
         });
-        PanelTOTAL.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, -1, -1));
+        PanelTOTAL.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, -1, -1));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoPedidos.png"))); // NOI18N
@@ -88,10 +88,15 @@ public class PanelMenu extends javax.swing.JPanel {
         });
         PanelTOTAL.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, -1, -1));
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoReportes.png"))); // NOI18N
-        jButton3.setPreferredSize(new java.awt.Dimension(128, 128));
-        PanelTOTAL.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 470, -1, -1));
+        btnReportes.setBackground(new java.awt.Color(255, 255, 255));
+        btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoReportes.png"))); // NOI18N
+        btnReportes.setPreferredSize(new java.awt.Dimension(128, 128));
+        btnReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportesActionPerformed(evt);
+            }
+        });
+        PanelTOTAL.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 470, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -123,7 +128,7 @@ public class PanelMenu extends javax.swing.JPanel {
         jLabel6.setText("Pedidos");
         PanelTOTAL.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 610, 110, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imagenFondo.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
         jLabel1.setText("Mesas");
         jLabel1.setPreferredSize(new java.awt.Dimension(1024, 768));
         PanelTOTAL.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -142,29 +147,40 @@ public class PanelMenu extends javax.swing.JPanel {
 
     private void btnMesasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMesasActionPerformed
         // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("mesas");
     }//GEN-LAST:event_btnMesasActionPerformed
 
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
         // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("productos");
     }//GEN-LAST:event_btnProductosActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("clientes");
+    }//GEN-LAST:event_btnClientesActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("reportes");
+    }//GEN-LAST:event_btnReportesActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LabelBienvenidoAlSistema;
     private javax.swing.JPanel PanelTOTAL;
+    private javax.swing.JButton btnClientes;
     private javax.swing.JButton btnMesas;
     private javax.swing.JButton btnProductos;
+    private javax.swing.JButton btnReportes;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
