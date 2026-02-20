@@ -30,7 +30,7 @@ public class PanelFactura extends javax.swing.JPanel {
         panelFondoAzulOscuro = new javax.swing.JPanel();
         lblTextFacturaHeader = new javax.swing.JLabel();
         btnProcederPago = new javax.swing.JButton();
-        btnVolverFactura = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         panelFondoBlancoFactura = new javax.swing.JPanel();
         lblTextCafeteriaGranDia = new javax.swing.JLabel();
         lblTextFactura = new javax.swing.JLabel();
@@ -60,10 +60,10 @@ public class PanelFactura extends javax.swing.JPanel {
         btnProcederPago.setForeground(new java.awt.Color(0, 0, 0));
         btnProcederPago.setText("Proceder al Pago");
 
-        btnVolverFactura.setBackground(new java.awt.Color(255, 255, 255));
-        btnVolverFactura.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnVolverFactura.setForeground(new java.awt.Color(0, 0, 0));
-        btnVolverFactura.setText("Volver");
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setText("Volver");
 
         javax.swing.GroupLayout panelFondoAzulOscuroLayout = new javax.swing.GroupLayout(panelFondoAzulOscuro);
         panelFondoAzulOscuro.setLayout(panelFondoAzulOscuroLayout);
@@ -75,7 +75,7 @@ public class PanelFactura extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 538, Short.MAX_VALUE)
                 .addComponent(btnProcederPago, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnVolverFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelFondoAzulOscuroLayout.setVerticalGroup(
@@ -85,7 +85,7 @@ public class PanelFactura extends javax.swing.JPanel {
                 .addGroup(panelFondoAzulOscuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTextFacturaHeader)
                     .addComponent(btnProcederPago, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVolverFactura))
+                    .addComponent(jButton2))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -262,8 +262,8 @@ public class PanelFactura extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProcederPago;
-    private javax.swing.JButton btnVolverFactura;
     private javax.swing.JComboBox<String> descuentoComboBox;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblFondoImg;
     private javax.swing.JLabel lblHoraFactura;
     private javax.swing.JLabel lblTextCafeteriaGranDia;
