@@ -5,8 +5,10 @@
 package model;
 
 /**
+ * Representa un producto disponible en la cafetería, incluyendo información
+ * necesaria para su gestión en pedidos y facturación.
  *
- * @author eidan
+ * @author Eidan Alexandre Picado Leiva - C4I410
  */
 public class Producto {
     

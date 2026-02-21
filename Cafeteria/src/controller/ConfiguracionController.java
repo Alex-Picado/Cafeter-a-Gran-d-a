@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package model;
+package controller;
 
 /**
- * Representa un cliente del sistema de cafetería, ya sea frecuente o eventual,
- * asociado a pedidos, facturas o cuentas separadas.
+ * Controlador responsable de administrar la configuración general del sistema,
+ * permitiendo consultar y actualizar parámetros de operación.
  *
  * @author Eidan Alexandre Picado Leiva - C4I410
  */
-public class Cliente {
+public class ConfiguracionController {
     
 }

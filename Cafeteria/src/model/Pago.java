@@ -5,9 +5,11 @@
 package model;
 
 /**
+ * Representa el registro de un pago realizado para una factura,
+ * incluyendo información del método utilizado.
  *
- * @author eidan
+ * @author Eidan Alexandre Picado Leiva - C4I410
  */
-public class Bebida {
+public class Pago {
     
 }

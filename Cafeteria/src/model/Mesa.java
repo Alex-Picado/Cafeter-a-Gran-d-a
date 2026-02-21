@@ -5,8 +5,10 @@
 package model;
 
 /**
+ * Representa una mesa dentro de la cafetería, utilizada para gestionar
+ * pedidos asociados a consumo en sitio.
  *
- * @author eidan
+ * @author Eidan Alexandre Picado Leiva - C4I410
  */
 public class Mesa {
     

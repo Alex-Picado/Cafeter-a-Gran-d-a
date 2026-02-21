@@ -5,11 +5,11 @@
 package model;
 
 /**
- * Representa un cliente del sistema de cafetería, ya sea frecuente o eventual,
- * asociado a pedidos, facturas o cuentas separadas.
+ * Representa una captura del estado de los pedidos activos,
+ * utilizada para recuperación ante fallos o reinicio del sistema.
  *
  * @author Eidan Alexandre Picado Leiva - C4I410
  */
-public class Cliente {
+public class PedidoActivoSnapshot {
     
 }
