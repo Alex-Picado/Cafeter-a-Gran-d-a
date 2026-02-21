@@ -50,45 +50,38 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnSubirImg" max="32767" attributes="0"/>
+                          <Component id="txtNombre" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnSubirImg" max="32767" attributes="0"/>
-                                  <Component id="txtNombre" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtID" max="32767" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnNumpad" min="-2" pref="74" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="txtPrecio" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txtStock" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="btnRegistrar" alignment="1" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblTextoId" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblTextoCategoria" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="lblTextoNombre" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
-                                          <Component id="lblTextoPrecio" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
-                                          <Component id="lblTextoStock" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="boxCategoria" min="-2" pref="490" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                                              <Component id="lblrTextoGestionarCategoria" min="-2" pref="143" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="btnGestionarCategorias" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="txtID" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnNumpad" min="-2" pref="74" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="txtPrecio" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtStock" alignment="0" max="32767" attributes="0"/>
+                          <Component id="btnRegistrar" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblTextoAgregarProducto" min="-2" pref="362" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnRegresar" min="-2" pref="107" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblTextoId" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTextoCategoria" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTextoNombre" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
+                                  <Component id="lblTextoPrecio" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
+                                  <Component id="lblTextoStock" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="boxCategoria" min="-2" pref="490" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="btnGestionarCategorias" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="0" pref="124" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -97,15 +90,10 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="lblTextoAgregarProducto" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnRegresar" min="-2" pref="58" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="lblTextoAgregarProducto" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnRegresar" min="-2" pref="58" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                       <Component id="lblTextoId" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -121,10 +109,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="boxCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblrTextoGestionarCategoria" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnGestionarCategorias" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblTextoPrecio" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="txtPrecio" min="-2" max="-2" attributes="0"/>
@@ -136,7 +123,7 @@
                       <Component id="btnSubirImg" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnRegistrar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="24" max="32767" attributes="0"/>
+                      <EmptySpace pref="48" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -378,21 +365,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegresarActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblrTextoGestionarCategoria">
-              <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="0" type="rgb"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Gestionar categor&#xed;as:"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JButton" name="btnGestionarCategorias">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="cc" red="99" type="rgb"/>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="14" style="0"/>
+                  <Font name="Segoe UI" size="24" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
