@@ -199,7 +199,7 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
                 btnCancelarActionPerformed(evt);
             }
         });
-        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 400, 140, -1));
+        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 140, -1));
 
         btnLimpiar.setBackground(new java.awt.Color(0, 204, 204));
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
