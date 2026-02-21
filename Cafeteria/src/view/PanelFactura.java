@@ -28,11 +28,11 @@ public class PanelFactura extends javax.swing.JPanel {
 
         panelAbsolute = new javax.swing.JPanel();
         panelFondoAzulOscuro = new javax.swing.JPanel();
-        lblTextFacturaHeader = new javax.swing.JLabel();
+        lblTextoFacturaHeader = new javax.swing.JLabel();
         btnProcederPago = new javax.swing.JButton();
         btnVolverFactura = new javax.swing.JButton();
         panelFondoBlancoFactura = new javax.swing.JPanel();
-        lblTextCafeteriaGranDia = new javax.swing.JLabel();
+        lblTextoCafeteriaGranDia = new javax.swing.JLabel();
         lblTextoFactura = new javax.swing.JLabel();
         lblNumeroFactura = new javax.swing.JLabel();
         lblHoraFactura = new javax.swing.JLabel();
@@ -45,14 +45,15 @@ public class PanelFactura extends javax.swing.JPanel {
         lblTextPrecioSubTotal = new javax.swing.JLabel();
         lblTextIVAPrecio = new javax.swing.JLabel();
         lblTextPrecioTotal = new javax.swing.JLabel();
+        lblTextoDescuento = new javax.swing.JLabel();
         lblFondoImg = new javax.swing.JLabel();
 
         panelAbsolute.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelFondoAzulOscuro.setBackground(new java.awt.Color(31, 42, 56));
 
-        lblTextFacturaHeader.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTextFacturaHeader.setText("Factura");
+        lblTextoFacturaHeader.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTextoFacturaHeader.setText("Factura");
 
         btnProcederPago.setBackground(new java.awt.Color(51, 204, 0));
         btnProcederPago.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -69,9 +70,9 @@ public class PanelFactura extends javax.swing.JPanel {
         panelFondoAzulOscuroLayout.setHorizontalGroup(
             panelFondoAzulOscuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoAzulOscuroLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(lblTextFacturaHeader)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 538, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
+                .addComponent(lblTextoFacturaHeader)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 523, Short.MAX_VALUE)
                 .addComponent(btnProcederPago, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnVolverFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -82,7 +83,7 @@ public class PanelFactura extends javax.swing.JPanel {
             .addGroup(panelFondoAzulOscuroLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(panelFondoAzulOscuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTextFacturaHeader)
+                    .addComponent(lblTextoFacturaHeader)
                     .addComponent(btnProcederPago, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVolverFactura))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -92,11 +93,11 @@ public class PanelFactura extends javax.swing.JPanel {
 
         panelFondoBlancoFactura.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblTextCafeteriaGranDia.setBackground(new java.awt.Color(255, 255, 255));
-        lblTextCafeteriaGranDia.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTextCafeteriaGranDia.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextCafeteriaGranDia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTextCafeteriaGranDia.setText("Cafetería Gran Día");
+        lblTextoCafeteriaGranDia.setBackground(new java.awt.Color(255, 255, 255));
+        lblTextoCafeteriaGranDia.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTextoCafeteriaGranDia.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoCafeteriaGranDia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTextoCafeteriaGranDia.setText("Cafetería Gran Día");
 
         lblTextoFactura.setBackground(new java.awt.Color(255, 255, 255));
         lblTextoFactura.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -149,7 +150,7 @@ public class PanelFactura extends javax.swing.JPanel {
         lblTextPrecioSubTotal.setBackground(new java.awt.Color(255, 255, 255));
         lblTextPrecioSubTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTextPrecioSubTotal.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextPrecioSubTotal.setText("₡5,000");
+        lblTextPrecioSubTotal.setText("₡5000");
 
         lblTextIVAPrecio.setBackground(new java.awt.Color(255, 255, 255));
         lblTextIVAPrecio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -159,7 +160,11 @@ public class PanelFactura extends javax.swing.JPanel {
         lblTextPrecioTotal.setBackground(new java.awt.Color(255, 255, 255));
         lblTextPrecioTotal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTextPrecioTotal.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextPrecioTotal.setText("₡5,650");
+        lblTextPrecioTotal.setText("₡5650");
+
+        lblTextoDescuento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTextoDescuento.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoDescuento.setText("Descuento %:");
 
         javax.swing.GroupLayout panelFondoBlancoFacturaLayout = new javax.swing.GroupLayout(panelFondoBlancoFactura);
         panelFondoBlancoFactura.setLayout(panelFondoBlancoFacturaLayout);
@@ -177,9 +182,9 @@ public class PanelFactura extends javax.swing.JPanel {
                         .addComponent(lblNumeroFactura)
                         .addGap(112, 112, 112))
                     .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
+                        .addGap(51, 51, 51)
                         .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
-                                .addGap(51, 51, 51)
                                 .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblTextIVA)
                                     .addComponent(lblTextSubTotal)
@@ -190,7 +195,8 @@ public class PanelFactura extends javax.swing.JPanel {
                                     .addComponent(lblTextPrecioSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblTextIVAPrecio)))
                             .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblTextoDescuento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(descuentoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)))
                         .addGap(40, 40, 40))
@@ -198,7 +204,7 @@ public class PanelFactura extends javax.swing.JPanel {
                         .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
                                 .addGap(326, 326, 326)
-                                .addComponent(lblTextCafeteriaGranDia))
+                                .addComponent(lblTextoCafeteriaGranDia))
                             .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
                                 .addGap(335, 335, 335)
                                 .addComponent(lblHoraFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -209,7 +215,7 @@ public class PanelFactura extends javax.swing.JPanel {
             panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTextCafeteriaGranDia)
+                .addComponent(lblTextoCafeteriaGranDia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTextoFactura)
@@ -227,7 +233,9 @@ public class PanelFactura extends javax.swing.JPanel {
                     .addComponent(lblTextIVA)
                     .addComponent(lblTextIVAPrecio))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(descuentoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(descuentoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTextoDescuento))
                 .addGap(18, 18, 18)
                 .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTextTotal)
@@ -260,15 +268,16 @@ public class PanelFactura extends javax.swing.JPanel {
     private javax.swing.JLabel lblFondoImg;
     private javax.swing.JLabel lblHoraFactura;
     private javax.swing.JLabel lblNumeroFactura;
-    private javax.swing.JLabel lblTextCafeteriaGranDia;
-    private javax.swing.JLabel lblTextFacturaHeader;
     private javax.swing.JLabel lblTextIVA;
     private javax.swing.JLabel lblTextIVAPrecio;
     private javax.swing.JLabel lblTextPrecioSubTotal;
     private javax.swing.JLabel lblTextPrecioTotal;
     private javax.swing.JLabel lblTextSubTotal;
     private javax.swing.JLabel lblTextTotal;
+    private javax.swing.JLabel lblTextoCafeteriaGranDia;
+    private javax.swing.JLabel lblTextoDescuento;
     private javax.swing.JLabel lblTextoFactura;
+    private javax.swing.JLabel lblTextoFacturaHeader;
     private javax.swing.JPanel panelAbsolute;
     private javax.swing.JPanel panelFondoAzulOscuro;
     private javax.swing.JPanel panelFondoBlancoFactura;
