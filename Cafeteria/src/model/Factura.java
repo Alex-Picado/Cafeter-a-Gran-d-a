@@ -5,9 +5,11 @@
 package model;
 
 /**
+ * Representa una factura generada a partir de un pedido,
+ * incluyendo la información necesaria para registrar una venta.
  *
- * @author eidan
+ * @author Eidan Alexandre Picado Leiva - C4I410
  */
-public class Comida {
+public class Factura {
     
 }

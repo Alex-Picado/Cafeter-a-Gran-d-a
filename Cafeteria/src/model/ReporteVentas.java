@@ -5,8 +5,10 @@
 package model;
 
 /**
+ * Representa información consolidada de ventas utilizada para generar
+ * reportes y estadísticas del sistema.
  *
- * @author eidan
+ * @author Eidan Alexandre Picado Leiva - C4I410
  */
 public class ReporteVentas {
     

@@ -5,8 +5,10 @@
 package controller;
 
 /**
+ * Controlador encargado de la gestión de productos, incluyendo registro,
+ * actualización y consulta dentro del sistema.
  *
- * @author eidan
+ * @author Eidan Alexandre Picado Leiva - C4I410
  */
 public class ProductoController {
     

@@ -5,8 +5,10 @@
 package model;
 
 /**
+ * Representa un ítem dentro de un pedido, incluyendo producto y cantidad,
+ * utilizado para construir el consumo antes de la facturación.
  *
- * @author eidan
+ * @author Eidan Alexandre Picado Leiva - C4I410
  */
 public class DetallePedido {
     

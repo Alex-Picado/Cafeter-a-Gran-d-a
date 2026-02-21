@@ -5,11 +5,11 @@
 package model;
 
 /**
- * Representa un cliente del sistema de cafetería, ya sea frecuente o eventual,
- * asociado a pedidos, facturas o cuentas separadas.
+ * Representa la asignación de un producto a una cuenta o persona durante
+ * el proceso de división de un pedido.
  *
  * @author Eidan Alexandre Picado Leiva - C4I410
  */
-public class Cliente {
+public class ItemAsignado {
     
 }

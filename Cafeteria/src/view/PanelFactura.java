@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package view;
-
+import model.Descuento;
 /**
  *
  * @author eidan
@@ -140,7 +140,6 @@ public class PanelFactura extends javax.swing.JPanel {
         descuentoComboBox.setBackground(new java.awt.Color(204, 204, 204));
         descuentoComboBox.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         descuentoComboBox.setForeground(new java.awt.Color(0, 0, 0));
-        descuentoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lblTextTotal.setBackground(new java.awt.Color(255, 255, 255));
         lblTextTotal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -264,7 +263,7 @@ public class PanelFactura extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProcederPago;
     private javax.swing.JButton btnVolverFactura;
-    private javax.swing.JComboBox<String> descuentoComboBox;
+    private javax.swing.JComboBox<Descuento> descuentoComboBox;
     private javax.swing.JLabel lblFondoImg;
     private javax.swing.JLabel lblHoraFactura;
     private javax.swing.JLabel lblNumeroFactura;

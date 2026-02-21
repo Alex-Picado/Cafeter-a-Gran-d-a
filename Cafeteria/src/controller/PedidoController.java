@@ -5,8 +5,10 @@
 package controller;
 
 /**
+ * Controlador que administra el ciclo de vida de los pedidos, incluyendo su
+ * creación, modificación y persistencia durante la operación del sistema.
  *
- * @author eidan
+ * @author Eidan Alexandre Picado Leiva - C4I410
  */
 public class PedidoController {
     

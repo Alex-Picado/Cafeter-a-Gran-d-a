@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package view;
-
+import model.Descuento;
 /**
  *
  * @author eidan
@@ -78,8 +78,6 @@ public class PanelCuentaSeparadas extends javax.swing.JPanel {
         lblSubtotal.setText("₡5650");
 
         panelListaDeProductosEnFactura.setLayout(new javax.swing.BoxLayout(panelListaDeProductosEnFactura, javax.swing.BoxLayout.Y_AXIS));
-
-        cBoxDescuentos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
         panelFondo.setLayout(panelFondoLayout);
@@ -161,7 +159,7 @@ public class PanelCuentaSeparadas extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cBoxDescuentos;
+    private javax.swing.JComboBox<Descuento> cBoxDescuentos;
     private javax.swing.JTextField cedulaDigitada;
     private javax.swing.JLabel lblIconoPersona;
     private javax.swing.JLabel lblPersonaNumero;

@@ -5,11 +5,11 @@
 package model;
 
 /**
- * Representa un cliente del sistema de cafetería, ya sea frecuente o eventual,
- * asociado a pedidos, facturas o cuentas separadas.
+ * Define los métodos de pago disponibles en el sistema,
+ * utilizados durante el proceso de facturación.
  *
  * @author Eidan Alexandre Picado Leiva - C4I410
  */
-public class Cliente {
+public enum MetodoPago {
     
 }
