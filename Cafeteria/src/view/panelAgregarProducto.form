@@ -71,9 +71,9 @@
                                           <Component id="lblTextoStock" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="boxCategoria" min="-2" pref="490" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-                                              <Component id="lblrTextoGestionarCategoria" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                                              <Component id="lblrTextoGestionarCategoria" min="-2" pref="143" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Component id="btnGestionarCategorias" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
