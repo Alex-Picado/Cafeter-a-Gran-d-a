@@ -4,6 +4,12 @@
  */
 package view;
 
+import java.util.List;
+
+import javax.swing.JPanel;
+import model.Producto;
+import view.WrapLayout.WrapLayout;
+
 /**
  *
  * @author eidan
@@ -15,6 +21,7 @@ public class PanelProductos extends javax.swing.JPanel {
      */
     public PanelProductos() {
         initComponents();
+        panelLista.setLayout(new WrapLayout(java.awt.FlowLayout.LEFT, 15, 15));
     }
 
     /**
@@ -71,7 +78,6 @@ public class PanelProductos extends javax.swing.JPanel {
 
         panelLista.setBackground(new java.awt.Color(255, 255, 255));
         panelLista.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        panelLista.setLayout(new javax.swing.BoxLayout(panelLista, javax.swing.BoxLayout.Y_AXIS));
         ScrollLista.setViewportView(panelLista);
 
         javax.swing.GroupLayout panelFondoCentralLayout = new javax.swing.GroupLayout(panelFondoCentral);
@@ -161,6 +167,24 @@ public class PanelProductos extends javax.swing.JPanel {
         frame.mostrar("menu");
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    public JPanel getPanelLista() {
+        return panelLista;
+    }
+
+
+    public void refrescarLista(List<Producto> productos) {
+        panelLista.removeAll();
+
+        for (Producto p : productos) {
+            PanelProducto tarjeta = new PanelProducto();
+            //tarjeta.cargarDatos(p);
+
+            panelLista.add(tarjeta);
+        }
+
+        panelLista.revalidate();
+        panelLista.repaint();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollLista;

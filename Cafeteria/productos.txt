@@ -1,0 +1,4 @@
+1|Capuccino|1|1000.0|5|imgProductoCafeCappuccino.png|true
+2|Frapuccino|1|1500.0|5|imgProductoBebidasFriasFrappe.jpg|true
+3|Dona|2|1000.0|4|imgProductoReposteriaDona.jpg|true
+4|Flan|2|1200.0|10|imgProductoReposteriaFlan.jpg|true
