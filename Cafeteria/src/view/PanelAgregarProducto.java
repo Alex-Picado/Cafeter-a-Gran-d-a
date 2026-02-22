@@ -29,6 +29,7 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
      */
     public PanelAgregarProducto() {
         initComponents();
+        
     }
 
     public void setCategoriaController(CategoriaController c) {

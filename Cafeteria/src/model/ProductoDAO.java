@@ -99,7 +99,11 @@ public class ProductoDAO {
 
     // ================= CRUD =================
     public void agregarProducto(Producto producto) {
-        producto.setId(generarId());
+
+        if (buscarPorId(producto.getId()) != null) {
+            throw new RuntimeException("Ya existe un producto con ese ID");
+        }
+
         productos.add(producto);
         guardarEnArchivo();
     }
@@ -154,23 +158,5 @@ public class ProductoDAO {
         }
 
         guardarEnArchivo();
-    }
-
-    // ================= UTILIDAD =================
-    private String generarId() {
-
-        int max = 0;
-
-        for (Producto p : productos) {
-            try {
-                int id = Integer.parseInt(p.getId());
-                if (id > max) {
-                    max = id;
-                }
-            } catch (NumberFormatException ignored) {
-            }
-        }
-
-        return String.valueOf(max + 1);
     }
 }
