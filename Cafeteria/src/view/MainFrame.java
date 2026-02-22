@@ -20,6 +20,7 @@ public class MainFrame extends javax.swing.JFrame {
     private PanelProductos panelProductos;
     private PanelAgregarProducto panelAgregarProducto;
     private ProductoController productoController;
+    private ProductoDAO productoDAO = new ProductoDAO();
 
     /**
      * Creates new form MainFrame
@@ -28,13 +29,17 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
 
         cardLayout = (CardLayout) panelContenedor.getLayout();
+        
 
         PanelProductos panelProductos = new PanelProductos();
         PanelAgregarProducto panelAgregarProducto = new PanelAgregarProducto();
+        
         CategoriaDAO categoriaDAO = new CategoriaDAO();
         CategoriaController categoriaController = new CategoriaController(categoriaDAO);
+        
         ProductoController productoController
                 = new ProductoController(new ProductoDAO(), panelProductos);
+        
         panelAgregarProducto.setCategoriaController(categoriaController);
 
         panelAgregarProducto.setController(productoController);
