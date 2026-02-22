@@ -53,6 +53,71 @@ public class ProductoController {
         listaPanel.repaint();
     }
 
+    public List<Producto> buscarPorIdParcial(String id) {
+
+        if (id == null || id.isBlank()) {
+            return productoDAO.listarActivos();
+        }
+
+        Producto p = productoDAO.buscarPorId(id);
+
+        if (p != null) {
+            return List.of(p);
+        }
+
+        return List.of();
+    }
+
+    public List<Producto> obtenerTodos() {
+        return productoDAO.listarActivos();
+    }
+
+    public void mostrarProductos(List<Producto> productos) {
+
+        JPanel listaPanel = panelProductos.getPanelLista();
+
+        listaPanel.removeAll();
+
+        for (Producto p : productos) {
+
+            PanelProducto tarjeta = new PanelProducto();
+
+            tarjeta.setNombre(p.getNombre());
+            tarjeta.setPrecio(p.getPrecio());
+            tarjeta.setStock(p.getStock());
+            tarjeta.setId(p.getId());
+            tarjeta.setImagen(p.getRutaImagen());
+
+            listaPanel.add(tarjeta);
+        }
+
+        listaPanel.revalidate();
+        listaPanel.repaint();
+    }
+
+    public List<Producto> buscarPorIdExacto(String id) {
+
+        if (id == null || id.isBlank()) {
+            return productoDAO.listarActivos();
+        }
+
+        Producto p = productoDAO.buscarPorId(id);
+
+        if (p != null) {
+            return List.of(p);
+        }
+
+        return List.of();
+    }
+
+    public List<Producto> buscarPorCategoria(CategoriaProducto categoria) {
+
+        return productoDAO.listarActivos()
+                .stream()
+                .filter(p -> p.getCategoria().equals(categoria))
+                .toList();
+    }
+
     // ================= AGREGAR =================
     public void agregarProducto(Producto producto) {
 
@@ -76,6 +141,11 @@ public class ProductoController {
         return productoDAO.buscarPorId(id);
     }
 
+    public void desactivarProducto(String id) {
+        productoDAO.desactivarProducto(id);
+        cargarProductosEnVista();
+    }
+
     // ================= LOGICA IMAGEN =================
     private void aplicarImagenDefaultSiNecesario(Producto producto) {
 
@@ -86,26 +156,26 @@ public class ProductoController {
         }
     }
 
-private String obtenerImagenDefault(CategoriaProducto categoria) {
+    private String obtenerImagenDefault(CategoriaProducto categoria) {
 
-    if (categoria == null || categoria.getNombre() == null) {
+        if (categoria == null || categoria.getNombre() == null) {
+            return "imgProductoDefault.png";
+        }
+
+        String nombre = categoria.getNombre().toLowerCase();
+
+        if (nombre.contains("cafe")) {
+            return "imgProductoCafeDefault.png";
+        }
+
+        if (nombre.contains("reposteria")) {
+            return "imgProductoReposteriaDefault.png";
+        }
+
+        if (nombre.contains("bebida")) {
+            return "imgProductoBebidaDefault.png";
+        }
+
         return "imgProductoDefault.png";
     }
-
-    String nombre = categoria.getNombre().toLowerCase();
-
-    if (nombre.contains("cafe")) {
-        return "imgProductoCafeDefault.png";
-    }
-
-    if (nombre.contains("reposteria")) {
-        return "imgProductoReposteriaDefault.png";
-    }
-
-    if (nombre.contains("bebida")) {
-        return "imgProductoBebidaDefault.png";
-    }
-
-    return "imgProductoDefault.png";
-}
 }

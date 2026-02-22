@@ -21,42 +21,44 @@ public class MainFrame extends javax.swing.JFrame {
     private PanelAgregarProducto panelAgregarProducto;
     private ProductoController productoController;
     private ProductoDAO productoDAO = new ProductoDAO();
+    private PanelPadNumerico panelPadNumerico;
 
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
-        initComponents();
+    initComponents();
 
-        cardLayout = (CardLayout) panelContenedor.getLayout();
-        
+    cardLayout = (CardLayout) panelContenedor.getLayout();
 
-        PanelProductos panelProductos = new PanelProductos();
-        PanelAgregarProducto panelAgregarProducto = new PanelAgregarProducto();
-        
-        CategoriaDAO categoriaDAO = new CategoriaDAO();
-        CategoriaController categoriaController = new CategoriaController(categoriaDAO);
-        
-        ProductoController productoController
-                = new ProductoController(new ProductoDAO(), panelProductos);
-        
-        panelAgregarProducto.setCategoriaController(categoriaController);
+    panelProductos = new PanelProductos();
+    panelAgregarProducto = new PanelAgregarProducto();
+    panelPadNumerico = new PanelPadNumerico();
 
-        panelAgregarProducto.setController(productoController);
+    CategoriaDAO categoriaDAO = new CategoriaDAO();
+    CategoriaController categoriaController = new CategoriaController(categoriaDAO);
 
-        panelContenedor.add(panelFondoTotal, "inicio");
-        panelContenedor.add(new PanelMenu(), "menu");
-        panelContenedor.add(new PanelMesas(), "mesas");
-        panelContenedor.add(panelProductos, "productos");
-        panelContenedor.add(new PanelGestionarClientes(), "clientes");
-        panelContenedor.add(panelAgregarProducto, "agregarProducto");
-        panelContenedor.add(new PanelReportesYEstadisticas(), "reportes");
-        panelContenedor.add(new PanelPedido(), "pedidos");
-        panelContenedor.add(new PanelHistorialVentas(), "historial");
-        panelContenedor.add(new PanelPadNumerico(), "padNumerico");
+    productoController = new ProductoController(productoDAO, panelProductos);
 
-        productoController.cargarProductosEnVista();
-    }
+    panelProductos.setController(productoController);
+    panelAgregarProducto.setController(productoController);
+
+    panelProductos.setCategorias(categoriaController.obtenerCategoriasActivas());
+    panelAgregarProducto.setCategoriaController(categoriaController);
+
+    panelContenedor.add(panelFondoTotal, "inicio");
+    panelContenedor.add(new PanelMenu(), "menu");
+    panelContenedor.add(new PanelMesas(), "mesas");
+    panelContenedor.add(panelProductos, "productos");
+    panelContenedor.add(new PanelGestionarClientes(), "clientes");
+    panelContenedor.add(panelAgregarProducto, "agregarProducto");
+    panelContenedor.add(new PanelReportesYEstadisticas(), "reportes");
+    panelContenedor.add(new PanelPedido(), "pedidos");
+    panelContenedor.add(new PanelHistorialVentas(), "historial");
+    panelContenedor.add(panelPadNumerico, "padNumerico");
+
+    productoController.cargarProductosEnVista();
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -127,6 +129,18 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void mostrar(String nombre) {
         cardLayout.show(panelContenedor, nombre);
+    }
+
+    public PanelPadNumerico getPanelPadNumerico() {
+        return panelPadNumerico;
+    }
+
+    public PanelAgregarProducto getPanelAgregarProducto() {
+        return panelAgregarProducto;
+    }
+
+    public ProductoController getProductoController() {
+        return productoController;
     }
 
     /**

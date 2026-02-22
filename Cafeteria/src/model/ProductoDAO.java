@@ -100,7 +100,7 @@ public class ProductoDAO {
     // ================= CRUD =================
     public void agregarProducto(Producto producto) {
 
-        if (buscarPorId(producto.getId()) != null) {
+        if (buscarPorIdIncluyendoInactivos(producto.getId()) != null) {
             throw new RuntimeException("Ya existe un producto con ese ID");
         }
 
@@ -147,6 +147,17 @@ public class ProductoDAO {
         return lista;
     }
 
+    public Producto buscarPorIdIncluyendoInactivos(String id) {
+
+        for (Producto p : productos) {
+            if (p.getId().equals(id)) {
+                return p;
+            }
+        }
+
+        return null;
+    }
+
     public void desactivarProducto(String id) {
 
         for (Producto p : productos) {
@@ -158,5 +169,7 @@ public class ProductoDAO {
         }
 
         guardarEnArchivo();
+        productos = cargarDesdeArchivo();
     }
+
 }
