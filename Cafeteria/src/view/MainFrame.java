@@ -4,7 +4,11 @@
  */
 package view;
 
+import controller.CategoriaController;
+import controller.ProductoController;
 import java.awt.CardLayout;
+import model.CategoriaDAO;
+import model.ProductoDAO;
 
 /**
  *
@@ -13,6 +17,9 @@ import java.awt.CardLayout;
 public class MainFrame extends javax.swing.JFrame {
 
     private CardLayout cardLayout;
+    private PanelProductos panelProductos;
+    private PanelAgregarProducto panelAgregarProducto;
+    private ProductoController productoController;
 
     /**
      * Creates new form MainFrame
@@ -22,18 +29,29 @@ public class MainFrame extends javax.swing.JFrame {
 
         cardLayout = (CardLayout) panelContenedor.getLayout();
 
+        PanelProductos panelProductos = new PanelProductos();
+        PanelAgregarProducto panelAgregarProducto = new PanelAgregarProducto();
+        CategoriaDAO categoriaDAO = new CategoriaDAO();
+        CategoriaController categoriaController = new CategoriaController(categoriaDAO);
+        ProductoController productoController
+                = new ProductoController(new ProductoDAO(), panelProductos);
+        panelAgregarProducto.setCategoriaController(categoriaController);
+
+        panelAgregarProducto.setController(productoController);
+
         panelContenedor.add(panelFondoTotal, "inicio");
         panelContenedor.add(new PanelMenu(), "menu");
         panelContenedor.add(new PanelMesas(), "mesas");
-        panelContenedor.add(new PanelProductos(), "productos");
+        panelContenedor.add(panelProductos, "productos");
         panelContenedor.add(new PanelGestionarClientes(), "clientes");
-        panelContenedor.add(new PanelAgregarProducto(), "agregarProducto");
+        panelContenedor.add(panelAgregarProducto, "agregarProducto");
         panelContenedor.add(new PanelReportesYEstadisticas(), "reportes");
         panelContenedor.add(new PanelPedido(), "pedidos");
         panelContenedor.add(new PanelHistorialVentas(), "historial");
-                panelContenedor.add(new PanelPadNumerico(), "padNumerico");
+        panelContenedor.add(new PanelPadNumerico(), "padNumerico");
 
-    }   
+        productoController.cargarProductosEnVista();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author cchin
@@ -15,6 +17,7 @@ public class PanelProducto extends javax.swing.JPanel {
      */
     public PanelProducto() {
         initComponents();
+        setPreferredSize(new java.awt.Dimension(240, 300));
     }
 
     /**
@@ -30,120 +33,106 @@ public class PanelProducto extends javax.swing.JPanel {
         lblPrecioProducto = new javax.swing.JLabel();
         lblNombreProducto = new javax.swing.JLabel();
         lblImagenProducto = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        lblStock = new javax.swing.JLabel();
+        lblTextoStock = new javax.swing.JLabel();
         lblNumStock = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblTextoID = new javax.swing.JLabel();
+        lblIdProducto = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
+        panelFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPrecioProducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblPrecioProducto.setForeground(new java.awt.Color(31, 198, 148));
         lblPrecioProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPrecioProducto.setText("₡1,500");
+        panelFondo.add(lblPrecioProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 202, 120, -1));
 
         lblNombreProducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNombreProducto.setForeground(new java.awt.Color(0, 0, 0));
         lblNombreProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNombreProducto.setText("Café Negro");
+        panelFondo.add(lblNombreProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 202, 120, -1));
 
         lblImagenProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImagenProducto.setText("Imagen");
         lblImagenProducto.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        panelFondo.add(lblImagenProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 246, 190));
 
-        lblStock.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblStock.setForeground(new java.awt.Color(0, 0, 0));
-        lblStock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblStock.setText("Stock");
+        lblTextoStock.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTextoStock.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoStock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTextoStock.setText("Stock");
+        panelFondo.add(lblTextoStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 273, 120, -1));
 
         lblNumStock.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblNumStock.setForeground(new java.awt.Color(0, 0, 0));
         lblNumStock.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNumStock.setText("5");
+        panelFondo.add(lblNumStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 273, 120, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ID");
+        lblTextoID.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTextoID.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTextoID.setText("ID");
+        panelFondo.add(lblTextoID, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 242, 120, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("001");
-        jLabel2.setVerifyInputWhenFocusTarget(false);
-
-        javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
-        panelFondo.setLayout(panelFondoLayout);
-        panelFondoLayout.setHorizontalGroup(
-            panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
-                    .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelFondoLayout.createSequentialGroup()
-                            .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(panelFondoLayout.createSequentialGroup()
-                                    .addComponent(lblStock, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lblNumStock, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(panelFondoLayout.createSequentialGroup()
-                                    .addComponent(lblNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblPrecioProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(lblImagenProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(panelFondoLayout.createSequentialGroup()
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
-        );
-        panelFondoLayout.setVerticalGroup(
-            panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblImagenProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombreProducto)
-                    .addComponent(lblPrecioProducto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStock)
-                    .addComponent(lblNumStock))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        lblIdProducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblIdProducto.setForeground(new java.awt.Color(0, 0, 0));
+        lblIdProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIdProducto.setText("001");
+        lblIdProducto.setVerifyInputWhenFocusTarget(false);
+        panelFondo.add(lblIdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 242, 120, -1));
+        panelFondo.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 233, 246, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 258, Short.MAX_VALUE)
+            .addComponent(panelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+            .addComponent(panelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setNombre(String nombre) {
+        lblNombreProducto.setText(nombre);
+    }
 
+    public void setPrecio(double precio) {
+        lblPrecioProducto.setText("₡" + precio);
+    }
+
+    public void setStock(int stock) {
+        lblNumStock.setText(String.valueOf(stock));
+    }
+
+    public void setId(String id) {
+        lblIdProducto.setText(id);
+    }
+
+    public void setImagen(String nombreArchivo) {
+
+        java.net.URL url
+                = getClass().getResource("/imagenesProductos/" + nombreArchivo);
+
+        if (url != null) {
+            lblImagenProducto.setIcon(new ImageIcon(url));
+        } else {
+            lblImagenProducto.setText("Sin imagen");
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblIdProducto;
     private javax.swing.JLabel lblImagenProducto;
     private javax.swing.JLabel lblNombreProducto;
     private javax.swing.JLabel lblNumStock;
     private javax.swing.JLabel lblPrecioProducto;
-    private javax.swing.JLabel lblStock;
+    private javax.swing.JLabel lblTextoID;
+    private javax.swing.JLabel lblTextoStock;
     private javax.swing.JPanel panelFondo;
     // End of variables declaration//GEN-END:variables
 }
