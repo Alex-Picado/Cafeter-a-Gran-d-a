@@ -4,6 +4,8 @@
  */
 package view;
 
+import model.CategoriaProducto;
+
 /**
  *
  * @author cchin
@@ -91,7 +93,6 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         boxCategoria.setBackground(new java.awt.Color(255, 255, 255));
         boxCategoria.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         boxCategoria.setForeground(new java.awt.Color(0, 0, 0));
-        boxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         boxCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblTextoPrecio.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
@@ -272,7 +273,7 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> boxCategoria;
+    private javax.swing.JComboBox<CategoriaProducto> boxCategoria;
     private javax.swing.JButton btnGestionarCategorias;
     private javax.swing.JButton btnNumpad;
     private javax.swing.JButton btnRegistrar;
