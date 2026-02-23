@@ -4,8 +4,11 @@
  */
 package view;
 
-import controller.ClienteController;
+import controller.CategoriaController;
+import controller.ProductoController;
 import java.awt.CardLayout;
+import model.CategoriaDAO;
+import model.ProductoDAO;
 
 /**
  *
@@ -15,12 +18,17 @@ public class MainFrame extends javax.swing.JFrame {
 
     private ClienteController clienteController;
     private CardLayout cardLayout;
+    private PanelProductos panelProductos;
+    private PanelAgregarProducto panelAgregarProducto;
+    private ProductoController productoController;
+    private ProductoDAO productoDAO = new ProductoDAO();
+    private PanelPadNumerico panelPadNumerico;
 
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
-        initComponents();
+    initComponents();
 
         cardLayout = (CardLayout) panelContenedor.getLayout();
         clienteController = new ClienteController();
@@ -109,6 +117,18 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void mostrar(String nombre) {
         cardLayout.show(panelContenedor, nombre);
+    }
+
+    public PanelPadNumerico getPanelPadNumerico() {
+        return panelPadNumerico;
+    }
+
+    public PanelAgregarProducto getPanelAgregarProducto() {
+        return panelAgregarProducto;
+    }
+
+    public ProductoController getProductoController() {
+        return productoController;
     }
 
     /**

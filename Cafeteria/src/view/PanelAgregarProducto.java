@@ -4,17 +4,43 @@
  */
 package view;
 
+import controller.CategoriaController;
+import controller.ProductoController;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import model.CategoriaProducto;
+import model.Producto;
+
 /**
  *
  * @author cchin
  */
 public class PanelAgregarProducto extends javax.swing.JPanel {
 
+    private ProductoController controller;
+    private Producto productoActual;
+    private boolean modoEdicion = false;
+    private String nombreImagenSeleccionada = null;
+    private CategoriaController categoriaController;
+
     /**
      * Creates new form panelAgregarProducto
      */
     public PanelAgregarProducto() {
         initComponents();
+        btnBuscarParaModificar.setVisible(false);
+        btnEliminarProducto.setVisible(false);
+    }
+
+    public void setCategoriaController(CategoriaController c) {
+        this.categoriaController = c;
+        cargarCategorias();
+    }
+
+    public void setController(ProductoController controller) {
+        this.controller = controller;
     }
 
     /**
@@ -44,6 +70,9 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         btnSubirImg = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         btnGestionarCategorias = new javax.swing.JButton();
+        btnBuscarParaModificar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        btnEliminarProducto = new javax.swing.JButton();
         lblImagenFondo = new javax.swing.JLabel();
 
         panelFondoTotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -91,7 +120,6 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         boxCategoria.setBackground(new java.awt.Color(255, 255, 255));
         boxCategoria.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         boxCategoria.setForeground(new java.awt.Color(0, 0, 0));
-        boxCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         boxCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblTextoPrecio.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
@@ -135,6 +163,11 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         btnSubirImg.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         btnSubirImg.setForeground(new java.awt.Color(255, 255, 255));
         btnSubirImg.setText("Subir Imagen");
+        btnSubirImg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubirImgActionPerformed(evt);
+            }
+        });
 
         btnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         btnRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -151,6 +184,40 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         btnGestionarCategorias.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnGestionarCategorias.setForeground(new java.awt.Color(0, 0, 0));
         btnGestionarCategorias.setText("Gestionar categorías");
+        btnGestionarCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGestionarCategoriasActionPerformed(evt);
+            }
+        });
+
+        btnBuscarParaModificar.setBackground(new java.awt.Color(153, 153, 255));
+        btnBuscarParaModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoBuscar.png"))); // NOI18N
+        btnBuscarParaModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarParaModificarActionPerformed(evt);
+            }
+        });
+
+        btnModificar.setBackground(new java.awt.Color(153, 153, 255));
+        btnModificar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
+        btnModificar.setText("Modificar");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        btnEliminarProducto.setBackground(new java.awt.Color(255, 102, 102));
+        btnEliminarProducto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnEliminarProducto.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminarProducto.setText("Eliminar producto");
+        btnEliminarProducto.setPreferredSize(new java.awt.Dimension(207, 43));
+        btnEliminarProducto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarProductoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelFondoCentralLayout = new javax.swing.GroupLayout(panelFondoCentral);
         panelFondoCentral.setLayout(panelFondoCentralLayout);
@@ -161,29 +228,37 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
                 .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSubirImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtNombre)
-                    .addGroup(panelFondoCentralLayout.createSequentialGroup()
-                        .addComponent(txtID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnNumpad, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(txtPrecio)
                     .addComponent(txtStock)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelFondoCentralLayout.createSequentialGroup()
                         .addComponent(lblTextoAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnModificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelFondoCentralLayout.createSequentialGroup()
                         .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTextoId)
                             .addComponent(lblTextoCategoria)
                             .addComponent(lblTextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblTextoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblTextoStock, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelFondoCentralLayout.createSequentialGroup()
                                 .addComponent(boxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnGestionarCategorias)))
-                        .addGap(0, 124, Short.MAX_VALUE)))
+                                .addGap(30, 30, 30)
+                                .addComponent(btnGestionarCategorias))
+                            .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnNumpad, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnBuscarParaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                                .addComponent(lblTextoId)
+                                .addGap(108, 108, 108)))
+                        .addGap(0, 20, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelFondoCentralLayout.setVerticalGroup(
@@ -191,12 +266,17 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
             .addGroup(panelFondoCentralLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTextoAgregarProducto)
-                    .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addComponent(lblTextoId)
+                    .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                        .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(lblTextoId))
+                    .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblTextoAgregarProducto)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnBuscarParaModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNumpad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtID))
                 .addGap(18, 18, 18)
@@ -221,7 +301,7 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
                 .addComponent(btnSubirImg)
                 .addGap(18, 18, 18)
                 .addComponent(btnRegistrar)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         panelFondoTotal.add(panelFondoCentral, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 890, 760));
@@ -247,7 +327,14 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
 
     private void btnNumpadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNumpadActionPerformed
         // TODO add your handling code here:
-        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        MainFrame frame
+                = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        PanelPadNumerico pad = frame.getPanelPadNumerico();
+
+        pad.setCampoDestino(txtID);
+        pad.setPantallaOrigen("agregarProducto");
+
         frame.mostrar("padNumerico");
     }//GEN-LAST:event_btnNumpadActionPerformed
 
@@ -261,19 +348,237 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        frame.mostrar("productos");
+        try {
+            if (txtID.getText().isEmpty()
+                    || txtNombre.getText().isEmpty()
+                    || txtPrecio.getText().isEmpty()
+                    || txtStock.getText().isEmpty()) {
+
+                JOptionPane.showMessageDialog(this, "Complete todos los campos");
+                return;
+            }
+            btnNumpad.setVisible(true);
+            CategoriaProducto categoria
+                    = (CategoriaProducto) boxCategoria.getSelectedItem();
+
+            String rutaImagen;
+
+            if (nombreImagenSeleccionada != null) {
+                rutaImagen = nombreImagenSeleccionada;
+            } else {
+                rutaImagen = obtenerImagenDefault(categoria);
+            }
+
+            Producto producto = new Producto(
+                    txtID.getText(),
+                    txtNombre.getText(),
+                    categoria,
+                    Double.parseDouble(txtPrecio.getText()),
+                    Integer.parseInt(txtStock.getText()),
+                    rutaImagen
+            );
+
+            if (modoEdicion) {
+                controller.actualizarProducto(producto);
+            } else {
+                controller.agregarProducto(producto);
+            }
+
+            JOptionPane.showMessageDialog(this, "Producto guardado");
+
+            MainFrame frame
+                    = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+            frame.mostrar("productos");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+        }
+
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        btnNumpad.setVisible(true);
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        frame.mostrar("productos"); 
+        frame.mostrar("productos");
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    private void btnBuscarParaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarParaModificarActionPerformed
+        // TODO add your handling code here:
+        if (!modoEdicion){
+            return;
+        }
+        Producto p = controller.buscarProducto(txtID.getText());
+
+        if (p != null) {
+
+            productoActual = p;
+
+            txtNombre.setText(p.getNombre());
+            txtPrecio.setText(String.valueOf(p.getPrecio()));
+            txtStock.setText(String.valueOf(p.getStock()));
+            boxCategoria.setSelectedItem(p.getCategoria());
+
+            txtID.setEnabled(false);
+            btnNumpad.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Producto no encontrado");
+        }
+    }//GEN-LAST:event_btnBuscarParaModificarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        modoEdicion = !modoEdicion;
+
+        if (modoEdicion) {
+
+            btnModificar.setText("Registrar");
+
+            btnBuscarParaModificar.setVisible(true);
+            btnEliminarProducto.setVisible(true);
+
+            JOptionPane.showMessageDialog(this, "Modo edición activado");
+
+        } else {
+
+            btnModificar.setText("Modificar");
+
+            btnBuscarParaModificar.setVisible(false);
+            btnEliminarProducto.setVisible(false);
+            btnNumpad.setVisible(true);
+            txtID.setEnabled(true);
+            JOptionPane.showMessageDialog(this, "Modo edición desactivado");
+
+        }
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnSubirImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirImgActionPerformed
+        // TODO add your handling code here:
+        JFileChooser chooser = new JFileChooser();
+        chooser.setDialogTitle("Seleccionar imagen");
+
+        int resultado = chooser.showOpenDialog(this);
+
+        if (resultado == JFileChooser.APPROVE_OPTION) {
+
+            File archivo = chooser.getSelectedFile();
+
+            nombreImagenSeleccionada = archivo.getName();
+
+            JOptionPane.showMessageDialog(this,
+                    "Imagen seleccionada: " + nombreImagenSeleccionada);
+        }
+    }//GEN-LAST:event_btnSubirImgActionPerformed
+
+    private void btnGestionarCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGestionarCategoriasActionPerformed
+        // TODO add your handling code here:
+        String[] opciones = {"Agregar", "Desactivar"};
+
+        int opcion = JOptionPane.showOptionDialog(
+                this,
+                "¿Qué desea hacer?",
+                "Gestionar categorías",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opciones,
+                opciones[0]
+        );
+
+        if (opcion == 0) {
+
+            String nombre = JOptionPane.showInputDialog(this, "Nombre categoría:");
+
+            if (nombre != null && !nombre.trim().isEmpty()) {
+                categoriaController.agregarCategoria(nombre);
+                cargarCategorias();
+            }
+
+        } else if (opcion == 1) {
+
+            String id = JOptionPane.showInputDialog(this, "ID categoría a desactivar:");
+
+            if (id != null) {
+                categoriaController.desactivarCategoria(id);
+                cargarCategorias();
+            }
+        }
+    }//GEN-LAST:event_btnGestionarCategoriasActionPerformed
+
+    private void btnEliminarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarProductoActionPerformed
+        // TODO add your handling code here:
+        String id = txtID.getText().trim();
+
+        if (id.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un ID");
+            return;
+        }
+
+        Producto p = controller.buscarProducto(id);
+
+        if (p == null) {
+            JOptionPane.showMessageDialog(this, "Producto no encontrado");
+            return;
+        }
+
+        int confirm = JOptionPane.showConfirmDialog(
+                this,
+                "¿Eliminar producto " + p.getNombre() + "? \nEsta acción no podrá deshacerse.",
+                "Confirmar",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirm == JOptionPane.YES_OPTION) {
+
+            controller.desactivarProducto(id);
+
+            JOptionPane.showMessageDialog(this, "Producto eliminado");
+
+            limpiarFormulario();
+            txtID.setEnabled(true);
+            MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
+            frame.mostrar("productos");
+        }
+    }//GEN-LAST:event_btnEliminarProductoActionPerformed
+
+    public void limpiarFormulario() {
+        txtID.setText("");
+        txtNombre.setText("");
+        txtPrecio.setText("");
+        txtStock.setText("");
+    }
+
+    private String obtenerImagenDefault(CategoriaProducto categoria) {
+
+        switch (categoria.getNombre()) {
+
+            case "Cafe":
+                return "imgProductoCafeDefault.png";
+
+            case "Reposteria":
+                return "imgProductoReposteriaDefault.png";
+
+            default:
+                return "imgProductoDefault.png";
+        }
+    }
+
+    private void cargarCategorias() {
+
+        boxCategoria.removeAllItems();
+
+        for (CategoriaProducto c : categoriaController.obtenerCategoriasActivas()) {
+            boxCategoria.addItem(c);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> boxCategoria;
+    private javax.swing.JComboBox<CategoriaProducto> boxCategoria;
+    private javax.swing.JButton btnBuscarParaModificar;
+    private javax.swing.JButton btnEliminarProducto;
     private javax.swing.JButton btnGestionarCategorias;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNumpad;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnRegresar;

@@ -1,0 +1,7 @@
+1|Capuccino|1|1000.0|5|imgProductoCafeDefault.png|false
+2|Frapuccino|1|1500.0|5|imgProductoBebidasFriasFrappe.jpg|false
+3|Dona|2|1000.0|4|imgProductoReposteriaDona.jpg|true
+4|Flan|2|1200.0|10|imgProductoReposteriaFlan.jpg|false
+2006|Smoothie de Fresa|3|1500.0|2|imgProductoBebidasFriasSmoothieFresas.jpg|false
+444|Eidan|2|1511.0|4|imgProductoBebidasFriasSmoothieMango.jpg|false
+123|asda|1|12.0|33|imgProductoCafeDefault.png|false

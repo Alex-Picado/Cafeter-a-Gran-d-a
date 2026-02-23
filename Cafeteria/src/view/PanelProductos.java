@@ -4,17 +4,35 @@
  */
 package view;
 
+import controller.ProductoController;
+import java.util.List;
+import javax.swing.JOptionPane;
+
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import model.CategoriaProducto;
+import model.Producto;
+import view.WrapLayout.WrapLayout;
+
 /**
  *
  * @author eidan
  */
 public class PanelProductos extends javax.swing.JPanel {
 
+    private ProductoController controller;
+
     /**
      * Creates new form PanelProductos
      */
     public PanelProductos() {
         initComponents();
+        panelLista.setLayout(new WrapLayout(java.awt.FlowLayout.LEFT, 15, 15));
+        comboBoxFiltradoPorCategoria.addActionListener(e -> filtrarPorCategoria());
+    }
+
+    public void setController(ProductoController controller) {
+        this.controller = controller;
     }
 
     /**
@@ -50,9 +68,21 @@ public class PanelProductos extends javax.swing.JPanel {
         txtBarraBusqueda.setForeground(new java.awt.Color(0, 0, 0));
         txtBarraBusqueda.setToolTipText("Buscar por ID...");
         txtBarraBusqueda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtBarraBusqueda.setMinimumSize(new java.awt.Dimension(54, 27));
+        txtBarraBusqueda.setPreferredSize(new java.awt.Dimension(54, 27));
+        txtBarraBusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtBarraBusquedaMouseClicked(evt);
+            }
+        });
+        txtBarraBusqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBarraBusquedaActionPerformed(evt);
+            }
+        });
         panelBusqueda.add(txtBarraBusqueda, java.awt.BorderLayout.CENTER);
 
-        btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        btnBuscar.setBackground(new java.awt.Color(204, 255, 204));
         btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoBuscar.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,14 +94,13 @@ public class PanelProductos extends javax.swing.JPanel {
         comboBoxFiltradoPorCategoria.setBackground(new java.awt.Color(255, 255, 255));
         comboBoxFiltradoPorCategoria.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         comboBoxFiltradoPorCategoria.setForeground(new java.awt.Color(0, 0, 0));
-        comboBoxFiltradoPorCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Reposteria", "Bebidas" }));
+        comboBoxFiltradoPorCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         ScrollLista.setBackground(new java.awt.Color(255, 255, 255));
         ScrollLista.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         panelLista.setBackground(new java.awt.Color(255, 255, 255));
         panelLista.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        panelLista.setLayout(new javax.swing.BoxLayout(panelLista, javax.swing.BoxLayout.Y_AXIS));
         ScrollLista.setViewportView(panelLista);
 
         javax.swing.GroupLayout panelFondoCentralLayout = new javax.swing.GroupLayout(panelFondoCentral);
@@ -79,15 +108,14 @@ public class PanelProductos extends javax.swing.JPanel {
         panelFondoCentralLayout.setHorizontalGroup(
             panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoCentralLayout.createSequentialGroup()
-                .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelFondoCentralLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboBoxFiltradoPorCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelFondoCentralLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(ScrollLista, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addComponent(ScrollLista, javax.swing.GroupLayout.PREFERRED_SIZE, 809, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(comboBoxFiltradoPorCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelFondoCentralLayout.setVerticalGroup(
@@ -107,13 +135,13 @@ public class PanelProductos extends javax.swing.JPanel {
         btnAgregarProducto.setBackground(new java.awt.Color(102, 204, 0));
         btnAgregarProducto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnAgregarProducto.setForeground(new java.awt.Color(255, 255, 255));
-        btnAgregarProducto.setText("Añadir producto");
+        btnAgregarProducto.setText("Gestionar");
         btnAgregarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarProductoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, -1, -1));
+        jPanel1.add(btnAgregarProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 230, -1));
 
         btnRegresar.setBackground(new java.awt.Color(255, 255, 255));
         btnRegresar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -148,11 +176,27 @@ public class PanelProductos extends javax.swing.JPanel {
     private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
         // TODO add your handling code here:
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getPanelAgregarProducto().limpiarFormulario();
         frame.mostrar("agregarProducto");
     }//GEN-LAST:event_btnAgregarProductoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         // TODO add your handling code here:
+        if (controller == null) {
+            JOptionPane.showMessageDialog(this, "Sistema no inicializado");
+            return;
+        }
+        String id = txtBarraBusqueda.getText().trim();
+
+        MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
+
+        ProductoController controller = frame.getProductoController();
+
+        List<Producto> resultado = controller.buscarPorIdExacto(id);
+
+        controller.mostrarProductos(resultado);
+
+        txtBarraBusqueda.setText("");
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
@@ -161,13 +205,87 @@ public class PanelProductos extends javax.swing.JPanel {
         frame.mostrar("menu");
     }//GEN-LAST:event_btnRegresarActionPerformed
 
+    private void txtBarraBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBarraBusquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBarraBusquedaActionPerformed
+
+    private void txtBarraBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarraBusquedaMouseClicked
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        PanelPadNumerico pad = frame.getPanelPadNumerico();
+
+        pad.setCampoDestino(txtBarraBusqueda);
+        pad.setPantallaOrigen("productos");
+
+        frame.mostrar("padNumerico");
+    }//GEN-LAST:event_txtBarraBusquedaMouseClicked
+
+    public JPanel getPanelLista() {
+        return panelLista;
+    }
+
+    public void setCategorias(List<CategoriaProducto> categorias) {
+
+        comboBoxFiltradoPorCategoria.removeAllItems();
+
+        comboBoxFiltradoPorCategoria.addItem(null); // todas
+
+        for (CategoriaProducto c : categorias) {
+            comboBoxFiltradoPorCategoria.addItem(c);
+        }
+    }
+
+    public void refrescarLista(List<Producto> productos) {
+        panelLista.removeAll();
+
+        for (Producto p : productos) {
+            PanelProducto tarjeta = new PanelProducto();
+            //tarjeta.cargarDatos(p);
+
+            panelLista.add(tarjeta);
+        }
+
+        panelLista.revalidate();
+        panelLista.repaint();
+    }
+
+    public void cargarCategorias(List<CategoriaProducto> categorias) {
+
+        comboBoxFiltradoPorCategoria.removeAllItems();
+
+        comboBoxFiltradoPorCategoria.addItem(null); // todas
+
+        for (CategoriaProducto c : categorias) {
+            comboBoxFiltradoPorCategoria.addItem(c);
+        }
+    }
+
+    private void filtrarPorCategoria() {
+
+        if (controller == null) {
+            return;
+        }
+
+        CategoriaProducto cat
+                = (CategoriaProducto) comboBoxFiltradoPorCategoria.getSelectedItem();
+
+        if (cat == null) {
+            controller.cargarProductosEnVista();
+            return;
+        }
+
+        var lista = controller.buscarPorCategoria(cat);
+
+        controller.mostrarProductos(lista);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane ScrollLista;
     private javax.swing.JButton btnAgregarProducto;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnRegresar;
-    private javax.swing.JComboBox<String> comboBoxFiltradoPorCategoria;
+    private javax.swing.JComboBox<CategoriaProducto> comboBoxFiltradoPorCategoria;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelFondoImagen;
     private javax.swing.JPanel panelBusqueda;

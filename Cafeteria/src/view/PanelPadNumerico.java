@@ -13,12 +13,22 @@ import javax.swing.JButton;
 public class PanelPadNumerico extends javax.swing.JPanel {
 
     private PadListener listener;
+    private javax.swing.JTextField campoDestino;
+    private String pantallaOrigen;
 
     /**
      * Creates new form PanelPadNumerico
      */
     public PanelPadNumerico() {
         initComponents();
+    }
+
+    public void setCampoDestino(javax.swing.JTextField campo) {
+        this.campoDestino = campo;
+    }
+
+    public void setPantallaOrigen(String pantalla) {
+        this.pantallaOrigen = pantalla;
     }
 
     /**
@@ -307,16 +317,21 @@ public class PanelPadNumerico extends javax.swing.JPanel {
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        frame.mostrar("productos");
+        frame.mostrar(pantallaOrigen);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnIrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIrActionPerformed
         // TODO add your handling code here:
-        if (listener != null) {
-            listener.onAceptar(entradaCodigoDigitado.getText());
+        if (campoDestino != null) {
+            campoDestino.setText(entradaCodigoDigitado.getText());
         }
-        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        frame.mostrar("agregarProducto");
+
+        entradaCodigoDigitado.setText("");
+
+        MainFrame frame
+                = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        frame.mostrar(pantallaOrigen);
     }//GEN-LAST:event_btnIrActionPerformed
 
     private void btnNumero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNumero1ActionPerformed
