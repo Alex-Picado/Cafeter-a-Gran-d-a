@@ -4,12 +4,16 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author eidan
  */
 public class PanelPedido extends javax.swing.JPanel {
-
+    
+    private String mesaActual;
+    
     /**
      * Creates new form PanelPedido
      */
@@ -324,9 +328,19 @@ public class PanelPedido extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLiberarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiberarMesaActionPerformed
-        // TODO add your handling code here:
-        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        frame.mostrar("mesas");
+        
+        int opcion = JOptionPane.showConfirmDialog(this,
+                "¿Seguro que desea liberar la mesa?, Esto borrara todo los pedidos",
+                "Confirmar liberacion",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE);
+        
+        if (opcion == JOptionPane.YES_NO_OPTION) {
+            MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+            
+            frame.getPanelMesas().liberarMesa(mesaActual);
+            frame.mostrar("mesas");
+        }
     }//GEN-LAST:event_btnLiberarMesaActionPerformed
 
     private void btnGuardarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPedidoActionPerformed
@@ -344,7 +358,12 @@ public class PanelPedido extends javax.swing.JPanel {
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
         frame.mostrar("mesas");
     }//GEN-LAST:event_btnCancelarActionPerformed
-
+    
+    public void setMesa(String mesa) {
+        this.mesaActual = mesa;
+        lblTituloPedido.setText("Pedido - " + mesa);
+        lblUbicacion.setText(mesa);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarProductos;
