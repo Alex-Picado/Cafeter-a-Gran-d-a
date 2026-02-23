@@ -5,6 +5,7 @@
 package view;
 
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -146,18 +147,23 @@ public class PanelProducto extends javax.swing.JPanel {
 
     private void agregarAlPedido() {
 
-        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-
+        MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
         if (frame == null) {
+            return;
+        }
+
+        var panelProductos = frame.getPanelProductos();
+
+        
+        if (!panelProductos.isModoSeleccion()) {
             return;
         }
 
         var panelPedido = frame.getPanelPedido();
 
         panelPedido.agregarProducto(producto);
-        System.out.println("Producto clickeado: " + producto);
+
         frame.mostrar("pedidos");
-        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSeparator jSeparator1;

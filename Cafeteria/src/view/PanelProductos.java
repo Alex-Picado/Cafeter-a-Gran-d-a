@@ -209,6 +209,8 @@ public class PanelProductos extends javax.swing.JPanel {
         } else {
             frame.mostrar("menu");
         }
+
+        modoSeleccion = false;
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void txtBarraBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBarraBusquedaActionPerformed
@@ -292,6 +294,10 @@ public class PanelProductos extends javax.swing.JPanel {
     public void setModoSeleccion(boolean modo) {
         this.modoSeleccion = modo;
         btnAgregarProducto.setVisible(!modo);
+    }
+
+    public boolean isModoSeleccion() {
+        return modoSeleccion;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

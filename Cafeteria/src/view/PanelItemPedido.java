@@ -10,6 +10,10 @@ package view;
  */
 public class PanelItemPedido extends javax.swing.JPanel {
 
+    private model.DetallePedido detalle;
+    private PanelPedido parent;
+    private java.util.function.Consumer<Boolean> onCambio;
+
     /**
      * Creates new form PanelItemPedido
      */
@@ -55,12 +59,22 @@ public class PanelItemPedido extends javax.swing.JPanel {
         btnMenos.setForeground(new java.awt.Color(255, 255, 255));
         btnMenos.setText("-");
         btnMenos.setPreferredSize(new java.awt.Dimension(46, 46));
+        btnMenos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenosActionPerformed(evt);
+            }
+        });
 
         btnMas.setBackground(new java.awt.Color(103, 127, 235));
         btnMas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnMas.setForeground(new java.awt.Color(255, 255, 255));
         btnMas.setText("+");
         btnMas.setPreferredSize(new java.awt.Dimension(46, 46));
+        btnMas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasActionPerformed(evt);
+            }
+        });
 
         lblCantidad.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblCantidad.setForeground(new java.awt.Color(0, 0, 0));
@@ -71,6 +85,11 @@ public class PanelItemPedido extends javax.swing.JPanel {
         btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/imgDelete.png"))); // NOI18N
         btnEliminar.setPreferredSize(new java.awt.Dimension(46, 46));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelTotalLayout = new javax.swing.GroupLayout(panelTotal);
         panelTotal.setLayout(panelTotalLayout);
@@ -126,6 +145,36 @@ public class PanelItemPedido extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenosActionPerformed
+        // TODO add your handling code here:
+        detalle.decrementarCantidad();
+
+    if (detalle.getCantidad() <= 0) {
+        onCambio.accept(true);
+    } else {
+        lblCantidad.setText(String.valueOf(detalle.getCantidad()));
+        onCambio.accept(false);
+    }
+    }//GEN-LAST:event_btnMenosActionPerformed
+
+    private void btnMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasActionPerformed
+        // TODO add your handling code here:
+        detalle.incrementarCantidad();
+
+    lblCantidad.setText(String.valueOf(detalle.getCantidad()));
+
+    onCambio.accept(false);
+    }//GEN-LAST:event_btnMasActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+ 
+    detalle.setCantidad(0);
+
+    onCambio.accept(true);
+        
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
     public void setNombre(String nombre) {
         lblNombreProducto.setText(nombre);
     }
@@ -136,6 +185,26 @@ public class PanelItemPedido extends javax.swing.JPanel {
 
     public void setCantidad(int cantidad) {
         lblCantidad.setText(String.valueOf(cantidad));
+    }
+
+    public void configurar(model.DetallePedido detalle, PanelPedido parent) {
+        this.detalle = detalle;
+        this.parent = parent;
+
+        lblNombreProducto.setText(detalle.getProducto().getNombre());
+        lblPrecioUnitario.setText("₡" + detalle.getProducto().getPrecio() + " c/u");
+        lblCantidad.setText(String.valueOf(detalle.getCantidad()));
+    }
+
+    public void setDetalle(model.DetallePedido detalle,
+            java.util.function.Consumer<Boolean> onCambio) {
+
+        this.detalle = detalle;
+        this.onCambio = onCambio;
+
+        lblNombreProducto.setText(detalle.getProducto().getNombre());
+        lblPrecioUnitario.setText("₡" + detalle.getProducto().getPrecio() + " c/u");
+        lblCantidad.setText(String.valueOf(detalle.getCantidad()));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;

@@ -157,7 +157,7 @@ public class PanelMenu extends javax.swing.JPanel {
 
         var panelProductos = frame.getPanelProductos();
         panelProductos.setModoSeleccion(false);
-
+        
         frame.getProductoController().cargarProductosEnVista();
 
         frame.mostrar("productos");

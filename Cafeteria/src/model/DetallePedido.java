@@ -31,4 +31,14 @@ public class DetallePedido {
     public void incrementarCantidad() {
         cantidad++;
     }
+
+    public void decrementarCantidad() {
+        if (cantidad > 0) {
+            cantidad--;
+        }
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
 }

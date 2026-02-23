@@ -11,8 +11,9 @@ import java.awt.Color;
  * @author eidan
  */
 public class PanelMesas extends javax.swing.JPanel {
-    
+
     Color disponibleColor;
+
     /**
      * Creates new form PanelMesas
      */
@@ -410,29 +411,69 @@ public class PanelMesas extends javax.swing.JPanel {
                 lblStatusMesa1.setText("Disponible");
                 panelStatusMesa1.setBackground(disponibleColor);
                 break;
-                
+
             case "Mesa 2":
                 lblStatusMesa2.setText("Disponible");
                 panelStatusMesa2.setBackground(disponibleColor);
                 break;
-                
+
             case "Mesa 3":
                 lblStatusMesa3.setText("Disponible");
                 panelStatusMesa3.setBackground(disponibleColor);
                 break;
-                
+
             case "Mesa 4":
                 lblStatusMesa4.setText("Disponible");
                 panelStatusMesa4.setBackground(disponibleColor);
                 break;
-                
+
             case "Mesa 5":
                 lblStatusMesa5.setText("Disponible");
                 panelStatusMesa5.setBackground(disponibleColor);
                 break;
         }
     }
-    
+
+    public void ocuparMesa(String mesa) {
+
+        Color ocupadoColor = new Color(239, 68, 68);
+
+        switch (mesa) {
+
+            case "Mesa 1":
+                lblStatusMesa1.setText("Ocupada");
+                panelStatusMesa1.setBackground(ocupadoColor);
+                break;
+
+            case "Mesa 2":
+                lblStatusMesa2.setText("Ocupada");
+                panelStatusMesa2.setBackground(ocupadoColor);
+                break;
+
+            case "Mesa 3":
+                lblStatusMesa3.setText("Ocupada");
+                panelStatusMesa3.setBackground(ocupadoColor);
+                break;
+
+            case "Mesa 4":
+                lblStatusMesa4.setText("Ocupada");
+                panelStatusMesa4.setBackground(ocupadoColor);
+                break;
+
+            case "Mesa 5":
+                lblStatusMesa5.setText("Ocupada");
+                panelStatusMesa5.setBackground(ocupadoColor);
+                break;
+        }
+    }
+
+    public void marcarOcupadas(java.util.Set<String> mesasOcupadas) {
+
+        for (String mesa : mesasOcupadas) {
+            ocuparMesa(mesa);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bgFondo;
     private javax.swing.JPanel btnMesa1;

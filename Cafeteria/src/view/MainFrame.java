@@ -8,8 +8,10 @@ import controller.CategoriaController;
 import controller.ClienteController;
 import controller.PedidoActivoManager;
 import controller.ProductoController;
+import controller.RecuperacionController;
 import java.awt.CardLayout;
 import model.CategoriaDAO;
+import model.PedidoActivoSnapshot;
 import model.ProductoDAO;
 
 /**
@@ -43,6 +45,20 @@ public class MainFrame extends javax.swing.JFrame {
         panelPedido = new PanelPedido();
         panelMesas = new PanelMesas();
         clienteController = new ClienteController();
+
+        PedidoActivoSnapshot snap = new PedidoActivoSnapshot();
+        RecuperacionController rec
+                = new RecuperacionController(snap, productoDAO);
+        pedidoActivoManager.setPedidos(rec.recuperar());
+
+        var mesasOcupadas = pedidoActivoManager.getPedidos()
+                .entrySet()
+                .stream()
+                .filter(e -> !e.getValue().getItems().isEmpty())
+                .map(e -> e.getKey())
+                .collect(java.util.stream.Collectors.toSet());
+
+        panelMesas.marcarOcupadas(mesasOcupadas);
 
         CategoriaDAO categoriaDAO = new CategoriaDAO();
         CategoriaController categoriaController = new CategoriaController(categoriaDAO);
