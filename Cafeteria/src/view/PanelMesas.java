@@ -4,16 +4,20 @@
  */
 package view;
 
+import java.awt.Color;
+
 /**
  *
  * @author eidan
  */
 public class PanelMesas extends javax.swing.JPanel {
-
+    
+    Color disponibleColor;
     /**
      * Creates new form PanelMesas
      */
     public PanelMesas() {
+        this.disponibleColor = new Color(0, 208, 31);
         initComponents();
     }
 
@@ -28,30 +32,30 @@ public class PanelMesas extends javax.swing.JPanel {
 
         jPasswordField1 = new javax.swing.JPasswordField();
         btnMesa1 = new javax.swing.JPanel();
-        icoMesa = new javax.swing.JLabel();
-        txtMesa1 = new javax.swing.JLabel();
+        lblMesa1 = new javax.swing.JLabel();
         panelStatusMesa1 = new javax.swing.JPanel();
-        txtStatusMesa1 = new javax.swing.JLabel();
+        lblStatusMesa1 = new javax.swing.JLabel();
+        icoMesa = new javax.swing.JLabel();
         btnMesa2 = new javax.swing.JPanel();
         panelStatusMesa2 = new javax.swing.JPanel();
-        txtStatusMesa2 = new javax.swing.JLabel();
-        txtMesa2 = new javax.swing.JLabel();
+        lblStatusMesa2 = new javax.swing.JLabel();
+        lblMesa2 = new javax.swing.JLabel();
         icoMesa1 = new javax.swing.JLabel();
         btnMesa3 = new javax.swing.JPanel();
-        txtMesa3 = new javax.swing.JLabel();
+        lblMesa3 = new javax.swing.JLabel();
         icoMesa2 = new javax.swing.JLabel();
         panelStatusMesa3 = new javax.swing.JPanel();
-        txtStatusMesa3 = new javax.swing.JLabel();
+        lblStatusMesa3 = new javax.swing.JLabel();
         btnMesa4 = new javax.swing.JPanel();
-        txtMesa4 = new javax.swing.JLabel();
+        lblMesa4 = new javax.swing.JLabel();
         icoMesa3 = new javax.swing.JLabel();
         panelStatusMesa4 = new javax.swing.JPanel();
-        txtStatusMesa4 = new javax.swing.JLabel();
+        lblStatusMesa4 = new javax.swing.JLabel();
         btnMesa5 = new javax.swing.JPanel();
-        txtMesa5 = new javax.swing.JLabel();
+        lblMesa5 = new javax.swing.JLabel();
         icoMesa4 = new javax.swing.JLabel();
         panelStatusMesa5 = new javax.swing.JPanel();
-        txtStatusMesa5 = new javax.swing.JLabel();
+        lblStatusMesa5 = new javax.swing.JLabel();
         btnParaLlevar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -72,34 +76,40 @@ public class PanelMesas extends javax.swing.JPanel {
         });
         btnMesa1.setLayout(new java.awt.BorderLayout());
 
-        icoMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoMesas.png"))); // NOI18N
-        btnMesa1.add(icoMesa, java.awt.BorderLayout.LINE_START);
-
-        txtMesa1.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
-        txtMesa1.setForeground(new java.awt.Color(0, 0, 0));
-        txtMesa1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtMesa1.setText("Mesa 1");
-        btnMesa1.add(txtMesa1, java.awt.BorderLayout.CENTER);
+        lblMesa1.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
+        lblMesa1.setForeground(new java.awt.Color(0, 0, 0));
+        lblMesa1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMesa1.setText("Mesa 1");
+        lblMesa1.setIconTextGap(100);
+        lblMesa1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMesa1MouseClicked(evt);
+            }
+        });
+        btnMesa1.add(lblMesa1, java.awt.BorderLayout.CENTER);
 
         panelStatusMesa1.setBackground(new java.awt.Color(0, 208, 31));
         panelStatusMesa1.setPreferredSize(new java.awt.Dimension(60, 140));
 
-        txtStatusMesa1.setForeground(new java.awt.Color(255, 255, 255));
-        txtStatusMesa1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtStatusMesa1.setText("Disponible");
+        lblStatusMesa1.setForeground(new java.awt.Color(255, 255, 255));
+        lblStatusMesa1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblStatusMesa1.setText("Disponible");
 
         javax.swing.GroupLayout panelStatusMesa1Layout = new javax.swing.GroupLayout(panelStatusMesa1);
         panelStatusMesa1.setLayout(panelStatusMesa1Layout);
         panelStatusMesa1Layout.setHorizontalGroup(
             panelStatusMesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtStatusMesa1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(lblStatusMesa1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
         panelStatusMesa1Layout.setVerticalGroup(
             panelStatusMesa1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtStatusMesa1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(lblStatusMesa1, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
 
         btnMesa1.add(panelStatusMesa1, java.awt.BorderLayout.LINE_END);
+
+        icoMesa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoMesas.png"))); // NOI18N
+        btnMesa1.add(icoMesa, java.awt.BorderLayout.LINE_START);
 
         add(btnMesa1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 30, -1, -1));
 
@@ -115,28 +125,33 @@ public class PanelMesas extends javax.swing.JPanel {
         panelStatusMesa2.setBackground(new java.awt.Color(239, 68, 68));
         panelStatusMesa2.setPreferredSize(new java.awt.Dimension(60, 140));
 
-        txtStatusMesa2.setForeground(new java.awt.Color(255, 255, 255));
-        txtStatusMesa2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtStatusMesa2.setText("Ocupada");
+        lblStatusMesa2.setForeground(new java.awt.Color(255, 255, 255));
+        lblStatusMesa2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblStatusMesa2.setText("Ocupada");
 
         javax.swing.GroupLayout panelStatusMesa2Layout = new javax.swing.GroupLayout(panelStatusMesa2);
         panelStatusMesa2.setLayout(panelStatusMesa2Layout);
         panelStatusMesa2Layout.setHorizontalGroup(
             panelStatusMesa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtStatusMesa2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(lblStatusMesa2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
         panelStatusMesa2Layout.setVerticalGroup(
             panelStatusMesa2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtStatusMesa2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(lblStatusMesa2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
 
         btnMesa2.add(panelStatusMesa2, java.awt.BorderLayout.LINE_END);
 
-        txtMesa2.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
-        txtMesa2.setForeground(new java.awt.Color(0, 0, 0));
-        txtMesa2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtMesa2.setText("Mesa 2");
-        btnMesa2.add(txtMesa2, java.awt.BorderLayout.CENTER);
+        lblMesa2.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
+        lblMesa2.setForeground(new java.awt.Color(0, 0, 0));
+        lblMesa2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMesa2.setText("Mesa 2");
+        lblMesa2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMesa2MouseClicked(evt);
+            }
+        });
+        btnMesa2.add(lblMesa2, java.awt.BorderLayout.CENTER);
 
         icoMesa1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoMesas.png"))); // NOI18N
         btnMesa2.add(icoMesa1, java.awt.BorderLayout.LINE_START);
@@ -152,11 +167,16 @@ public class PanelMesas extends javax.swing.JPanel {
         });
         btnMesa3.setLayout(new java.awt.BorderLayout());
 
-        txtMesa3.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
-        txtMesa3.setForeground(new java.awt.Color(0, 0, 0));
-        txtMesa3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtMesa3.setText("Mesa 3");
-        btnMesa3.add(txtMesa3, java.awt.BorderLayout.CENTER);
+        lblMesa3.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
+        lblMesa3.setForeground(new java.awt.Color(0, 0, 0));
+        lblMesa3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMesa3.setText("Mesa 3");
+        lblMesa3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMesa3MouseClicked(evt);
+            }
+        });
+        btnMesa3.add(lblMesa3, java.awt.BorderLayout.CENTER);
 
         icoMesa2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoMesas.png"))); // NOI18N
         btnMesa3.add(icoMesa2, java.awt.BorderLayout.LINE_START);
@@ -164,19 +184,19 @@ public class PanelMesas extends javax.swing.JPanel {
         panelStatusMesa3.setBackground(new java.awt.Color(0, 208, 31));
         panelStatusMesa3.setPreferredSize(new java.awt.Dimension(60, 140));
 
-        txtStatusMesa3.setForeground(new java.awt.Color(255, 255, 255));
-        txtStatusMesa3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtStatusMesa3.setText("Disponible");
+        lblStatusMesa3.setForeground(new java.awt.Color(255, 255, 255));
+        lblStatusMesa3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblStatusMesa3.setText("Disponible");
 
         javax.swing.GroupLayout panelStatusMesa3Layout = new javax.swing.GroupLayout(panelStatusMesa3);
         panelStatusMesa3.setLayout(panelStatusMesa3Layout);
         panelStatusMesa3Layout.setHorizontalGroup(
             panelStatusMesa3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtStatusMesa3, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(lblStatusMesa3, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
         panelStatusMesa3Layout.setVerticalGroup(
             panelStatusMesa3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtStatusMesa3, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(lblStatusMesa3, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
 
         btnMesa3.add(panelStatusMesa3, java.awt.BorderLayout.LINE_END);
@@ -192,11 +212,16 @@ public class PanelMesas extends javax.swing.JPanel {
         });
         btnMesa4.setLayout(new java.awt.BorderLayout());
 
-        txtMesa4.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
-        txtMesa4.setForeground(new java.awt.Color(0, 0, 0));
-        txtMesa4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtMesa4.setText("Mesa 4");
-        btnMesa4.add(txtMesa4, java.awt.BorderLayout.CENTER);
+        lblMesa4.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
+        lblMesa4.setForeground(new java.awt.Color(0, 0, 0));
+        lblMesa4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMesa4.setText("Mesa 4");
+        lblMesa4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMesa4MouseClicked(evt);
+            }
+        });
+        btnMesa4.add(lblMesa4, java.awt.BorderLayout.CENTER);
 
         icoMesa3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoMesas.png"))); // NOI18N
         btnMesa4.add(icoMesa3, java.awt.BorderLayout.LINE_START);
@@ -204,19 +229,19 @@ public class PanelMesas extends javax.swing.JPanel {
         panelStatusMesa4.setBackground(new java.awt.Color(0, 208, 31));
         panelStatusMesa4.setPreferredSize(new java.awt.Dimension(60, 140));
 
-        txtStatusMesa4.setForeground(new java.awt.Color(255, 255, 255));
-        txtStatusMesa4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtStatusMesa4.setText("Disponible");
+        lblStatusMesa4.setForeground(new java.awt.Color(255, 255, 255));
+        lblStatusMesa4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblStatusMesa4.setText("Disponible");
 
         javax.swing.GroupLayout panelStatusMesa4Layout = new javax.swing.GroupLayout(panelStatusMesa4);
         panelStatusMesa4.setLayout(panelStatusMesa4Layout);
         panelStatusMesa4Layout.setHorizontalGroup(
             panelStatusMesa4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtStatusMesa4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(lblStatusMesa4, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
         panelStatusMesa4Layout.setVerticalGroup(
             panelStatusMesa4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtStatusMesa4, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(lblStatusMesa4, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
 
         btnMesa4.add(panelStatusMesa4, java.awt.BorderLayout.LINE_END);
@@ -232,11 +257,16 @@ public class PanelMesas extends javax.swing.JPanel {
         });
         btnMesa5.setLayout(new java.awt.BorderLayout());
 
-        txtMesa5.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
-        txtMesa5.setForeground(new java.awt.Color(0, 0, 0));
-        txtMesa5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtMesa5.setText("Mesa 5");
-        btnMesa5.add(txtMesa5, java.awt.BorderLayout.CENTER);
+        lblMesa5.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
+        lblMesa5.setForeground(new java.awt.Color(0, 0, 0));
+        lblMesa5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMesa5.setText("Mesa 5");
+        lblMesa5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMesa5MouseClicked(evt);
+            }
+        });
+        btnMesa5.add(lblMesa5, java.awt.BorderLayout.CENTER);
 
         icoMesa4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoMesas.png"))); // NOI18N
         btnMesa5.add(icoMesa4, java.awt.BorderLayout.LINE_START);
@@ -245,19 +275,19 @@ public class PanelMesas extends javax.swing.JPanel {
         panelStatusMesa5.setToolTipText("");
         panelStatusMesa5.setPreferredSize(new java.awt.Dimension(60, 140));
 
-        txtStatusMesa5.setForeground(new java.awt.Color(255, 255, 255));
-        txtStatusMesa5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtStatusMesa5.setText("Disponible");
+        lblStatusMesa5.setForeground(new java.awt.Color(255, 255, 255));
+        lblStatusMesa5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblStatusMesa5.setText("Disponible");
 
         javax.swing.GroupLayout panelStatusMesa5Layout = new javax.swing.GroupLayout(panelStatusMesa5);
         panelStatusMesa5.setLayout(panelStatusMesa5Layout);
         panelStatusMesa5Layout.setHorizontalGroup(
             panelStatusMesa5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtStatusMesa5, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+            .addComponent(lblStatusMesa5, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
         panelStatusMesa5Layout.setVerticalGroup(
             panelStatusMesa5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(txtStatusMesa5, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(lblStatusMesa5, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
         );
 
         btnMesa5.add(panelStatusMesa5, java.awt.BorderLayout.LINE_END);
@@ -310,36 +340,99 @@ public class PanelMesas extends javax.swing.JPanel {
 
     private void btnMesa2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesa2MouseClicked
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getPanelPedido().setMesa("Mesa 2");
         frame.mostrar("pedidos");
     }//GEN-LAST:event_btnMesa2MouseClicked
 
     private void btnMesa3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesa3MouseClicked
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getPanelPedido().setMesa("Mesa 3");
         frame.mostrar("pedidos");
     }//GEN-LAST:event_btnMesa3MouseClicked
 
     private void btnMesa4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesa4MouseClicked
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getPanelPedido().setMesa("Mesa 4");
         frame.mostrar("pedidos");
     }//GEN-LAST:event_btnMesa4MouseClicked
 
     private void btnMesa5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesa5MouseClicked
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getPanelPedido().setMesa("Mesa 5");
         frame.mostrar("pedidos");
     }//GEN-LAST:event_btnMesa5MouseClicked
 
     private void btnMesa1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMesa1MouseClicked
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getPanelPedido().setMesa("Mesa 1");
         frame.mostrar("pedidos");
     }//GEN-LAST:event_btnMesa1MouseClicked
 
     private void btnParaLlevarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnParaLlevarMouseClicked
-        // TODO add your handling code here:
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getPanelPedido().setMesa("Para llevar");
         frame.mostrar("pedidos");
     }//GEN-LAST:event_btnParaLlevarMouseClicked
 
+    private void lblMesa1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMesa1MouseClicked
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getPanelPedido().setMesa("Mesa 1");
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_lblMesa1MouseClicked
 
+    private void lblMesa2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMesa2MouseClicked
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getPanelPedido().setMesa("Mesa 2");
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_lblMesa2MouseClicked
+
+    private void lblMesa3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMesa3MouseClicked
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getPanelPedido().setMesa("Mesa 3");
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_lblMesa3MouseClicked
+
+    private void lblMesa4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMesa4MouseClicked
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getPanelPedido().setMesa("Mesa 4");
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_lblMesa4MouseClicked
+
+    private void lblMesa5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMesa5MouseClicked
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getPanelPedido().setMesa("Mesa 5");
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_lblMesa5MouseClicked
+
+    public void liberarMesa(String mesa) {
+        switch (mesa) {
+            case "Mesa 1":
+                lblStatusMesa1.setText("Disponible");
+                panelStatusMesa1.setBackground(disponibleColor);
+                break;
+                
+            case "Mesa 2":
+                lblStatusMesa2.setText("Disponible");
+                panelStatusMesa2.setBackground(disponibleColor);
+                break;
+                
+            case "Mesa 3":
+                lblStatusMesa3.setText("Disponible");
+                panelStatusMesa3.setBackground(disponibleColor);
+                break;
+                
+            case "Mesa 4":
+                lblStatusMesa4.setText("Disponible");
+                panelStatusMesa4.setBackground(disponibleColor);
+                break;
+                
+            case "Mesa 5":
+                lblStatusMesa5.setText("Disponible");
+                panelStatusMesa5.setBackground(disponibleColor);
+                break;
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bgFondo;
     private javax.swing.JPanel btnMesa1;
@@ -357,20 +450,20 @@ public class PanelMesas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JLabel lblMesa1;
+    private javax.swing.JLabel lblMesa2;
+    private javax.swing.JLabel lblMesa3;
+    private javax.swing.JLabel lblMesa4;
+    private javax.swing.JLabel lblMesa5;
+    private javax.swing.JLabel lblStatusMesa1;
+    private javax.swing.JLabel lblStatusMesa2;
+    private javax.swing.JLabel lblStatusMesa3;
+    private javax.swing.JLabel lblStatusMesa4;
+    private javax.swing.JLabel lblStatusMesa5;
     private javax.swing.JPanel panelStatusMesa1;
     private javax.swing.JPanel panelStatusMesa2;
     private javax.swing.JPanel panelStatusMesa3;
     private javax.swing.JPanel panelStatusMesa4;
     private javax.swing.JPanel panelStatusMesa5;
-    private javax.swing.JLabel txtMesa1;
-    private javax.swing.JLabel txtMesa2;
-    private javax.swing.JLabel txtMesa3;
-    private javax.swing.JLabel txtMesa4;
-    private javax.swing.JLabel txtMesa5;
-    private javax.swing.JLabel txtStatusMesa1;
-    private javax.swing.JLabel txtStatusMesa2;
-    private javax.swing.JLabel txtStatusMesa3;
-    private javax.swing.JLabel txtStatusMesa4;
-    private javax.swing.JLabel txtStatusMesa5;
     // End of variables declaration//GEN-END:variables
 }

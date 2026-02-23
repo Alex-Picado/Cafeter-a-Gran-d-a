@@ -22,6 +22,9 @@ public class MainFrame extends javax.swing.JFrame {
     private ProductoController productoController;
     private ProductoDAO productoDAO = new ProductoDAO();
     private PanelPadNumerico panelPadNumerico;
+    private PanelPedido panelPedido;
+    private PanelMesas panelMesas;
+    
 
     /**
      * Creates new form MainFrame
@@ -34,6 +37,8 @@ public class MainFrame extends javax.swing.JFrame {
     panelProductos = new PanelProductos();
     panelAgregarProducto = new PanelAgregarProducto();
     panelPadNumerico = new PanelPadNumerico();
+    panelPedido = new PanelPedido();
+    panelMesas = new PanelMesas();
 
     CategoriaDAO categoriaDAO = new CategoriaDAO();
     CategoriaController categoriaController = new CategoriaController(categoriaDAO);
@@ -48,12 +53,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     panelContenedor.add(panelFondoTotal, "inicio");
     panelContenedor.add(new PanelMenu(), "menu");
-    panelContenedor.add(new PanelMesas(), "mesas");
+    panelContenedor.add(panelMesas, "mesas");
     panelContenedor.add(panelProductos, "productos");
     panelContenedor.add(new PanelGestionarClientes(), "clientes");
     panelContenedor.add(panelAgregarProducto, "agregarProducto");
     panelContenedor.add(new PanelReportesYEstadisticas(), "reportes");
-    panelContenedor.add(new PanelPedido(), "pedidos");
+    panelContenedor.add(panelPedido, "pedidos");
     panelContenedor.add(new PanelHistorialVentas(), "historial");
     panelContenedor.add(panelPadNumerico, "padNumerico");
 
@@ -142,7 +147,15 @@ public class MainFrame extends javax.swing.JFrame {
     public ProductoController getProductoController() {
         return productoController;
     }
-
+    
+    public PanelPedido getPanelPedido() {
+        return panelPedido;
+    }
+    
+    public PanelMesas getPanelMesas() {
+        return panelMesas;
+    }
+    
     /**
      * @param args the command line arguments
      */
