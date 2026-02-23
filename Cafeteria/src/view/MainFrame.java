@@ -5,6 +5,7 @@
 package view;
 
 import controller.CategoriaController;
+import controller.ClienteController;
 import controller.ProductoController;
 import java.awt.CardLayout;
 import model.CategoriaDAO;
@@ -24,46 +25,54 @@ public class MainFrame extends javax.swing.JFrame {
     private PanelPadNumerico panelPadNumerico;
     private PanelPedido panelPedido;
     private PanelMesas panelMesas;
-    
+    private ClienteController clienteController;
 
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
-    initComponents();
+        initComponents();
 
-    cardLayout = (CardLayout) panelContenedor.getLayout();
+        cardLayout = (CardLayout) panelContenedor.getLayout();
 
-    panelProductos = new PanelProductos();
-    panelAgregarProducto = new PanelAgregarProducto();
-    panelPadNumerico = new PanelPadNumerico();
-    panelPedido = new PanelPedido();
-    panelMesas = new PanelMesas();
+        panelProductos = new PanelProductos();
+        panelAgregarProducto = new PanelAgregarProducto();
+        panelPadNumerico = new PanelPadNumerico();
+        panelPedido = new PanelPedido();
+        panelMesas = new PanelMesas();
+        clienteController = new ClienteController();
+        
+        CategoriaDAO categoriaDAO = new CategoriaDAO();
+        CategoriaController categoriaController = new CategoriaController(categoriaDAO);
 
-    CategoriaDAO categoriaDAO = new CategoriaDAO();
-    CategoriaController categoriaController = new CategoriaController(categoriaDAO);
+        productoController = new ProductoController(productoDAO, panelProductos);
 
-    productoController = new ProductoController(productoDAO, panelProductos);
+        panelProductos.setController(productoController);
+        panelAgregarProducto.setController(productoController);
 
-    panelProductos.setController(productoController);
-    panelAgregarProducto.setController(productoController);
+        panelProductos.setCategorias(categoriaController.obtenerCategoriasActivas());
+        panelAgregarProducto.setCategoriaController(categoriaController);
 
-    panelProductos.setCategorias(categoriaController.obtenerCategoriasActivas());
-    panelAgregarProducto.setCategoriaController(categoriaController);
+        panelContenedor.add(panelFondoTotal, "inicio");
+        panelContenedor.add(new PanelMenu(), "menu");
+        panelContenedor.add(panelMesas, "mesas");
+        panelContenedor.add(panelProductos, "productos");
 
-    panelContenedor.add(panelFondoTotal, "inicio");
-    panelContenedor.add(new PanelMenu(), "menu");
-    panelContenedor.add(panelMesas, "mesas");
-    panelContenedor.add(panelProductos, "productos");
-    panelContenedor.add(new PanelGestionarClientes(), "clientes");
-    panelContenedor.add(panelAgregarProducto, "agregarProducto");
-    panelContenedor.add(new PanelReportesYEstadisticas(), "reportes");
-    panelContenedor.add(panelPedido, "pedidos");
-    panelContenedor.add(new PanelHistorialVentas(), "historial");
-    panelContenedor.add(panelPadNumerico, "padNumerico");
+        
 
-    productoController.cargarProductosEnVista();
-}
+        panelContenedor.add(
+                new PanelGestionarClientes(clienteController),
+                "clientes"
+        );
+
+        panelContenedor.add(panelAgregarProducto, "agregarProducto");
+        panelContenedor.add(new PanelReportesYEstadisticas(), "reportes");
+        panelContenedor.add(panelPedido, "pedidos");
+        panelContenedor.add(new PanelHistorialVentas(), "historial");
+        panelContenedor.add(panelPadNumerico, "padNumerico");
+
+        productoController.cargarProductosEnVista();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -147,15 +156,15 @@ public class MainFrame extends javax.swing.JFrame {
     public ProductoController getProductoController() {
         return productoController;
     }
-    
+
     public PanelPedido getPanelPedido() {
         return panelPedido;
     }
-    
+
     public PanelMesas getPanelMesas() {
         return panelMesas;
     }
-    
+
     /**
      * @param args the command line arguments
      */
