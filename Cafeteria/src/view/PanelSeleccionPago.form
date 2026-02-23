@@ -139,6 +139,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Efectivo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEfectivoActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -203,6 +206,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tarjeta"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnTarjetaActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -267,6 +273,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sinpe M&#xf3;vil"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSinpeMovilActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

@@ -4,6 +4,7 @@
  */
 package view;
 
+import controller.ClienteController;
 import java.awt.CardLayout;
 
 /**
@@ -12,6 +13,7 @@ import java.awt.CardLayout;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    private ClienteController clienteController;
     private CardLayout cardLayout;
 
     /**
@@ -21,19 +23,22 @@ public class MainFrame extends javax.swing.JFrame {
         initComponents();
 
         cardLayout = (CardLayout) panelContenedor.getLayout();
-
+        clienteController = new ClienteController();
         panelContenedor.add(panelFondoTotal, "inicio");
         panelContenedor.add(new PanelMenu(), "menu");
         panelContenedor.add(new PanelMesas(), "mesas");
         panelContenedor.add(new PanelProductos(), "productos");
-        panelContenedor.add(new PanelGestionarClientes(), "clientes");
+        panelContenedor.add(
+                new PanelGestionarClientes(clienteController),
+                "clientes"
+        );
         panelContenedor.add(new PanelAgregarProducto(), "agregarProducto");
         panelContenedor.add(new PanelReportesYEstadisticas(), "reportes");
         panelContenedor.add(new PanelPedido(), "pedidos");
         panelContenedor.add(new PanelHistorialVentas(), "historial");
-                panelContenedor.add(new PanelPadNumerico(), "padNumerico");
+        panelContenedor.add(new PanelPadNumerico(), "padNumerico");
 
-    }   
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

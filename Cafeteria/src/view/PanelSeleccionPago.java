@@ -57,6 +57,11 @@ public class PanelSeleccionPago extends javax.swing.JPanel {
         btnEfectivo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnEfectivo.setForeground(new java.awt.Color(0, 0, 0));
         btnEfectivo.setText("Efectivo");
+        btnEfectivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEfectivoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelEfectivoPagoLayout = new javax.swing.GroupLayout(panelEfectivoPago);
         panelEfectivoPago.setLayout(panelEfectivoPagoLayout);
@@ -89,6 +94,11 @@ public class PanelSeleccionPago extends javax.swing.JPanel {
         btnTarjeta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnTarjeta.setForeground(new java.awt.Color(0, 0, 0));
         btnTarjeta.setText("Tarjeta");
+        btnTarjeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTarjetaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelTarjetaPagoLayout = new javax.swing.GroupLayout(panelTarjetaPago);
         panelTarjetaPago.setLayout(panelTarjetaPagoLayout);
@@ -121,6 +131,11 @@ public class PanelSeleccionPago extends javax.swing.JPanel {
         btnSinpeMovil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnSinpeMovil.setForeground(new java.awt.Color(0, 0, 0));
         btnSinpeMovil.setText("Sinpe Móvil");
+        btnSinpeMovil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSinpeMovilActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelSinpeMovilPagoLayout = new javax.swing.GroupLayout(panelSinpeMovilPago);
         panelSinpeMovilPago.setLayout(panelSinpeMovilPagoLayout);
@@ -182,6 +197,18 @@ public class PanelSeleccionPago extends javax.swing.JPanel {
         imgFondoOpacoSeleccionPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
         add(imgFondoOpacoSeleccionPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnSinpeMovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSinpeMovilActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSinpeMovilActionPerformed
+
+    private void btnEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEfectivoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEfectivoActionPerformed
+
+    private void btnTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTarjetaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTarjetaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -5,11 +5,11 @@
 package controller;
 
 /**
- * Controlador que administra el ciclo de vida de los pedidos, incluyendo su
- * creación, modificación y persistencia durante la operación del sistema.
+ * Controlador responsable de la gestión de sesiones de usuario, incluyendo el
+ * control de acceso y autenticación en el sistema.
  *
  * @author Eidan Alexandre Picado Leiva - C4I410
  */
-public class PedidoController {
+public class SesionController {
     
 }

@@ -5,9 +5,11 @@
 package model;
 
 /**
+ * Representa una cuenta o factura individual derivada de una división de cuenta,
+ * asociada a una persona específica dentro de un pedido.
  *
- * @author eidan
+ * @author Eidan Alexandre Picado Leiva - C4I410
  */
-public class Comida {
+public class FacturaIndividual {
     
 }

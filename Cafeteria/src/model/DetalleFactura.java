@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package controller;
+package model;
 
 /**
- * Controlador que administra el ciclo de vida de los pedidos, incluyendo su
- * creación, modificación y persistencia durante la operación del sistema.
+ * Representa la relación entre una factura y los productos incluidos en ella,
+ * almacenando la información detallada de cada ítem facturado.
  *
  * @author Eidan Alexandre Picado Leiva - C4I410
  */
-public class PedidoController {
+public class DetalleFactura {
     
 }

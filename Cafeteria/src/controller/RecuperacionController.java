@@ -5,11 +5,11 @@
 package controller;
 
 /**
- * Controlador que administra el ciclo de vida de los pedidos, incluyendo su
- * creación, modificación y persistencia durante la operación del sistema.
+ * Controlador responsable de la recuperación del estado del sistema tras un
+ * reinicio o fallo, restaurando pedidos activos y datos necesarios.
  *
  * @author Eidan Alexandre Picado Leiva - C4I410
  */
-public class PedidoController {
+public class RecuperacionController {
     
 }

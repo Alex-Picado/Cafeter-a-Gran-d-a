@@ -5,8 +5,10 @@
 package controller;
 
 /**
+ * Controlador responsable de la administración de mesas, incluyendo su estado
+ * y la asociación de pedidos en el sistema.
  *
- * @author eidan
+ * @author Eidan Alexandre Picado Leiva - C4I410
  */
 public class MesaController {
     

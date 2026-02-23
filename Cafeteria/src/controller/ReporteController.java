@@ -5,8 +5,10 @@
 package controller;
 
 /**
+ * Controlador encargado de generar y proporcionar información para reportes y
+ * estadísticas de ventas dentro del sistema.
  *
- * @author eidan
+ * @author Eidan Alexandre Picado Leiva - C4I410
  */
 public class ReporteController {
     

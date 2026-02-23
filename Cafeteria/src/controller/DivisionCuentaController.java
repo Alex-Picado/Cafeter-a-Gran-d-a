@@ -5,11 +5,11 @@
 package controller;
 
 /**
- * Controlador que administra el ciclo de vida de los pedidos, incluyendo su
- * creación, modificación y persistencia durante la operación del sistema.
+ * Controlador que gestiona el proceso de división de cuentas, coordinando la
+ * asignación de productos y generación de facturas individuales.
  *
  * @author Eidan Alexandre Picado Leiva - C4I410
  */
-public class PedidoController {
+public class DivisionCuentaController {
     
 }

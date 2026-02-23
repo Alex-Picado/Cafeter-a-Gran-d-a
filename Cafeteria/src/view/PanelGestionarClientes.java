@@ -4,19 +4,34 @@
  */
 package view;
 
+import controller.ClienteController;
+import javax.swing.JOptionPane;
+import model.Cliente;
+
 /**
  *
  * @author OniRuls
  */
 public class PanelGestionarClientes extends javax.swing.JPanel {
 
+    private ClienteController clienteController;
+
+    public PanelGestionarClientes(ClienteController clienteController) {
+        initComponents();
+        this.clienteController = clienteController;
+        configurarComboBox();
+    }
+    
+    private void configurarComboBox() {
+        tipoFrecuenteComboBox.removeAllItems();
+        tipoFrecuenteComboBox.addItem("Frecuente");
+        tipoFrecuenteComboBox.addItem("Poco Frecuente");
+        tipoFrecuenteComboBox.addItem("Muy Poco Frecuente");
+    }
+
     /**
      * Creates new form AgregarCliente
      */
-    public PanelGestionarClientes() {
-        initComponents();
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,7 +49,7 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
         identificacionTextField = new javax.swing.JTextField();
         identificacionLabelText = new javax.swing.JLabel();
         telefonoLabelText = new javax.swing.JLabel();
-        tipoDeCedulaComboBox = new javax.swing.JComboBox<>();
+        tipoFrecuenteComboBox = new javax.swing.JComboBox<>();
         tipoLabelText = new javax.swing.JLabel();
         telefonoTextField = new javax.swing.JTextField();
         nombreLabelText = new javax.swing.JLabel();
@@ -44,9 +59,9 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
         btnAgregar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
-        btnNuevo = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        btnMostrarClientes = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         imgFondoParaAgregarClientePanel = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1024, 768));
@@ -56,7 +71,7 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
         direccionLabelText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         direccionLabelText.setForeground(new java.awt.Color(255, 255, 255));
         direccionLabelText.setText("Dirección:");
-        add(direccionLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
+        add(direccionLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, -1, -1));
 
         colorLabelForDatosCliente.setBackground(new java.awt.Color(31, 42, 56));
         colorLabelForDatosCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -99,52 +114,57 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
         add(colorLabelForDatosCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 50));
 
         direccionTextField.setBackground(new java.awt.Color(255, 255, 255));
-        add(direccionTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, 230, -1));
+        add(direccionTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 330, 70));
 
         identificacionTextField.setBackground(new java.awt.Color(255, 255, 255));
-        add(identificacionTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, 230, -1));
+        add(identificacionTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 330, 30));
 
         identificacionLabelText.setBackground(new java.awt.Color(255, 255, 255));
         identificacionLabelText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         identificacionLabelText.setForeground(new java.awt.Color(255, 255, 255));
         identificacionLabelText.setText("Identificación:");
-        add(identificacionLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 80, 170, -1));
+        add(identificacionLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 170, -1));
 
         telefonoLabelText.setBackground(new java.awt.Color(255, 255, 255));
         telefonoLabelText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         telefonoLabelText.setForeground(new java.awt.Color(255, 255, 255));
         telefonoLabelText.setText("Telefono:");
-        add(telefonoLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(99, 130, 110, -1));
+        add(telefonoLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 110, -1));
 
-        tipoDeCedulaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(tipoDeCedulaComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 230, -1));
+        tipoFrecuenteComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tipoFrecuenteComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoFrecuenteComboBoxActionPerformed(evt);
+            }
+        });
+        add(tipoFrecuenteComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, 230, 30));
 
         tipoLabelText.setBackground(new java.awt.Color(255, 255, 255));
         tipoLabelText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         tipoLabelText.setForeground(new java.awt.Color(255, 255, 255));
         tipoLabelText.setText("Tipo:");
-        add(tipoLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
+        add(tipoLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, -1, -1));
 
         telefonoTextField.setBackground(new java.awt.Color(255, 255, 255));
-        add(telefonoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 230, -1));
+        add(telefonoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 166, 330, 30));
 
         nombreLabelText.setBackground(new java.awt.Color(255, 255, 255));
         nombreLabelText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         nombreLabelText.setForeground(new java.awt.Color(255, 255, 255));
         nombreLabelText.setText("Nombre:");
-        add(nombreLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, -1, -1));
+        add(nombreLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, -1, -1));
 
         nombreTextField.setBackground(new java.awt.Color(255, 255, 255));
-        add(nombreTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 220, 230, -1));
+        add(nombreTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 316, 320, 30));
 
         correoElectronicoLabelText.setBackground(new java.awt.Color(255, 255, 255));
         correoElectronicoLabelText.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         correoElectronicoLabelText.setForeground(new java.awt.Color(255, 255, 255));
         correoElectronicoLabelText.setText("Correo Electronico:");
-        add(correoElectronicoLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 250, 210, -1));
+        add(correoElectronicoLabelText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 210, -1));
 
         correoElectronicoTextField.setBackground(new java.awt.Color(255, 255, 255));
-        add(correoElectronicoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 230, -1));
+        add(correoElectronicoTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 396, 330, 30));
 
         btnAgregar.setBackground(new java.awt.Color(0, 204, 51));
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -155,7 +175,7 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
                 btnAgregarActionPerformed(evt);
             }
         });
-        add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 400, 140, -1));
+        add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 300, 140, -1));
 
         btnModificar.setBackground(new java.awt.Color(255, 255, 255));
         btnModificar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -177,29 +197,7 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
                 btnBuscarActionPerformed(evt);
             }
         });
-        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 160, 160, -1));
-
-        btnNuevo.setBackground(new java.awt.Color(255, 255, 255));
-        btnNuevo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnNuevo.setForeground(new java.awt.Color(0, 0, 0));
-        btnNuevo.setText("Nuevo");
-        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoActionPerformed(evt);
-            }
-        });
-        add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 160, -1));
-
-        btnCancelar.setBackground(new java.awt.Color(255, 51, 51));
-        btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
-        add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 400, 140, -1));
+        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 160, -1));
 
         btnLimpiar.setBackground(new java.awt.Color(0, 204, 204));
         btnLimpiar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -210,50 +208,202 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
                 btnLimpiarActionPerformed(evt);
             }
         });
-        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 400, 140, -1));
+        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 300, 140, -1));
+
+        btnMostrarClientes.setBackground(new java.awt.Color(255, 255, 255));
+        btnMostrarClientes.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnMostrarClientes.setForeground(new java.awt.Color(0, 0, 0));
+        btnMostrarClientes.setText("Mostrar Clientes");
+        btnMostrarClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMostrarClientesActionPerformed(evt);
+            }
+        });
+        add(btnMostrarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 130, -1, -1));
+
+        btnEliminar.setBackground(new java.awt.Color(255, 0, 51));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 300, 130, -1));
 
         imgFondoParaAgregarClientePanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
         add(imgFondoParaAgregarClientePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        
+        try {
+
+            if (clienteController == null) {
+                throw new IllegalStateException("El controlador no está inicializado.");
+            }
+
+            String id = identificacionTextField.getText().trim();
+            String nombre = nombreTextField.getText().trim();
+            String telefono = telefonoTextField.getText().trim();
+            String correo = correoElectronicoTextField.getText().trim();
+            String direccion = direccionTextField.getText().trim();
+            String frecuencia = (String) tipoFrecuenteComboBox.getSelectedItem();
+
+            Cliente cliente = new Cliente(id, nombre, telefono, correo, direccion, frecuencia);
+
+            clienteController.registrarCliente(cliente);
+
+            JOptionPane.showMessageDialog(this,
+                    "Cliente registrado correctamente.");
+
+            limpiarCampos();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-       
+        try {
+
+            if (clienteController == null) {
+                throw new IllegalStateException("El controlador no está inicializado.");
+            }
+
+            String id = identificacionTextField.getText().trim();
+            String nombre = nombreTextField.getText().trim();
+            String telefono = telefonoTextField.getText().trim();
+            String correo = correoElectronicoTextField.getText().trim();
+            String direccion = direccionTextField.getText().trim();
+            String frecuencia = (String) tipoFrecuenteComboBox.getSelectedItem();
+
+            clienteController.modificarClienteConFrecuencia(id, nombre, telefono, correo, direccion, frecuencia);
+
+            JOptionPane.showMessageDialog(this,
+                    "Cliente modificado correctamente.");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-       
+        try {
+
+            if (clienteController == null) {
+                throw new IllegalStateException("El controlador no está inicializado.");
+            }
+
+            String id = identificacionTextField.getText().trim();
+
+            Cliente cliente = clienteController.buscarCliente(id);
+
+            nombreTextField.setText(cliente.getNombre());
+            telefonoTextField.setText(cliente.getTelefono());
+            correoElectronicoTextField.setText(cliente.getCorreo());
+            direccionTextField.setText(cliente.getDireccion());
+            tipoFrecuenteComboBox.setSelectedItem(cliente.getFrecuencia());
+
+            JOptionPane.showMessageDialog(this,
+                    "Cliente encontrado.");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-       
-    }//GEN-LAST:event_btnNuevoActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-       
-    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-      
+        limpiarCampos();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     private void btnRegresarPanelDatosClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPanelDatosClienteActionPerformed
-        // TODO add your handling code here:
+
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
         frame.mostrar("menu");
     }//GEN-LAST:event_btnRegresarPanelDatosClienteActionPerformed
 
+    private void btnMostrarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarClientesActionPerformed
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        ClienteListDialog dialog = new ClienteListDialog(frame, true, clienteController, this);
+        dialog.setVisible(true);
+    }//GEN-LAST:event_btnMostrarClientesActionPerformed
+    
+    /**
+     * Popula el formulario con los datos del cliente seleccionado
+     */
+    public void pobllarFormularioConCliente(Cliente cliente) {
+        identificacionTextField.setText(cliente.getId());
+        nombreTextField.setText(cliente.getNombre());
+        telefonoTextField.setText(cliente.getTelefono());
+        correoElectronicoTextField.setText(cliente.getCorreo());
+        direccionTextField.setText(cliente.getDireccion());
+        tipoFrecuenteComboBox.setSelectedItem(cliente.getFrecuencia());
+    }
+    private void tipoFrecuenteComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoFrecuenteComboBoxActionPerformed
+        // TODO: Add your handling code here
+    }//GEN-LAST:event_tipoFrecuenteComboBoxActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        try {
+            String id = identificacionTextField.getText().trim();
+            
+            if (id.isEmpty()) {
+                JOptionPane.showMessageDialog(this,
+                        "Por favor, ingrese o seleccione un cliente para eliminar.",
+                        "Advertencia",
+                        JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            int confirmacion = JOptionPane.showConfirmDialog(this,
+                    "¿Estás seguro de que quieres eliminarlo?",
+                    "Confirmar eliminación",
+                    JOptionPane.YES_NO_OPTION);
+            
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                clienteController.eliminarCliente(id);
+                JOptionPane.showMessageDialog(this,
+                        "Cliente eliminado correctamente.",
+                        "Éxito",
+                        JOptionPane.INFORMATION_MESSAGE);
+                limpiarCampos();
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this,
+                    e.getMessage(),
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void limpiarCampos() {
+        identificacionTextField.setText("");
+        nombreTextField.setText("");
+        telefonoTextField.setText("");
+        correoElectronicoTextField.setText("");
+        direccionTextField.setText("");
+        tipoFrecuenteComboBox.setSelectedIndex(0);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnMostrarClientes;
     private javax.swing.JButton btnRegresarPanelDatosCliente;
     private javax.swing.JPanel colorLabelForDatosCliente;
     private javax.swing.JLabel correoElectronicoLabelText;
@@ -268,7 +418,7 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
     private javax.swing.JTextField nombreTextField;
     private javax.swing.JLabel telefonoLabelText;
     private javax.swing.JTextField telefonoTextField;
-    private javax.swing.JComboBox<String> tipoDeCedulaComboBox;
+    private javax.swing.JComboBox<String> tipoFrecuenteComboBox;
     private javax.swing.JLabel tipoLabelText;
     // End of variables declaration//GEN-END:variables
 }
