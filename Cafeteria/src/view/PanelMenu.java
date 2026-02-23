@@ -154,6 +154,12 @@ public class PanelMenu extends javax.swing.JPanel {
     private void btnProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosActionPerformed
         // TODO add your handling code here:
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        var panelProductos = frame.getPanelProductos();
+        panelProductos.setModoSeleccion(false);
+
+        frame.getProductoController().cargarProductosEnVista();
+
         frame.mostrar("productos");
     }//GEN-LAST:event_btnProductosActionPerformed
 

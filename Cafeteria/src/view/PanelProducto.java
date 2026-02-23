@@ -12,12 +12,21 @@ import javax.swing.ImageIcon;
  */
 public class PanelProducto extends javax.swing.JPanel {
 
+    private model.Producto producto;
+
     /**
      * Creates new form PanelProducto
      */
     public PanelProducto() {
         initComponents();
         setPreferredSize(new java.awt.Dimension(240, 300));
+
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent e) {
+                agregarAlPedido();
+            }
+        });
     }
 
     /**
@@ -123,6 +132,32 @@ public class PanelProducto extends javax.swing.JPanel {
         } else {
             lblImagenProducto.setText("Sin imagen");
         }
+    }
+
+    public void setProducto(model.Producto producto) {
+        this.producto = producto;
+
+        setNombre(producto.getNombre());
+        setPrecio(producto.getPrecio());
+        setStock(producto.getStock());
+        setId(producto.getId());
+        setImagen(producto.getRutaImagen());
+    }
+
+    private void agregarAlPedido() {
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        if (frame == null) {
+            return;
+        }
+
+        var panelPedido = frame.getPanelPedido();
+
+        panelPedido.agregarProducto(producto);
+        System.out.println("Producto clickeado: " + producto);
+        frame.mostrar("pedidos");
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSeparator jSeparator1;

@@ -58,7 +58,7 @@ public class PanelMesas extends javax.swing.JPanel {
         lblStatusMesa5 = new javax.swing.JLabel();
         btnParaLlevar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblTextoParaLlevar = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         bgFondo = new javax.swing.JLabel();
 
@@ -306,11 +306,11 @@ public class PanelMesas extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoParaLlevar.png"))); // NOI18N
         btnParaLlevar.add(jLabel1, java.awt.BorderLayout.LINE_START);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Para llevar");
-        btnParaLlevar.add(jLabel2, java.awt.BorderLayout.CENTER);
+        lblTextoParaLlevar.setFont(new java.awt.Font("Segoe UI", 0, 40)); // NOI18N
+        lblTextoParaLlevar.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoParaLlevar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTextoParaLlevar.setText("Para llevar");
+        btnParaLlevar.add(lblTextoParaLlevar, java.awt.BorderLayout.CENTER);
 
         add(btnParaLlevar, new org.netbeans.lib.awtextra.AbsoluteConstraints(545, 635, -1, -1));
 
@@ -448,7 +448,6 @@ public class PanelMesas extends javax.swing.JPanel {
     private javax.swing.JLabel icoMesa3;
     private javax.swing.JLabel icoMesa4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lblMesa1;
     private javax.swing.JLabel lblMesa2;
@@ -460,6 +459,7 @@ public class PanelMesas extends javax.swing.JPanel {
     private javax.swing.JLabel lblStatusMesa3;
     private javax.swing.JLabel lblStatusMesa4;
     private javax.swing.JLabel lblStatusMesa5;
+    private javax.swing.JLabel lblTextoParaLlevar;
     private javax.swing.JPanel panelStatusMesa1;
     private javax.swing.JPanel panelStatusMesa2;
     private javax.swing.JPanel panelStatusMesa3;

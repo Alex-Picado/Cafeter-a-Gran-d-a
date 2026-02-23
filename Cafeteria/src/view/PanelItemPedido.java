@@ -15,6 +15,10 @@ public class PanelItemPedido extends javax.swing.JPanel {
      */
     public PanelItemPedido() {
         initComponents();
+        setMaximumSize(new java.awt.Dimension(
+                Integer.MAX_VALUE,
+                getPreferredSize().height
+        ));
     }
 
     /**
@@ -122,7 +126,17 @@ public class PanelItemPedido extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setNombre(String nombre) {
+        lblNombreProducto.setText(nombre);
+    }
 
+    public void setPrecio(double precio) {
+        lblPrecioUnitario.setText("₡" + precio + " c/u");
+    }
+
+    public void setCantidad(int cantidad) {
+        lblCantidad.setText(String.valueOf(cantidad));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnMas;

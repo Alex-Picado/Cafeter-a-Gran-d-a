@@ -5,20 +5,22 @@
 package view;
 
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
  * @author eidan
  */
 public class PanelPedido extends javax.swing.JPanel {
-    
+
     private String mesaActual;
-    
+
     /**
      * Creates new form PanelPedido
      */
     public PanelPedido() {
         initComponents();
+        panelListaProductos.removeAll();
     }
 
     /**
@@ -166,6 +168,11 @@ public class PanelPedido extends javax.swing.JPanel {
         btnAgregarProductos.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnAgregarProductos.setForeground(new java.awt.Color(255, 255, 255));
         btnAgregarProductos.setText("Agregar producto");
+        btnAgregarProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarProductosActionPerformed(evt);
+            }
+        });
 
         btnVolver.setBackground(new java.awt.Color(107, 114, 128));
         btnVolver.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
@@ -328,16 +335,16 @@ public class PanelPedido extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLiberarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiberarMesaActionPerformed
-        
+
         int opcion = JOptionPane.showConfirmDialog(this,
                 "¿Seguro que desea liberar la mesa?, Esto borrara todo los pedidos",
                 "Confirmar liberacion",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.WARNING_MESSAGE);
-        
+
         if (opcion == JOptionPane.YES_NO_OPTION) {
             MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-            
+
             frame.getPanelMesas().liberarMesa(mesaActual);
             frame.mostrar("mesas");
         }
@@ -345,7 +352,7 @@ public class PanelPedido extends javax.swing.JPanel {
 
     private void btnGuardarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPedidoActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnGuardarPedidoActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
@@ -358,11 +365,75 @@ public class PanelPedido extends javax.swing.JPanel {
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
         frame.mostrar("mesas");
     }//GEN-LAST:event_btnCancelarActionPerformed
-    
+
+    private void btnAgregarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductosActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
+
+        var panelProductos = frame.getPanelProductos();
+        panelProductos.setModoSeleccion(true);
+
+        frame.getProductoController().cargarProductosEnVista();
+
+        frame.mostrar("productos");
+    }//GEN-LAST:event_btnAgregarProductosActionPerformed
+
     public void setMesa(String mesa) {
         this.mesaActual = mesa;
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        var manager = frame.getPedidoActivoManager();
+        var pedido = manager.obtenerOcrear(mesa);
+        //pedido.getItems().clear();
+
         lblTituloPedido.setText("Pedido - " + mesa);
         lblUbicacion.setText(mesa);
+
+        cargarItemsDesdePedido(pedido);
+    }
+
+    private void cargarItemsDesdePedido(model.Pedido pedido) {
+
+        panelListaProductos.removeAll();
+
+        if (pedido.getItems().isEmpty()) {
+            panelListaProductos.add(lblAvisoSinProductosEnPedido);
+        } else {
+            for (var item : pedido.getItems()) {
+
+                if (item.getProducto() == null) {
+                    System.out.println("Item corrupto detectado — ignorando");
+                    continue;
+                }
+
+                PanelItemPedido panelItem = new PanelItemPedido();
+
+                panelItem.setNombre(item.getProducto().getNombre());
+                panelItem.setPrecio(item.getProducto().getPrecio());
+                panelItem.setCantidad(item.getCantidad());
+
+                panelListaProductos.add(panelItem);
+                panelListaProductos.add(javax.swing.Box.createVerticalStrut(5));
+
+                panelListaProductos.add(panelItem);
+            }
+        }
+
+        panelListaProductos.revalidate();
+        panelListaProductos.repaint();
+    }
+
+    public void agregarProducto(model.Producto producto) {
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        var manager = frame.getPedidoActivoManager();
+        var pedido = manager.obtenerOcrear(mesaActual);
+
+        pedido.agregarProducto(producto);
+
+        cargarItemsDesdePedido(pedido);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
