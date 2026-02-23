@@ -335,17 +335,25 @@ public class PanelPedido extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLiberarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLiberarMesaActionPerformed
-
         int opcion = JOptionPane.showConfirmDialog(this,
                 "¿Seguro que desea liberar la mesa?, Esto borrara todo los pedidos",
                 "Confirmar liberacion",
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.WARNING_MESSAGE);
 
-        if (opcion == JOptionPane.YES_NO_OPTION) {
+        if (opcion == JOptionPane.YES_OPTION) {
+
             MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
 
+            var manager = frame.getPedidoActivoManager();
+
+            // 👇 borrar pedido persistido
+            manager.eliminar(mesaActual);
+            manager.guardarSnapshot();
+
+            // 👇 actualizar estado visual
             frame.getPanelMesas().liberarMesa(mesaActual);
+
             frame.mostrar("mesas");
         }
     }//GEN-LAST:event_btnLiberarMesaActionPerformed
@@ -362,8 +370,31 @@ public class PanelPedido extends javax.swing.JPanel {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
-        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        frame.mostrar("mesas");
+        int opcion = JOptionPane.showConfirmDialog(this,
+                "Cancelar borrará todo el pedido",
+                "Confirmar cancelación",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.WARNING_MESSAGE);
+
+        if (opcion == JOptionPane.YES_OPTION) {
+
+            MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+            var manager = frame.getPedidoActivoManager();
+
+            // borrar pedido real
+            manager.eliminar(mesaActual);
+
+            // guardar cambios
+            manager.guardarSnapshot();
+
+            // liberar mesa visualmente
+            frame.getPanelMesas().liberarMesa(mesaActual);
+
+            // volver a mesas
+            frame.mostrar("mesas");
+        }
+
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAgregarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductosActionPerformed
@@ -393,36 +424,39 @@ public class PanelPedido extends javax.swing.JPanel {
         cargarItemsDesdePedido(pedido);
     }
 
-    private void cargarItemsDesdePedido(model.Pedido pedido) {
+private void cargarItemsDesdePedido(model.Pedido pedido) {
 
-        panelListaProductos.removeAll();
+    panelListaProductos.removeAll();
 
-        if (pedido.getItems().isEmpty()) {
-            panelListaProductos.add(lblAvisoSinProductosEnPedido);
-        } else {
-            for (var item : pedido.getItems()) {
+    MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
 
-                if (item.getProducto() == null) {
-                    System.out.println("Item corrupto detectado — ignorando");
-                    continue;
+    if (pedido.getItems().isEmpty()) {
+
+        panelListaProductos.add(lblAvisoSinProductosEnPedido);
+
+    } else {
+
+        for (var item : pedido.getItems()) {
+
+            PanelItemPedido panelItem = new PanelItemPedido();
+
+            panelItem.setDetalle(item, eliminar -> {
+
+                if (eliminar) {
+                    pedido.getItems().removeIf(i -> i.getCantidad() <= 0);
+                    cargarItemsDesdePedido(pedido);
                 }
 
-                PanelItemPedido panelItem = new PanelItemPedido();
+                frame.getPedidoActivoManager().guardarSnapshot();
+            });
 
-                panelItem.setNombre(item.getProducto().getNombre());
-                panelItem.setPrecio(item.getProducto().getPrecio());
-                panelItem.setCantidad(item.getCantidad());
-
-                panelListaProductos.add(panelItem);
-                panelListaProductos.add(javax.swing.Box.createVerticalStrut(5));
-
-                panelListaProductos.add(panelItem);
-            }
+            panelListaProductos.add(panelItem);
         }
-
-        panelListaProductos.revalidate();
-        panelListaProductos.repaint();
     }
+
+    panelListaProductos.revalidate();
+    panelListaProductos.repaint();
+}
 
     public void agregarProducto(model.Producto producto) {
 
@@ -432,6 +466,57 @@ public class PanelPedido extends javax.swing.JPanel {
         var pedido = manager.obtenerOcrear(mesaActual);
 
         pedido.agregarProducto(producto);
+
+        frame.getPanelMesas().ocuparMesa(mesaActual);
+
+        manager.guardarSnapshot();
+
+        cargarItemsDesdePedido(pedido);
+    }
+
+    public void incrementar(model.DetallePedido d) {
+
+        d.incrementarCantidad();
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getPedidoActivoManager().guardarSnapshot();
+
+        refrescar();
+    }
+
+    public void decrementar(model.DetallePedido d) {
+
+        d.decrementarCantidad();
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        if (d.getCantidad() <= 0) {
+            eliminar(d);
+            return;
+        }
+
+        frame.getPedidoActivoManager().guardarSnapshot();
+
+        refrescar();
+    }
+
+    public void eliminar(model.DetallePedido d) {
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        var pedido = frame.getPedidoActivoManager().obtenerOcrear(mesaActual);
+
+        pedido.getItems().remove(d);
+
+        frame.getPedidoActivoManager().guardarSnapshot();
+
+        refrescar();
+    }
+
+    private void refrescar() {
+
+        MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
+        var pedido = frame.getPedidoActivoManager().obtenerOcrear(mesaActual);
 
         cargarItemsDesdePedido(pedido);
     }
