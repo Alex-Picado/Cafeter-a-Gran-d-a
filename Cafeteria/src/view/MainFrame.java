@@ -6,6 +6,7 @@ package view;
 
 import controller.CategoriaController;
 import controller.ClienteController;
+import controller.PedidoActivoManager;
 import controller.ProductoController;
 import java.awt.CardLayout;
 import model.CategoriaDAO;
@@ -26,6 +27,7 @@ public class MainFrame extends javax.swing.JFrame {
     private PanelPedido panelPedido;
     private PanelMesas panelMesas;
     private ClienteController clienteController;
+    private PedidoActivoManager pedidoActivoManager = new PedidoActivoManager();
 
     /**
      * Creates new form MainFrame
@@ -41,7 +43,7 @@ public class MainFrame extends javax.swing.JFrame {
         panelPedido = new PanelPedido();
         panelMesas = new PanelMesas();
         clienteController = new ClienteController();
-        
+
         CategoriaDAO categoriaDAO = new CategoriaDAO();
         CategoriaController categoriaController = new CategoriaController(categoriaDAO);
 
@@ -57,8 +59,6 @@ public class MainFrame extends javax.swing.JFrame {
         panelContenedor.add(new PanelMenu(), "menu");
         panelContenedor.add(panelMesas, "mesas");
         panelContenedor.add(panelProductos, "productos");
-
-        
 
         panelContenedor.add(
                 new PanelGestionarClientes(clienteController),
@@ -163,6 +163,14 @@ public class MainFrame extends javax.swing.JFrame {
 
     public PanelMesas getPanelMesas() {
         return panelMesas;
+    }
+
+    public PedidoActivoManager getPedidoActivoManager() {
+        return pedidoActivoManager;
+    }
+
+    public PanelProductos getPanelProductos() {
+        return panelProductos;
     }
 
     /**

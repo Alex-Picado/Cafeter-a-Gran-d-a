@@ -39,12 +39,7 @@ public class ProductoController {
         for (Producto p : productos) {
 
             PanelProducto tarjeta = new PanelProducto();
-
-            tarjeta.setNombre(p.getNombre());
-            tarjeta.setPrecio(p.getPrecio());
-            tarjeta.setStock(p.getStock());
-            tarjeta.setId(p.getId());
-            tarjeta.setImagen(p.getRutaImagen());
+            tarjeta.setProducto(p);
 
             listaPanel.add(tarjeta);
         }
@@ -81,12 +76,7 @@ public class ProductoController {
         for (Producto p : productos) {
 
             PanelProducto tarjeta = new PanelProducto();
-
-            tarjeta.setNombre(p.getNombre());
-            tarjeta.setPrecio(p.getPrecio());
-            tarjeta.setStock(p.getStock());
-            tarjeta.setId(p.getId());
-            tarjeta.setImagen(p.getRutaImagen());
+            tarjeta.setProducto(p);
 
             listaPanel.add(tarjeta);
         }

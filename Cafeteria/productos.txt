@@ -5,3 +5,4 @@
 2006|Smoothie de Fresa|3|1500.0|2|imgProductoBebidasFriasSmoothieFresas.jpg|false
 444|Eidan|2|1511.0|4|imgProductoBebidasFriasSmoothieMango.jpg|false
 123|asda|1|12.0|33|imgProductoCafeDefault.png|false
+2205|Capuccino|1|2000.0|5|imgProductoCafeCappuccino.png|true

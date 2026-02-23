@@ -434,16 +434,17 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         if (modoEdicion) {
 
             btnModificar.setText("Registrar");
+            btnRegistrar.setText("Modificar");
 
             btnBuscarParaModificar.setVisible(true);
             btnEliminarProducto.setVisible(true);
-
+            
             JOptionPane.showMessageDialog(this, "Modo edición activado");
 
         } else {
 
             btnModificar.setText("Modificar");
-
+            btnRegistrar.setText("Registrar");
             btnBuscarParaModificar.setVisible(false);
             btnEliminarProducto.setVisible(false);
             btnNumpad.setVisible(true);

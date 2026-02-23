@@ -21,6 +21,7 @@ import view.WrapLayout.WrapLayout;
 public class PanelProductos extends javax.swing.JPanel {
 
     private ProductoController controller;
+    private boolean modoSeleccion = false;
 
     /**
      * Creates new form PanelProductos
@@ -202,7 +203,12 @@ public class PanelProductos extends javax.swing.JPanel {
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        frame.mostrar("menu");
+
+        if (modoSeleccion) {
+            frame.mostrar("pedidos");
+        } else {
+            frame.mostrar("menu");
+        }
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void txtBarraBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBarraBusquedaActionPerformed
@@ -239,10 +245,13 @@ public class PanelProductos extends javax.swing.JPanel {
     public void refrescarLista(List<Producto> productos) {
         panelLista.removeAll();
 
-        for (Producto p : productos) {
-            PanelProducto tarjeta = new PanelProducto();
-            //tarjeta.cargarDatos(p);
+        System.out.println("DEBUG lista productos:");
 
+        for (Producto p : productos) {
+            System.out.println(" -> " + p);
+
+            PanelProducto tarjeta = new PanelProducto();
+            tarjeta.setProducto(p);
             panelLista.add(tarjeta);
         }
 
@@ -278,6 +287,11 @@ public class PanelProductos extends javax.swing.JPanel {
         var lista = controller.buscarPorCategoria(cat);
 
         controller.mostrarProductos(lista);
+    }
+
+    public void setModoSeleccion(boolean modo) {
+        this.modoSeleccion = modo;
+        btnAgregarProducto.setVisible(!modo);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
