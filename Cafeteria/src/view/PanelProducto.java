@@ -20,7 +20,7 @@ public class PanelProducto extends javax.swing.JPanel {
      */
     public PanelProducto() {
         initComponents();
-        setPreferredSize(new java.awt.Dimension(255, 300));
+        setPreferredSize(new java.awt.Dimension(240, 300));
 
         addMouseListener(new java.awt.event.MouseAdapter() {
             @Override

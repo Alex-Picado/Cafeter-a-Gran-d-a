@@ -10,6 +10,7 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
 import model.CategoriaProducto;
 import model.Producto;
 
@@ -30,8 +31,30 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
      */
     public PanelAgregarProducto() {
         initComponents();
-        btnBuscarParaModificar.setVisible(false);
         btnEliminarProducto.setVisible(false);
+
+        txtID.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            private void actualizar() {
+                if (!txtID.getText().trim().isEmpty()) {
+                    verificarProductoID();
+                }
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                actualizar();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                actualizar();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                actualizar();
+            }
+        });
     }
 
     public void setCategoriaController(CategoriaController c) {
@@ -70,8 +93,6 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         btnSubirImg = new javax.swing.JButton();
         btnRegresar = new javax.swing.JButton();
         btnGestionarCategorias = new javax.swing.JButton();
-        btnBuscarParaModificar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
         btnEliminarProducto = new javax.swing.JButton();
         lblImagenFondo = new javax.swing.JLabel();
 
@@ -79,9 +100,9 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
 
         panelFondoCentral.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblTextoAgregarProducto.setFont(new java.awt.Font("Segoe UI", 0, 42)); // NOI18N
+        lblTextoAgregarProducto.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         lblTextoAgregarProducto.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextoAgregarProducto.setText("Agregar Producto");
+        lblTextoAgregarProducto.setText("Agregar o Modificar Producto");
 
         lblTextoId.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         lblTextoId.setForeground(new java.awt.Color(0, 0, 0));
@@ -120,7 +141,6 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         boxCategoria.setBackground(new java.awt.Color(255, 255, 255));
         boxCategoria.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         boxCategoria.setForeground(new java.awt.Color(0, 0, 0));
-        boxCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblTextoPrecio.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         lblTextoPrecio.setForeground(new java.awt.Color(0, 0, 0));
@@ -173,7 +193,6 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         btnRegresar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRegresar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegresar.setText("Regresar");
-        btnRegresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -190,26 +209,8 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
             }
         });
 
-        btnBuscarParaModificar.setBackground(new java.awt.Color(153, 153, 255));
-        btnBuscarParaModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoBuscar.png"))); // NOI18N
-        btnBuscarParaModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarParaModificarActionPerformed(evt);
-            }
-        });
-
-        btnModificar.setBackground(new java.awt.Color(153, 153, 255));
-        btnModificar.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        btnModificar.setForeground(new java.awt.Color(255, 255, 255));
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-
         btnEliminarProducto.setBackground(new java.awt.Color(255, 102, 102));
-        btnEliminarProducto.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnEliminarProducto.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         btnEliminarProducto.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarProducto.setText("Eliminar producto");
         btnEliminarProducto.setPreferredSize(new java.awt.Dimension(207, 43));
@@ -232,12 +233,8 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
                     .addComponent(txtStock)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelFondoCentralLayout.createSequentialGroup()
-                        .addComponent(lblTextoAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnModificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblTextoAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                         .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelFondoCentralLayout.createSequentialGroup()
                         .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,13 +249,10 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
                             .addGroup(panelFondoCentralLayout.createSequentialGroup()
                                 .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnNumpad, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnBuscarParaModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelFondoCentralLayout.createSequentialGroup()
-                                .addComponent(lblTextoId)
-                                .addGap(108, 108, 108)))
-                        .addGap(0, 20, Short.MAX_VALUE)))
+                                .addComponent(btnNumpad, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblTextoId))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(btnEliminarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         panelFondoCentralLayout.setVerticalGroup(
@@ -270,13 +264,9 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
                         .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
                         .addComponent(lblTextoId))
-                    .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblTextoAgregarProducto)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnEliminarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblTextoAgregarProducto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnBuscarParaModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNumpad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtID))
                 .addGap(18, 18, 18)
@@ -299,9 +289,11 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
                 .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnSubirImg)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistrar)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnEliminarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         panelFondoTotal.add(panelFondoCentral, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 890, 760));
@@ -322,7 +314,7 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
-        // TODO add your handling code here:
+        verificarProductoID();
     }//GEN-LAST:event_txtIDActionPerformed
 
     private void btnNumpadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNumpadActionPerformed
@@ -404,56 +396,6 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         frame.mostrar("productos");
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-    private void btnBuscarParaModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarParaModificarActionPerformed
-        // TODO add your handling code here:
-        if (!modoEdicion){
-            return;
-        }
-        Producto p = controller.buscarProducto(txtID.getText());
-
-        if (p != null) {
-
-            productoActual = p;
-
-            txtNombre.setText(p.getNombre());
-            txtPrecio.setText(String.valueOf(p.getPrecio()));
-            txtStock.setText(String.valueOf(p.getStock()));
-            boxCategoria.setSelectedItem(p.getCategoria());
-
-            
-            btnNumpad.setVisible(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Producto no encontrado");
-        }
-    }//GEN-LAST:event_btnBuscarParaModificarActionPerformed
-
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
-        modoEdicion = !modoEdicion;
-
-        if (modoEdicion) {
-
-            btnModificar.setText("Registrar");
-            btnRegistrar.setText("Modificar");
-
-            btnBuscarParaModificar.setVisible(true);
-            btnEliminarProducto.setVisible(true);
-            
-            JOptionPane.showMessageDialog(this, "Modo edición activado");
-
-        } else {
-
-            btnModificar.setText("Modificar");
-            btnRegistrar.setText("Registrar");
-            btnBuscarParaModificar.setVisible(false);
-            btnEliminarProducto.setVisible(false);
-            btnNumpad.setVisible(true);
-            
-            JOptionPane.showMessageDialog(this, "Modo edición desactivado");
-
-        }
-    }//GEN-LAST:event_btnModificarActionPerformed
-
     private void btnSubirImgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirImgActionPerformed
         // TODO add your handling code here:
         JFileChooser chooser = new JFileChooser();
@@ -498,10 +440,10 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
 
         } else if (opcion == 1) {
 
-            String id = JOptionPane.showInputDialog(this, "ID categoría a desactivar:");
+            String nombre = JOptionPane.showInputDialog(this, "Nombre de categoría a desactivar:");
 
-            if (id != null) {
-                categoriaController.desactivarCategoria(id);
+            if (nombre != null) {
+                categoriaController.desactivarCategoria(nombre);
                 cargarCategorias();
             }
         }
@@ -532,12 +474,12 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
 
         if (confirm == JOptionPane.YES_OPTION) {
 
-            controller.desactivarProducto(id);
+            controller.borrarProducto(id);
 
             JOptionPane.showMessageDialog(this, "Producto eliminado");
 
             limpiarFormulario();
-            
+
             MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
             frame.mostrar("productos");
         }
@@ -574,12 +516,44 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         }
     }
 
+    private void verificarProductoID() {
+        String id = txtID.getText().trim();
+
+        if (id.isEmpty()) {
+            return;
+        }
+
+        Producto p = controller.buscarProducto(id);
+
+        if (p != null) {
+            productoActual = p;
+            modoEdicion = true;
+
+            txtNombre.setText(p.getNombre());
+            txtPrecio.setText(String.valueOf(p.getPrecio()));
+            txtStock.setText(String.valueOf(p.getStock()));
+            boxCategoria.setSelectedItem(p.getCategoria());
+
+            btnRegistrar.setText("Guardar cambios");
+            btnEliminarProducto.setVisible(true);
+
+        } else {
+            modoEdicion = false;
+
+            txtNombre.setText("");
+            txtPrecio.setText("");
+            txtStock.setText("");
+
+            btnRegistrar.setText("Registrar producto");
+            btnEliminarProducto.setVisible(false);
+
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<CategoriaProducto> boxCategoria;
-    private javax.swing.JButton btnBuscarParaModificar;
     private javax.swing.JButton btnEliminarProducto;
     private javax.swing.JButton btnGestionarCategorias;
-    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNumpad;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JButton btnRegresar;

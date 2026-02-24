@@ -158,12 +158,12 @@ public class ProductoDAO {
         return null;
     }
 
-    public void desactivarProducto(String id) {
+    public void borrarProducto(String id) {
 
         for (Producto p : productos) {
 
             if (p.getId().equals(id)) {
-                p.setActivo(false);
+                productos.remove(p);
                 break;
             }
         }

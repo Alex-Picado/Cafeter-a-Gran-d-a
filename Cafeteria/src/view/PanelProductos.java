@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.event.DocumentEvent;
 import model.CategoriaProducto;
 import model.Producto;
 import view.WrapLayout.WrapLayout;
@@ -30,6 +31,36 @@ public class PanelProductos extends javax.swing.JPanel {
         initComponents();
         panelLista.setLayout(new WrapLayout(java.awt.FlowLayout.LEFT, 15, 15));
         comboBoxFiltradoPorCategoria.addActionListener(e -> filtrarPorCategoria());
+
+        txtBarraBusqueda.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            private void actualizar() {
+
+                String texto = txtBarraBusqueda.getText().trim();
+
+                if (texto.isEmpty()) {
+                    MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(PanelProductos.this);
+                    frame.getProductoController().cargarProductosEnVista();
+                } else {
+                    buscarProducto();
+                }
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                actualizar();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                actualizar();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                actualizar();
+            }
+        });
+
     }
 
     public void setController(ProductoController controller) {
@@ -68,7 +99,6 @@ public class PanelProductos extends javax.swing.JPanel {
         txtBarraBusqueda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         txtBarraBusqueda.setForeground(new java.awt.Color(0, 0, 0));
         txtBarraBusqueda.setToolTipText("Buscar por ID...");
-        txtBarraBusqueda.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtBarraBusqueda.setMinimumSize(new java.awt.Dimension(54, 27));
         txtBarraBusqueda.setPreferredSize(new java.awt.Dimension(54, 27));
         txtBarraBusqueda.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -84,7 +114,7 @@ public class PanelProductos extends javax.swing.JPanel {
         panelBusqueda.add(txtBarraBusqueda, java.awt.BorderLayout.CENTER);
 
         btnBuscar.setBackground(new java.awt.Color(204, 255, 204));
-        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoBuscar.png"))); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoQuit.png"))); // NOI18N
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -95,7 +125,6 @@ public class PanelProductos extends javax.swing.JPanel {
         comboBoxFiltradoPorCategoria.setBackground(new java.awt.Color(255, 255, 255));
         comboBoxFiltradoPorCategoria.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         comboBoxFiltradoPorCategoria.setForeground(new java.awt.Color(0, 0, 0));
-        comboBoxFiltradoPorCategoria.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         ScrollLista.setBackground(new java.awt.Color(255, 255, 255));
         ScrollLista.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -175,28 +204,13 @@ public class PanelProductos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductoActionPerformed
-        // TODO add your handling code here:
+        txtBarraBusqueda.setText("");
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
         frame.getPanelAgregarProducto().limpiarFormulario();
         frame.mostrar("agregarProducto");
     }//GEN-LAST:event_btnAgregarProductoActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
-        if (controller == null) {
-            JOptionPane.showMessageDialog(this, "Sistema no inicializado");
-            return;
-        }
-        String id = txtBarraBusqueda.getText().trim();
-
-        MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
-
-        ProductoController controller = frame.getProductoController();
-
-        List<Producto> resultado = controller.buscarPorIdExacto(id);
-
-        controller.mostrarProductos(resultado);
-
         txtBarraBusqueda.setText("");
     }//GEN-LAST:event_btnBuscarActionPerformed
 
@@ -218,7 +232,7 @@ public class PanelProductos extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBarraBusquedaActionPerformed
 
     private void txtBarraBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtBarraBusquedaMouseClicked
-        // TODO add your handling code here:
+
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
 
         PanelPadNumerico pad = frame.getPanelPadNumerico();
@@ -298,6 +312,18 @@ public class PanelProductos extends javax.swing.JPanel {
 
     public boolean isModoSeleccion() {
         return modoSeleccion;
+    }
+
+    public void buscarProducto() {
+        String id = txtBarraBusqueda.getText().trim();
+
+        MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
+
+        ProductoController controller = frame.getProductoController();
+
+        List<Producto> resultado = controller.buscarPorIdExacto(id);
+
+        controller.mostrarProductos(resultado);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
