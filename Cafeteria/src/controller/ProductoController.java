@@ -131,8 +131,8 @@ public class ProductoController {
         return productoDAO.buscarPorId(id);
     }
 
-    public void desactivarProducto(String id) {
-        productoDAO.desactivarProducto(id);
+    public void borrarProducto(String id) {
+        productoDAO.borrarProducto(id);
         cargarProductosEnVista();
     }
 

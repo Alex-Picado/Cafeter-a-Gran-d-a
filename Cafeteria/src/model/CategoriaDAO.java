@@ -70,9 +70,9 @@ public class CategoriaDAO {
         guardarEnArchivo();
     }
 
-    public void desactivarCategoria(String id) {
+    public void desactivarCategoria(String nombre) {
         for (CategoriaProducto c : categorias) {
-            if (c.getId().equals(id)) {
+            if (c.getNombre().equals(nombre)) {
                 c.setActiva(false);
                 break;
             }
