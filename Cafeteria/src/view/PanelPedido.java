@@ -51,7 +51,6 @@ public class PanelPedido extends javax.swing.JPanel {
         btnVolver = new javax.swing.JButton();
         panelBotones = new javax.swing.JPanel();
         btnVerFactura = new javax.swing.JButton();
-        btnGuardarPedido = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnDividir = new javax.swing.JButton();
         lblTextoTotal = new javax.swing.JLabel();
@@ -218,16 +217,6 @@ public class PanelPedido extends javax.swing.JPanel {
         btnVerFactura.setForeground(new java.awt.Color(255, 255, 255));
         btnVerFactura.setText("Ver factura");
 
-        btnGuardarPedido.setBackground(new java.awt.Color(245, 159, 10));
-        btnGuardarPedido.setFont(new java.awt.Font("Segoe UI", 0, 46)); // NOI18N
-        btnGuardarPedido.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardarPedido.setText("Guardar");
-        btnGuardarPedido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarPedidoActionPerformed(evt);
-            }
-        });
-
         btnCancelar.setBackground(new java.awt.Color(240, 67, 67));
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 46)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
@@ -238,7 +227,7 @@ public class PanelPedido extends javax.swing.JPanel {
             }
         });
 
-        btnDividir.setBackground(new java.awt.Color(236, 68, 239));
+        btnDividir.setBackground(new java.awt.Color(255, 153, 51));
         btnDividir.setFont(new java.awt.Font("Segoe UI", 0, 46)); // NOI18N
         btnDividir.setForeground(new java.awt.Color(255, 255, 255));
         btnDividir.setText("Dividir");
@@ -262,15 +251,13 @@ public class PanelPedido extends javax.swing.JPanel {
                         .addComponent(btnVerFactura)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnDividir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(24, 24, 24)
-                        .addComponent(btnGuardarPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar))
                     .addGroup(panelBotonesLayout.createSequentialGroup()
                         .addGap(655, 655, 655)
                         .addComponent(lblTextoTotal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lblTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelBotonesLayout.setVerticalGroup(
@@ -284,7 +271,6 @@ public class PanelPedido extends javax.swing.JPanel {
                 .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVerFactura)
                     .addComponent(btnDividir)
-                    .addComponent(btnGuardarPedido)
                     .addComponent(btnCancelar))
                 .addContainerGap())
         );
@@ -300,7 +286,7 @@ public class PanelPedido extends javax.swing.JPanel {
                     .addComponent(panelInfoPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(scrollListaProductos)
                     .addComponent(panelBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         panelPedidoFondoLayout.setVerticalGroup(
             panelPedidoFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,21 +333,16 @@ public class PanelPedido extends javax.swing.JPanel {
 
             var manager = frame.getPedidoActivoManager();
 
-            // 👇 borrar pedido persistido
+            //Borrar pedido persistido
             manager.eliminar(mesaActual);
             manager.guardarSnapshot();
 
-            // 👇 actualizar estado visual
+            //Actualizar estado visual
             frame.getPanelMesas().liberarMesa(mesaActual);
 
             frame.mostrar("mesas");
         }
     }//GEN-LAST:event_btnLiberarMesaActionPerformed
-
-    private void btnGuardarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPedidoActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btnGuardarPedidoActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
@@ -398,7 +379,7 @@ public class PanelPedido extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAgregarProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarProductosActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here
         MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
 
         var panelProductos = frame.getPanelProductos();
@@ -411,12 +392,16 @@ public class PanelPedido extends javax.swing.JPanel {
 
     public void setMesa(String mesa) {
         this.mesaActual = mesa;
+        if (mesa.toLowerCase().contains("llevar")) {
+            btnLiberarMesa.setVisible(false);
+        } else {
+            btnLiberarMesa.setVisible(true);
+        }
 
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
 
         var manager = frame.getPedidoActivoManager();
         var pedido = manager.obtenerOcrear(mesa);
-        //pedido.getItems().clear();
 
         lblTituloPedido.setText("Pedido - " + mesa);
         lblUbicacion.setText(mesa);
@@ -424,39 +409,43 @@ public class PanelPedido extends javax.swing.JPanel {
         cargarItemsDesdePedido(pedido);
     }
 
-private void cargarItemsDesdePedido(model.Pedido pedido) {
+    private void cargarItemsDesdePedido(model.Pedido pedido) {
 
-    panelListaProductos.removeAll();
+        panelListaProductos.removeAll();
 
-    MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
 
-    if (pedido.getItems().isEmpty()) {
+        if (pedido.getItems().isEmpty()) {
 
-        panelListaProductos.add(lblAvisoSinProductosEnPedido);
+            panelListaProductos.add(lblAvisoSinProductosEnPedido);
 
-    } else {
+        } else {
 
-        for (var item : pedido.getItems()) {
+            for (var item : pedido.getItems()) {
 
-            PanelItemPedido panelItem = new PanelItemPedido();
+                PanelItemPedido panelItem = new PanelItemPedido();
 
-            panelItem.setDetalle(item, eliminar -> {
+                panelItem.setDetalle(item, eliminar -> {
 
-                if (eliminar) {
-                    pedido.getItems().removeIf(i -> i.getCantidad() <= 0);
-                    cargarItemsDesdePedido(pedido);
-                }
+                    if (eliminar) {
+                        pedido.getItems().removeIf(i -> i.getCantidad() <= 0);
+                        cargarItemsDesdePedido(pedido);
+                        return;
+                    }
 
-                frame.getPedidoActivoManager().guardarSnapshot();
-            });
+                    actualizarTotal(pedido);
 
-            panelListaProductos.add(panelItem);
+                    frame.getPedidoActivoManager().guardarSnapshot();
+                });
+
+                panelListaProductos.add(panelItem);
+            }
         }
-    }
 
-    panelListaProductos.revalidate();
-    panelListaProductos.repaint();
-}
+        panelListaProductos.revalidate();
+        panelListaProductos.repaint();
+        actualizarTotal(pedido);
+    }
 
     public void agregarProducto(model.Producto producto) {
 
@@ -521,11 +510,21 @@ private void cargarItemsDesdePedido(model.Pedido pedido) {
         cargarItemsDesdePedido(pedido);
     }
 
+    private void actualizarTotal(model.Pedido pedido) {
+
+        double total = 0;
+
+        for (var item : pedido.getItems()) {
+            total += item.getProducto().getPrecio() * item.getCantidad();
+        }
+
+        lblTotal.setText("₡" + String.format("%,.0f", total));
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarProductos;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnDividir;
-    private javax.swing.JButton btnGuardarPedido;
     private javax.swing.JButton btnLiberarMesa;
     private javax.swing.JButton btnVerFactura;
     private javax.swing.JButton btnVolver;

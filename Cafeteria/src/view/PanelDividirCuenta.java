@@ -29,8 +29,6 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
         panelFondoTotal = new javax.swing.JPanel();
         panelHeader = new javax.swing.JPanel();
         lblTituloDivision = new javax.swing.JLabel();
-        lblTextoPedido = new javax.swing.JLabel();
-        lblNumeroPedido = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
         panelConfigurarBotones = new javax.swing.JPanel();
         btnMenos = new javax.swing.JButton();
@@ -66,16 +64,6 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
         lblTituloDivision.setForeground(new java.awt.Color(255, 255, 255));
         lblTituloDivision.setText("Dividir cuenta - Mesa 2");
 
-        lblTextoPedido.setBackground(new java.awt.Color(255, 255, 255));
-        lblTextoPedido.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        lblTextoPedido.setForeground(new java.awt.Color(255, 255, 255));
-        lblTextoPedido.setText("Pedido:");
-
-        lblNumeroPedido.setBackground(new java.awt.Color(102, 102, 102));
-        lblNumeroPedido.setFont(new java.awt.Font("Segoe UI Emoji", 0, 18)); // NOI18N
-        lblNumeroPedido.setForeground(new java.awt.Color(255, 255, 255));
-        lblNumeroPedido.setText("#00014");
-
         btnVolver.setBackground(new java.awt.Color(107, 114, 128));
         btnVolver.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(255, 255, 255));
@@ -98,7 +86,7 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
 
         lblNumeroDePersonasADividir.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblNumeroDePersonasADividir.setForeground(new java.awt.Color(255, 255, 255));
-        lblNumeroDePersonasADividir.setText("1");
+        lblNumeroDePersonasADividir.setText("2");
 
         javax.swing.GroupLayout panelConfigurarBotonesLayout = new javax.swing.GroupLayout(panelConfigurarBotones);
         panelConfigurarBotones.setLayout(panelConfigurarBotonesLayout);
@@ -118,7 +106,7 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelConfigurarBotonesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelConfigurarBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnMas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMas, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
                     .addComponent(btnMenos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblNumeroDePersonasADividir))
                 .addContainerGap())
@@ -133,14 +121,9 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
         panelHeaderLayout.setHorizontalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHeaderLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelHeaderLayout.createSequentialGroup()
-                        .addComponent(lblTextoPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblNumeroPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(lblTituloDivision))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
+                .addComponent(lblTituloDivision)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(lblTextoPersonas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelConfigurarBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -151,14 +134,6 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
         panelHeaderLayout.setVerticalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHeaderLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblTituloDivision)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTextoPedido)
-                    .addComponent(lblNumeroPedido))
-                .addGap(16, 16, 16))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHeaderLayout.createSequentialGroup()
                 .addComponent(panelConfigurarBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(panelHeaderLayout.createSequentialGroup()
@@ -168,7 +143,9 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
                         .addComponent(btnVolver))
                     .addGroup(panelHeaderLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(lblTextoPersonas)))
+                        .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTextoPersonas)
+                            .addComponent(lblTituloDivision))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -217,10 +194,9 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
             panelFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFooterLayout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addGroup(panelFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(panelFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnCancelar)
-                        .addComponent(btnConfirmar))
+                .addGroup(panelFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
@@ -331,7 +307,7 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
             panelFondoDistribucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoDistribucionLayout.createSequentialGroup()
                 .addGroup(panelFondoDistribucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneDistribucionDeProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 581, Short.MAX_VALUE)
+                    .addComponent(scrollPaneDistribucionDeProductos)
                     .addGroup(panelFondoDistribucionLayout.createSequentialGroup()
                         .addComponent(scrollPaneCuentasSeparadas, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -368,8 +344,6 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblFondoImagen;
     private javax.swing.JLabel lblNumeroDePersonasADividir;
-    private javax.swing.JLabel lblNumeroPedido;
-    private javax.swing.JLabel lblTextoPedido;
     private javax.swing.JLabel lblTextoPendienteAsignar;
     private javax.swing.JLabel lblTextoPersonas;
     private javax.swing.JLabel lblTextoResumenGeneral;
