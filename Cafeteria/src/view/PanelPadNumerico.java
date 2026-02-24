@@ -41,9 +41,6 @@ public class PanelPadNumerico extends javax.swing.JPanel {
     private void initComponents() {
 
         panelFondoTotal = new javax.swing.JPanel();
-        panelEntradaDigitar = new javax.swing.JPanel();
-        btnIr = new javax.swing.JButton();
-        entradaCodigoDigitado = new javax.swing.JTextField();
         LabelRegresar = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         panelFondoPadNumerico = new javax.swing.JPanel();
@@ -58,52 +55,11 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         btnNumero9 = new javax.swing.JButton();
         btnNumero0 = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        btnIr = new javax.swing.JButton();
+        entradaCodigoDigitado = new javax.swing.JTextField();
         labelFondoImagen = new javax.swing.JLabel();
 
         panelFondoTotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        panelEntradaDigitar.setBackground(new java.awt.Color(255, 255, 255));
-        panelEntradaDigitar.setForeground(new java.awt.Color(0, 0, 0));
-
-        btnIr.setBackground(new java.awt.Color(102, 255, 102));
-        btnIr.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        btnIr.setForeground(new java.awt.Color(0, 0, 0));
-        btnIr.setText("Ir");
-        btnIr.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        btnIr.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIrActionPerformed(evt);
-            }
-        });
-
-        entradaCodigoDigitado.setBackground(new java.awt.Color(255, 255, 255));
-        entradaCodigoDigitado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        entradaCodigoDigitado.setForeground(new java.awt.Color(0, 0, 0));
-        entradaCodigoDigitado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                entradaCodigoDigitadoActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelEntradaDigitarLayout = new javax.swing.GroupLayout(panelEntradaDigitar);
-        panelEntradaDigitar.setLayout(panelEntradaDigitarLayout);
-        panelEntradaDigitarLayout.setHorizontalGroup(
-            panelEntradaDigitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEntradaDigitarLayout.createSequentialGroup()
-                .addComponent(entradaCodigoDigitado, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnIr, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        panelEntradaDigitarLayout.setVerticalGroup(
-            panelEntradaDigitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEntradaDigitarLayout.createSequentialGroup()
-                .addGroup(panelEntradaDigitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnIr, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                    .addComponent(entradaCodigoDigitado))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        panelFondoTotal.add(panelEntradaDigitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 62, 837, 73));
 
         LabelRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoRegresar.png"))); // NOI18N
         panelFondoTotal.add(LabelRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 16, -1, -1));
@@ -129,7 +85,6 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         btnNumero1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero1.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero1.setText("1");
-        btnNumero1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero1ActionPerformed(evt);
@@ -140,7 +95,6 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         btnNumero2.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero2.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero2.setText("2");
-        btnNumero2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero2ActionPerformed(evt);
@@ -151,7 +105,6 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         btnNumero3.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero3.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero3.setText("3");
-        btnNumero3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero3ActionPerformed(evt);
@@ -162,7 +115,6 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         btnNumero4.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero4.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero4.setText("4");
-        btnNumero4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero4ActionPerformed(evt);
@@ -173,7 +125,6 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         btnNumero5.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero5.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero5.setText("5");
-        btnNumero5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero5ActionPerformed(evt);
@@ -184,7 +135,6 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         btnNumero6.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero6.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero6.setText("6");
-        btnNumero6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero6ActionPerformed(evt);
@@ -195,7 +145,6 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         btnNumero7.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero7.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero7.setText("7");
-        btnNumero7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero7ActionPerformed(evt);
@@ -206,7 +155,6 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         btnNumero8.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero8.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero8.setText("8");
-        btnNumero8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero8ActionPerformed(evt);
@@ -217,7 +165,6 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         btnNumero9.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero9.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero9.setText("9");
-        btnNumero9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero9ActionPerformed(evt);
@@ -228,7 +175,6 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         btnNumero0.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero0.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero0.setText("0");
-        btnNumero0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero0ActionPerformed(evt);
@@ -239,7 +185,6 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         btnClear.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnClear.setForeground(new java.awt.Color(255, 255, 255));
         btnClear.setText("C");
-        btnClear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
@@ -298,6 +243,27 @@ public class PanelPadNumerico extends javax.swing.JPanel {
         );
 
         panelFondoTotal.add(panelFondoPadNumerico, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 143, 837, 587));
+
+        btnIr.setBackground(new java.awt.Color(102, 255, 102));
+        btnIr.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnIr.setForeground(new java.awt.Color(0, 0, 0));
+        btnIr.setText("Ir");
+        btnIr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIrActionPerformed(evt);
+            }
+        });
+        panelFondoTotal.add(btnIr, new org.netbeans.lib.awtextra.AbsoluteConstraints(824, 60, 108, 73));
+
+        entradaCodigoDigitado.setBackground(new java.awt.Color(255, 255, 255));
+        entradaCodigoDigitado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        entradaCodigoDigitado.setForeground(new java.awt.Color(0, 0, 0));
+        entradaCodigoDigitado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entradaCodigoDigitadoActionPerformed(evt);
+            }
+        });
+        panelFondoTotal.add(entradaCodigoDigitado, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 60, 723, 73));
 
         labelFondoImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
         panelFondoTotal.add(labelFondoImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -436,7 +402,6 @@ public class PanelPadNumerico extends javax.swing.JPanel {
     private javax.swing.JButton btnRegresar;
     private javax.swing.JTextField entradaCodigoDigitado;
     private javax.swing.JLabel labelFondoImagen;
-    private javax.swing.JPanel panelEntradaDigitar;
     private javax.swing.JPanel panelFondoPadNumerico;
     private javax.swing.JPanel panelFondoTotal;
     // End of variables declaration//GEN-END:variables

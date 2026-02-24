@@ -7,4 +7,5 @@
 123|asda|1|12.0|33|imgProductoCafeDefault.png|false
 2205|Capuccino|1|2000.0|5|imgProductoCafeCappuccino.png|true
 55|fcf|1|2000.0|5|imgProductoCafeMocha.png|false
-2007|Darling|4|600.0|1|imgProductoCafeExpreso.jpg|true
+2007|Darling||600.0|1|imgProductoCafeExpreso.jpg|true
+1212|Queque|2|1500.0|12|imgProductoReposteriaDefault.png|true

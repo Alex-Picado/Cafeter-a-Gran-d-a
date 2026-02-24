@@ -25,8 +25,8 @@ public class CategoriaController {
         categoriaDAO.agregarCategoria(nombre);
     }
 
-    public void desactivarCategoria(String id) {
-        categoriaDAO.desactivarCategoria(id);
+    public void desactivarCategoria(String nombre) {
+        categoriaDAO.desactivarCategoria(nombre);
     }
 }
 
