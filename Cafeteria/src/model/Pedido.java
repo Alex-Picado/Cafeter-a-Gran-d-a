@@ -4,6 +4,8 @@
  */
 package model;
 
+import controller.PedidoActivoManager;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +18,22 @@ import java.util.List;
 public class Pedido {
 
     private List<DetallePedido> items = new ArrayList<>();
+    private int numeroPedido = 0;
+    private LocalDateTime fechaCreacion;
+
+    public Pedido() {
+    }
 
     public List<DetallePedido> getItems() {
         return items;
+    }
+
+    public int getNumeroPedido() {
+        return numeroPedido;
+    }
+
+    public LocalDateTime getFechaCreacion() {
+        return fechaCreacion;
     }
 
     public void agregarProducto(Producto producto) {
@@ -32,4 +47,20 @@ public class Pedido {
 
         items.add(new DetallePedido(producto, 1));
     }
+
+    public void inicializarSiEsNuevo(PedidoActivoManager manager) {
+
+        if (numeroPedido == 0) {
+            numeroPedido = manager.generarNumeroDisponible();
+            fechaCreacion = LocalDateTime.now();
+        }
+    }
+
+    public void resetearSiVacio() {
+        if (items.isEmpty()) {
+            numeroPedido = 0;
+            fechaCreacion = null;
+        }
+    }
+
 }

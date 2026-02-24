@@ -11,6 +11,7 @@ import controller.ProductoController;
 import controller.RecuperacionController;
 import java.awt.CardLayout;
 import model.CategoriaDAO;
+import model.Factura;
 import model.FacturaDAO;
 import model.PedidoActivoSnapshot;
 import model.ProductoDAO;
@@ -39,6 +40,11 @@ public class MainFrame extends javax.swing.JFrame {
     private PanelGestionarClientes panelGestionarClientes;
     private PanelSeleccionPago panelSeleccionPago;
     private String metodoPagoSeleccionado;
+    private model.Factura facturaEnProceso;
+    private PanelMostrarFacturaYaCreada panelMostrarFacturaYaCreada;
+    private PanelHistorialVentas panelHistorialVentas;
+    private PanelPadMontoAPagar panelPadMontoAPagar;
+    private PanelVentasMesasYGlobales panelVentasMesasYGlobales;
 
     /**
      * Creates new form MainFrame
@@ -57,6 +63,10 @@ public class MainFrame extends javax.swing.JFrame {
         panelFactura = new PanelFactura();
         panelGestionarClientes = new PanelGestionarClientes(clienteController);
         panelSeleccionPago = new PanelSeleccionPago();
+        panelMostrarFacturaYaCreada = new PanelMostrarFacturaYaCreada();
+        panelHistorialVentas = new PanelHistorialVentas();
+        panelPadMontoAPagar = new PanelPadMontoAPagar();
+        panelVentasMesasYGlobales = new PanelVentasMesasYGlobales();
 
         PedidoActivoSnapshot snap = new PedidoActivoSnapshot();
         RecuperacionController rec
@@ -96,8 +106,12 @@ public class MainFrame extends javax.swing.JFrame {
         panelContenedor.add(new PanelHistorialVentas(), "historial");
         panelContenedor.add(panelPadNumerico, "padNumerico");
         panelContenedor.add(panelFactura, "factura");
+        panelContenedor.add(panelPadMontoAPagar, "padMonto");
         panelContenedor.add(panelSeleccionPago, "seleccionPago");
-
+        panelContenedor.add(panelMostrarFacturaYaCreada, "mostrarFactura");
+        panelContenedor.add(panelHistorialVentas, "historial");
+        panelContenedor.add(panelPadMontoAPagar, "padMonto");
+        panelContenedor.add(panelVentasMesasYGlobales, "ventasMesas");
         productoController.cargarProductosEnVista();
     }
 
@@ -188,7 +202,18 @@ public class MainFrame extends javax.swing.JFrame {
         return facturaService;
     }
 
+    public PanelVentasMesasYGlobales getPanelVentasMesasYGlobales() {
+        return panelVentasMesasYGlobales;
+    }
+
     public void mostrar(String nombre) {
+
+        if ("historial".equals(nombre)) {
+
+            var facturas = facturaDAO.obtenerTodas();
+            panelHistorialVentas.cargarHistorial(facturas);
+        }
+
         cardLayout.show(panelContenedor, nombre);
     }
 
@@ -235,6 +260,33 @@ public class MainFrame extends javax.swing.JFrame {
 
     public PanelGestionarClientes getPanelGestionarClientes() {
         return panelGestionarClientes;
+    }
+
+    public void setFacturaEnProceso(model.Factura f) {
+        this.facturaEnProceso = f;
+    }
+
+    public model.Factura getFacturaEnProceso() {
+        return facturaEnProceso;
+    }
+
+    public void abrirFacturaDesdeHistorial(Factura factura) {
+
+        panelMostrarFacturaYaCreada.setFactura(factura);
+        mostrar("mostrarFactura");
+    }
+
+    public void abrirHistorial() {
+
+        var facturas = facturaDAO.obtenerTodas();
+
+        panelHistorialVentas.cargarHistorial(facturas);
+
+        mostrar("historial");
+    }
+
+    public PanelHistorialVentas getPanelHistorialVentas() {
+        return panelHistorialVentas;
     }
 
     /**

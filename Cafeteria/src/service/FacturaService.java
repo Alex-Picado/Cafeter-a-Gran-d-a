@@ -3,12 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package service;
-import model.*;
+
+import model.DetalleFactura;
+import model.DetallePedido;
+import model.Factura;
+import model.FacturaNumeroGenerator;
+import model.Pedido;
+import model.Producto;
+
 /**
  *
  * @author eidan
  */
 public class FacturaService {
+
     public Factura crearDesdePedido(Pedido pedido, String mesa) {
 
         String numeroFactura = generarNumeroFactura();
@@ -33,6 +41,6 @@ public class FacturaService {
     }
 
     private String generarNumeroFactura() {
-        return "F-" + System.currentTimeMillis();
+        return "F-" + FacturaNumeroGenerator.siguienteNumero();
     }
 }

@@ -4,17 +4,39 @@
  */
 package view;
 
+import java.util.List;
+import model.Factura;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author OniRuls
  */
 public class PanelHistorialVentas extends javax.swing.JPanel {
 
+    private List<Factura> facturasCargadas;
+
     /**
      * Creates new form HistorialVentas
      */
     public PanelHistorialVentas() {
         initComponents();
+        historialVentasTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+
+                int fila = historialVentasTable.getSelectedRow();
+                int columna = historialVentasTable.getSelectedColumn();
+
+                if (columna == 8 && fila >= 0) { // columna Acciones
+
+                    Factura factura = facturasCargadas.get(fila);
+
+                    MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(PanelHistorialVentas.this);
+
+                    frame.abrirFacturaDesdeHistorial(factura);
+                }
+            }
+        });
     }
 
     /**
@@ -33,6 +55,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         btnRegresarPanelHistorialVentas = new javax.swing.JButton();
         scrollPaneHistorialVentas = new javax.swing.JScrollPane();
         historialVentasTable = new javax.swing.JTable();
+        textFieldFacturaABuscarPorCoincidencia = new javax.swing.JTextField();
         fondoOpacoForHistorialVentasPanel = new javax.swing.JLabel();
 
         jScrollPane1.setViewportView(jTree1);
@@ -42,7 +65,9 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         panelHistorialVentasAzul.setBackground(new java.awt.Color(31, 42, 56));
         panelHistorialVentasAzul.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Historial De Ventas");
 
         btnRegresarPanelHistorialVentas.setBackground(new java.awt.Color(255, 255, 255));
@@ -60,9 +85,9 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         panelHistorialVentasAzulLayout.setHorizontalGroup(
             panelHistorialVentasAzulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHistorialVentasAzulLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 699, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 599, Short.MAX_VALUE)
                 .addComponent(btnRegresarPanelHistorialVentas)
                 .addGap(17, 17, 17))
         );
@@ -70,7 +95,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
             panelHistorialVentasAzulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHistorialVentasAzulLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelHistorialVentasAzulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelHistorialVentasAzulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegresarPanelHistorialVentas)
                     .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -81,20 +106,23 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         historialVentasTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         historialVentasTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Factura", "Fecha", "Ubicación", "Total", "Método Pago", "Acciones"
+                "Factura", "Fecha", "Ubicación", "Total", "Método Pago", "Recibido", "Vuelto", "Cedula", "Acciones"
             }
         ));
         scrollPaneHistorialVentas.setViewportView(historialVentasTable);
 
         add(scrollPaneHistorialVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 1000, 500));
+
+        textFieldFacturaABuscarPorCoincidencia.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        add(textFieldFacturaABuscarPorCoincidencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 930, 50));
 
         fondoOpacoForHistorialVentasPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
         add(fondoOpacoForHistorialVentasPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -103,9 +131,30 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
     private void btnRegresarPanelHistorialVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPanelHistorialVentasActionPerformed
         // TODO add your handling code here:
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        frame.mostrar("reportes");
+        frame.abrirHistorial();
     }//GEN-LAST:event_btnRegresarPanelHistorialVentasActionPerformed
 
+    public void cargarHistorial(List<Factura> facturas) {
+
+        this.facturasCargadas = facturas;
+        DefaultTableModel model = (DefaultTableModel) historialVentasTable.getModel();
+        model.setRowCount(0);
+
+        for (Factura f : facturas) {
+
+            model.addRow(new Object[]{
+                f.getNumeroFactura(),
+                f.getFechaHora(),
+                f.getMesa(),
+                "₡" + f.getTotal(),
+                f.getMetodoPago(),
+                "₡" + f.getMontoRecibido(),
+                "₡" + f.getVuelto(),
+                f.getCedulaCliente(),
+                "Ver"
+            });
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegresarPanelHistorialVentas;
@@ -116,5 +165,6 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
     private javax.swing.JTree jTree1;
     private javax.swing.JPanel panelHistorialVentasAzul;
     private javax.swing.JScrollPane scrollPaneHistorialVentas;
+    private javax.swing.JTextField textFieldFacturaABuscarPorCoincidencia;
     // End of variables declaration//GEN-END:variables
 }
