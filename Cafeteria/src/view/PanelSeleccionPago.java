@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author OniRuls
@@ -29,13 +31,10 @@ public class PanelSeleccionPago extends javax.swing.JPanel {
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
         panelBlancoSeleccionPago = new javax.swing.JPanel();
         panelEfectivoPago = new javax.swing.JPanel();
-        iconoDinero = new javax.swing.JLabel();
         btnEfectivo = new javax.swing.JButton();
         panelTarjetaPago = new javax.swing.JPanel();
-        iconoTarjeta = new javax.swing.JLabel();
         btnTarjeta = new javax.swing.JButton();
         panelSinpeMovilPago = new javax.swing.JPanel();
-        iconoSinpeMovil = new javax.swing.JLabel();
         btnSinpeMovil = new javax.swing.JButton();
         btnRegresarSeleccionPago = new javax.swing.JButton();
         imgFondoOpacoSeleccionPago = new javax.swing.JLabel();
@@ -50,97 +49,103 @@ public class PanelSeleccionPago extends javax.swing.JPanel {
         panelEfectivoPago.setBackground(new java.awt.Color(204, 255, 204));
         panelEfectivoPago.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        iconoDinero.setForeground(new java.awt.Color(0, 0, 0));
-        iconoDinero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/IconMoneyBag.png"))); // NOI18N
-
         btnEfectivo.setBackground(new java.awt.Color(255, 255, 255));
-        btnEfectivo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnEfectivo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnEfectivo.setForeground(new java.awt.Color(0, 0, 0));
+        btnEfectivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/IconMoneyBag.png"))); // NOI18N
         btnEfectivo.setText("Efectivo");
+        btnEfectivo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEfectivo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        btnEfectivo.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEfectivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEfectivoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelEfectivoPagoLayout = new javax.swing.GroupLayout(panelEfectivoPago);
         panelEfectivoPago.setLayout(panelEfectivoPagoLayout);
         panelEfectivoPagoLayout.setHorizontalGroup(
             panelEfectivoPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEfectivoPagoLayout.createSequentialGroup()
-                .addGap(102, 102, 102)
-                .addGroup(panelEfectivoPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(iconoDinero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEfectivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         panelEfectivoPagoLayout.setVerticalGroup(
             panelEfectivoPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelEfectivoPagoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(iconoDinero)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEfectivoPagoLayout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(btnEfectivo, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
 
         panelTarjetaPago.setBackground(new java.awt.Color(204, 255, 204));
         panelTarjetaPago.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        iconoTarjeta.setForeground(new java.awt.Color(0, 0, 0));
-        iconoTarjeta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCard.png"))); // NOI18N
+        panelTarjetaPago.setPreferredSize(new java.awt.Dimension(326, 237));
 
         btnTarjeta.setBackground(new java.awt.Color(255, 255, 255));
-        btnTarjeta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnTarjeta.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnTarjeta.setForeground(new java.awt.Color(0, 0, 0));
+        btnTarjeta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconCard.png"))); // NOI18N
         btnTarjeta.setText("Tarjeta");
+        btnTarjeta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnTarjeta.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnTarjeta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTarjetaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelTarjetaPagoLayout = new javax.swing.GroupLayout(panelTarjetaPago);
         panelTarjetaPago.setLayout(panelTarjetaPagoLayout);
         panelTarjetaPagoLayout.setHorizontalGroup(
             panelTarjetaPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTarjetaPagoLayout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
-                .addGroup(panelTarjetaPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(btnTarjeta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(iconoTarjeta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(111, 111, 111))
+            .addGroup(panelTarjetaPagoLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(btnTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         panelTarjetaPagoLayout.setVerticalGroup(
             panelTarjetaPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelTarjetaPagoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(iconoTarjeta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTarjetaPagoLayout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(btnTarjeta, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
 
         panelSinpeMovilPago.setBackground(new java.awt.Color(204, 255, 204));
         panelSinpeMovilPago.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        iconoSinpeMovil.setForeground(new java.awt.Color(0, 0, 0));
-        iconoSinpeMovil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconSinpeMovil.png"))); // NOI18N
+        panelSinpeMovilPago.setPreferredSize(new java.awt.Dimension(326, 237));
 
         btnSinpeMovil.setBackground(new java.awt.Color(255, 255, 255));
-        btnSinpeMovil.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnSinpeMovil.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnSinpeMovil.setForeground(new java.awt.Color(0, 0, 0));
+        btnSinpeMovil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconSinpeMovil.png"))); // NOI18N
         btnSinpeMovil.setText("Sinpe Móvil");
+        btnSinpeMovil.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnSinpeMovil.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnSinpeMovil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSinpeMovilActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelSinpeMovilPagoLayout = new javax.swing.GroupLayout(panelSinpeMovilPago);
         panelSinpeMovilPago.setLayout(panelSinpeMovilPagoLayout);
         panelSinpeMovilPagoLayout.setHorizontalGroup(
             panelSinpeMovilPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelSinpeMovilPagoLayout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addGroup(panelSinpeMovilPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(iconoSinpeMovil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnSinpeMovil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addComponent(btnSinpeMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         panelSinpeMovilPagoLayout.setVerticalGroup(
             panelSinpeMovilPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelSinpeMovilPagoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(iconoSinpeMovil)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnSinpeMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelSinpeMovilPagoLayout.createSequentialGroup()
+                .addContainerGap(43, Short.MAX_VALUE)
+                .addComponent(btnSinpeMovil, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout panelBlancoSeleccionPagoLayout = new javax.swing.GroupLayout(panelBlancoSeleccionPago);
@@ -150,25 +155,25 @@ public class PanelSeleccionPago extends javax.swing.JPanel {
             .addGroup(panelBlancoSeleccionPagoLayout.createSequentialGroup()
                 .addGroup(panelBlancoSeleccionPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelBlancoSeleccionPagoLayout.createSequentialGroup()
+                        .addGap(324, 324, 324)
+                        .addComponent(panelSinpeMovilPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelBlancoSeleccionPagoLayout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(panelEfectivoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(152, 152, 152)
-                        .addComponent(panelTarjetaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelBlancoSeleccionPagoLayout.createSequentialGroup()
-                        .addGap(324, 324, 324)
-                        .addComponent(panelSinpeMovilPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(95, 95, 95))
+                        .addGap(103, 103, 103)
+                        .addComponent(panelTarjetaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
         panelBlancoSeleccionPagoLayout.setVerticalGroup(
             panelBlancoSeleccionPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBlancoSeleccionPagoLayout.createSequentialGroup()
                 .addGap(85, 85, 85)
-                .addGroup(panelBlancoSeleccionPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelEfectivoPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelTarjetaPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(panelBlancoSeleccionPagoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelEfectivoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelTarjetaPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addComponent(panelSinpeMovilPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         add(panelBlancoSeleccionPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 960, 680));
@@ -177,11 +182,46 @@ public class PanelSeleccionPago extends javax.swing.JPanel {
         btnRegresarSeleccionPago.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnRegresarSeleccionPago.setForeground(new java.awt.Color(0, 0, 0));
         btnRegresarSeleccionPago.setText("Regresar");
-        add(btnRegresarSeleccionPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 10, -1, -1));
+        btnRegresarSeleccionPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarSeleccionPagoActionPerformed(evt);
+            }
+        });
+        add(btnRegresarSeleccionPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, 140, 50));
 
         imgFondoOpacoSeleccionPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
         add(imgFondoOpacoSeleccionPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEfectivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEfectivoActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
+
+        frame.setMetodoPagoSeleccionado("EFECTIVO");
+        frame.mostrar("padMonto");
+    }//GEN-LAST:event_btnEfectivoActionPerformed
+
+    private void btnTarjetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTarjetaActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
+
+        frame.setMetodoPagoSeleccionado("TARJETA");
+        frame.mostrar("padMonto");
+    }//GEN-LAST:event_btnTarjetaActionPerformed
+
+    private void btnSinpeMovilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSinpeMovilActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
+
+        frame.setMetodoPagoSeleccionado("SINPE MOVIL");
+        frame.mostrar("padMonto");
+    }//GEN-LAST:event_btnSinpeMovilActionPerformed
+
+    private void btnRegresarSeleccionPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarSeleccionPagoActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("factura");
+    }//GEN-LAST:event_btnRegresarSeleccionPagoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -189,9 +229,6 @@ public class PanelSeleccionPago extends javax.swing.JPanel {
     private javax.swing.JButton btnRegresarSeleccionPago;
     private javax.swing.JButton btnSinpeMovil;
     private javax.swing.JButton btnTarjeta;
-    private javax.swing.JLabel iconoDinero;
-    private javax.swing.JLabel iconoSinpeMovil;
-    private javax.swing.JLabel iconoTarjeta;
     private javax.swing.JLabel imgFondoOpacoSeleccionPago;
     private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JPanel panelBlancoSeleccionPago;

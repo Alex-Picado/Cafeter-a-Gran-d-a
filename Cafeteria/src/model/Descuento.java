@@ -11,5 +11,21 @@ package model;
  * @author Eidan Alexandre Picado Leiva - C4I410
  */
 public class Descuento {
-    
-}
+        private String nombre;
+        private double porcentaje;
+
+        public Descuento(String nombre, double porcentaje) {
+            this.nombre = nombre;
+            this.porcentaje = porcentaje;
+        }
+
+        public double getPorcentaje() {
+            return porcentaje;
+        }
+
+        @Override
+        public String toString() {
+            return nombre;
+        }
+    }
+
