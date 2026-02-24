@@ -31,13 +31,11 @@ public class PanelMenu extends javax.swing.JPanel {
         LabelBienvenidoAlSistema = new javax.swing.JLabel();
         btnProductos = new javax.swing.JButton();
         btnClientes = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         btnReportes = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         PanelTOTAL.setBackground(new java.awt.Color(255, 255, 255));
@@ -51,7 +49,7 @@ public class PanelMenu extends javax.swing.JPanel {
                 btnMesasActionPerformed(evt);
             }
         });
-        PanelTOTAL.add(btnMesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, -1));
+        PanelTOTAL.add(btnMesas, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, -1, -1));
 
         LabelBienvenidoAlSistema.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         LabelBienvenidoAlSistema.setForeground(new java.awt.Color(255, 255, 255));
@@ -66,7 +64,7 @@ public class PanelMenu extends javax.swing.JPanel {
                 btnProductosActionPerformed(evt);
             }
         });
-        PanelTOTAL.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, -1, -1));
+        PanelTOTAL.add(btnProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 280, -1, -1));
 
         btnClientes.setBackground(new java.awt.Color(255, 255, 255));
         btnClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoUsuarios.png"))); // NOI18N
@@ -76,17 +74,7 @@ public class PanelMenu extends javax.swing.JPanel {
                 btnClientesActionPerformed(evt);
             }
         });
-        PanelTOTAL.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, -1, -1));
-
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoPedidos.png"))); // NOI18N
-        jButton1.setPreferredSize(new java.awt.Dimension(128, 128));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        PanelTOTAL.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 470, -1, -1));
+        PanelTOTAL.add(btnClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 280, -1, -1));
 
         btnReportes.setBackground(new java.awt.Color(255, 255, 255));
         btnReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icoReportes.png"))); // NOI18N
@@ -96,37 +84,31 @@ public class PanelMenu extends javax.swing.JPanel {
                 btnReportesActionPerformed(evt);
             }
         });
-        PanelTOTAL.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 470, -1, -1));
+        PanelTOTAL.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 280, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Reportes");
-        PanelTOTAL.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 610, 110, -1));
+        PanelTOTAL.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 420, 110, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Mesas");
-        PanelTOTAL.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 420, 110, -1));
+        PanelTOTAL.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 110, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Productos");
-        PanelTOTAL.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 420, 110, -1));
+        PanelTOTAL.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 420, 110, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Clientes");
-        PanelTOTAL.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 420, 110, -1));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Pedidos");
-        PanelTOTAL.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 610, 110, -1));
+        PanelTOTAL.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 420, 110, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
         jLabel1.setText("Mesas");
@@ -169,10 +151,6 @@ public class PanelMenu extends javax.swing.JPanel {
         frame.mostrar("clientes");
     }//GEN-LAST:event_btnClientesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void btnReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportesActionPerformed
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
         frame.mostrar("reportes");
@@ -186,12 +164,10 @@ public class PanelMenu extends javax.swing.JPanel {
     private javax.swing.JButton btnMesas;
     private javax.swing.JButton btnProductos;
     private javax.swing.JButton btnReportes;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

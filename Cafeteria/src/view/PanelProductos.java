@@ -109,15 +109,15 @@ public class PanelProductos extends javax.swing.JPanel {
         panelFondoCentralLayout.setHorizontalGroup(
             panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoCentralLayout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(ScrollLista, javax.swing.GroupLayout.PREFERRED_SIZE, 809, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panelFondoCentralLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(panelBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(comboBoxFiltradoPorCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(comboBoxFiltradoPorCategoria, 0, 156, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(panelFondoCentralLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(ScrollLista, javax.swing.GroupLayout.PREFERRED_SIZE, 829, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelFondoCentralLayout.setVerticalGroup(
             panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

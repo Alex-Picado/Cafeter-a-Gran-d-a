@@ -55,7 +55,7 @@
                           <Component id="scrollListaProductos" max="32767" attributes="0"/>
                           <Component id="panelBotones" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="18" max="32767" attributes="0"/>
+                      <EmptySpace pref="15" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -389,8 +389,6 @@
                                   <Component id="btnVerFactura" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="btnDividir" max="32767" attributes="0"/>
-                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="btnGuardarPedido" min="-2" pref="212" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="btnCancelar" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -398,7 +396,7 @@
                                   <EmptySpace min="-2" pref="655" max="-2" attributes="0"/>
                                   <Component id="lblTextoTotal" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="lblTotal" max="32767" attributes="0"/>
+                                  <Component id="lblTotal" pref="141" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -417,7 +415,6 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnVerFactura" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnDividir" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnGuardarPedido" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -440,23 +437,6 @@
                     <Property name="text" type="java.lang.String" value="Ver factura"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnGuardarPedido">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="a" green="9f" red="f5" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Segoe UI" size="46" style="0"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="Guardar"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarPedidoActionPerformed"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JButton" name="btnCancelar">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -477,7 +457,7 @@
                 <Component class="javax.swing.JButton" name="btnDividir">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ef" green="44" red="ec" type="rgb"/>
+                      <Color blue="33" green="99" red="ff" type="rgb"/>
                     </Property>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="46" style="0"/>

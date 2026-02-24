@@ -420,7 +420,7 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
             txtStock.setText(String.valueOf(p.getStock()));
             boxCategoria.setSelectedItem(p.getCategoria());
 
-            txtID.setEnabled(false);
+            
             btnNumpad.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(this, "Producto no encontrado");
@@ -448,7 +448,7 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
             btnBuscarParaModificar.setVisible(false);
             btnEliminarProducto.setVisible(false);
             btnNumpad.setVisible(true);
-            txtID.setEnabled(true);
+            
             JOptionPane.showMessageDialog(this, "Modo edición desactivado");
 
         }
@@ -537,7 +537,7 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Producto eliminado");
 
             limpiarFormulario();
-            txtID.setEnabled(true);
+            
             MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
             frame.mostrar("productos");
         }

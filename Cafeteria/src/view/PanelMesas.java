@@ -327,7 +327,7 @@ public class PanelMesas extends javax.swing.JPanel {
                 btnRegresarActionPerformed(evt);
             }
         });
-        add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 713, -1, -1));
+        add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 650, -1, 80));
 
         bgFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
         add(bgFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -371,6 +371,7 @@ public class PanelMesas extends javax.swing.JPanel {
 
     private void btnParaLlevarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnParaLlevarMouseClicked
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        
         frame.getPanelPedido().setMesa("Para llevar");
         frame.mostrar("pedidos");
     }//GEN-LAST:event_btnParaLlevarMouseClicked
