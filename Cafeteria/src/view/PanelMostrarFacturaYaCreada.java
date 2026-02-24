@@ -3,7 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package view;
+
 import model.Descuento;
+import model.Factura;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author eidan
@@ -15,6 +19,13 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
      */
     public PanelMostrarFacturaYaCreada() {
         initComponents();
+        tableFactura.setEnabled(false);
+        descuentoComboBoxSoloMostrar.addItem(new Descuento("Sin descuento", 0));
+        descuentoComboBoxSoloMostrar.addItem(new Descuento("5%", 5));
+        descuentoComboBoxSoloMostrar.addItem(new Descuento("10%", 10));
+        descuentoComboBoxSoloMostrar.addItem(new Descuento("15%", 15));
+
+        descuentoComboBoxSoloMostrar.setEnabled(false);
     }
 
     /**
@@ -41,25 +52,35 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
         lblTextIVA = new javax.swing.JLabel();
         descuentoComboBoxSoloMostrar = new javax.swing.JComboBox<>();
         lblTextTotal = new javax.swing.JLabel();
-        lblTextPrecioSubTotal = new javax.swing.JLabel();
-        lblTextIVAPrecio = new javax.swing.JLabel();
-        lblTextPrecioTotal = new javax.swing.JLabel();
+        lblSubtotalDeLaFactura = new javax.swing.JLabel();
+        lblIVAAplicado = new javax.swing.JLabel();
+        lblTotalDeLaFactura = new javax.swing.JLabel();
         lblTextoDescuento = new javax.swing.JLabel();
         lblTextoCedulaDelPago = new javax.swing.JLabel();
         lblCedulaDelPago = new javax.swing.JLabel();
+        lblTextoMontoRecibido = new javax.swing.JLabel();
+        lblMontoQueSeRecibio = new javax.swing.JLabel();
+        lblTextoVuelto = new javax.swing.JLabel();
+        lblVueltoDado = new javax.swing.JLabel();
         lblFondoImg = new javax.swing.JLabel();
 
         panelAbsolute.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panelFondoAzulOscuro.setBackground(new java.awt.Color(31, 42, 56));
 
-        lblTextoFacturaHeader.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTextoFacturaHeader.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
+        lblTextoFacturaHeader.setForeground(new java.awt.Color(255, 255, 255));
         lblTextoFacturaHeader.setText("Factura");
 
         btnVolverFactura.setBackground(new java.awt.Color(255, 255, 255));
         btnVolverFactura.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnVolverFactura.setForeground(new java.awt.Color(0, 0, 0));
         btnVolverFactura.setText("Volver");
+        btnVolverFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverFacturaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelFondoAzulOscuroLayout = new javax.swing.GroupLayout(panelFondoAzulOscuro);
         panelFondoAzulOscuro.setLayout(panelFondoAzulOscuroLayout);
@@ -67,8 +88,8 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
             panelFondoAzulOscuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoAzulOscuroLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
-                .addComponent(lblTextoFacturaHeader)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 745, Short.MAX_VALUE)
+                .addComponent(lblTextoFacturaHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 587, Short.MAX_VALUE)
                 .addComponent(btnVolverFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -107,6 +128,8 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
         lblHoraFactura.setForeground(new java.awt.Color(0, 0, 0));
         lblHoraFactura.setText("2/20/2026, 2:10 a.m");
 
+        tableFactura.setBackground(new java.awt.Color(204, 204, 204));
+        tableFactura.setForeground(new java.awt.Color(51, 51, 51));
         tableFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -135,28 +158,28 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
         descuentoComboBoxSoloMostrar.setForeground(new java.awt.Color(0, 0, 0));
 
         lblTextTotal.setBackground(new java.awt.Color(255, 255, 255));
-        lblTextTotal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTextTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTextTotal.setForeground(new java.awt.Color(0, 0, 0));
         lblTextTotal.setText("Total:");
 
-        lblTextPrecioSubTotal.setBackground(new java.awt.Color(255, 255, 255));
-        lblTextPrecioSubTotal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTextPrecioSubTotal.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextPrecioSubTotal.setText("₡5000");
+        lblSubtotalDeLaFactura.setBackground(new java.awt.Color(255, 255, 255));
+        lblSubtotalDeLaFactura.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblSubtotalDeLaFactura.setForeground(new java.awt.Color(0, 0, 0));
+        lblSubtotalDeLaFactura.setText("₡5000");
 
-        lblTextIVAPrecio.setBackground(new java.awt.Color(255, 255, 255));
-        lblTextIVAPrecio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblTextIVAPrecio.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextIVAPrecio.setText("₡650");
+        lblIVAAplicado.setBackground(new java.awt.Color(255, 255, 255));
+        lblIVAAplicado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblIVAAplicado.setForeground(new java.awt.Color(0, 0, 0));
+        lblIVAAplicado.setText("₡650");
 
-        lblTextPrecioTotal.setBackground(new java.awt.Color(255, 255, 255));
-        lblTextPrecioTotal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblTextPrecioTotal.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextPrecioTotal.setText("₡5650");
+        lblTotalDeLaFactura.setBackground(new java.awt.Color(255, 255, 255));
+        lblTotalDeLaFactura.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTotalDeLaFactura.setForeground(new java.awt.Color(0, 0, 0));
+        lblTotalDeLaFactura.setText("₡5650");
 
         lblTextoDescuento.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblTextoDescuento.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextoDescuento.setText("Descuento %:");
+        lblTextoDescuento.setText("Descuento aplicado %:");
 
         lblTextoCedulaDelPago.setBackground(new java.awt.Color(255, 255, 255));
         lblTextoCedulaDelPago.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -168,6 +191,22 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
         lblCedulaDelPago.setForeground(new java.awt.Color(0, 0, 0));
         lblCedulaDelPago.setText("604990525");
 
+        lblTextoMontoRecibido.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lblTextoMontoRecibido.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoMontoRecibido.setText("Monto recibido: ");
+
+        lblMontoQueSeRecibio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblMontoQueSeRecibio.setForeground(new java.awt.Color(0, 0, 0));
+        lblMontoQueSeRecibio.setText("₡6000");
+
+        lblTextoVuelto.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        lblTextoVuelto.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoVuelto.setText("Vuelto:");
+
+        lblVueltoDado.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblVueltoDado.setForeground(new java.awt.Color(0, 0, 0));
+        lblVueltoDado.setText("₡350");
+
         javax.swing.GroupLayout panelFondoBlancoFacturaLayout = new javax.swing.GroupLayout(panelFondoBlancoFactura);
         panelFondoBlancoFactura.setLayout(panelFondoBlancoFacturaLayout);
         panelFondoBlancoFacturaLayout.setHorizontalGroup(
@@ -178,46 +217,58 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(scrollPaneFactura))
                     .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
-                        .addGap(346, 346, 346)
-                        .addComponent(lblTextoFactura)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblNumeroFactura)
-                        .addGap(112, 112, 112))
-                    .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
+                        .addGap(44, 44, 44)
                         .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
+                                .addComponent(lblTextoDescuento)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(descuentoComboBoxSoloMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
                                 .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblTextIVA)
                                     .addComponent(lblTextSubTotal)
                                     .addComponent(lblTextTotal))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 619, Short.MAX_VALUE)
-                                .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTextPrecioTotal)
-                                    .addComponent(lblTextPrecioSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblTextIVAPrecio)))
-                            .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
-                                .addComponent(lblTextoDescuento)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(descuentoComboBoxSoloMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)))
-                        .addGap(40, 40, 40))
+                                .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoBlancoFacturaLayout.createSequentialGroup()
+                                        .addComponent(lblTotalDeLaFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(45, 45, 45))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblIVAAplicado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoBlancoFacturaLayout.createSequentialGroup()
+                                            .addComponent(lblSubtotalDeLaFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(40, 40, 40)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelFondoBlancoFacturaLayout.createSequentialGroup()
+                                .addGap(177, 177, 177)
+                                .addComponent(lblTextoMontoRecibido)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblMontoQueSeRecibio, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(lblTextoVuelto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblVueltoDado, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(10, 10, 10))
                     .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
                         .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
-                                .addGap(326, 326, 326)
-                                .addComponent(lblTextoCafeteriaGranDia))
-                            .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
                                 .addGap(335, 335, 335)
-                                .addComponent(lblHoraFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 344, Short.MAX_VALUE)))
+                                .addComponent(lblHoraFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
+                                .addGap(276, 276, 276)
+                                .addComponent(lblTextoCedulaDelPago, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(lblCedulaDelPago, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
+                                .addGap(346, 346, 346)
+                                .addComponent(lblTextoFactura)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblNumeroFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
+                                .addGap(326, 326, 326)
+                                .addComponent(lblTextoCafeteriaGranDia, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 118, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
-                .addGap(276, 276, 276)
-                .addComponent(lblTextoCedulaDelPago, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblCedulaDelPago, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelFondoBlancoFacturaLayout.setVerticalGroup(
             panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,27 +286,34 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
                     .addComponent(lblTextoCedulaDelPago)
                     .addComponent(lblCedulaDelPago))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scrollPaneFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollPaneFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTextSubTotal)
-                    .addComponent(lblTextPrecioSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSubtotalDeLaFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTextIVA)
-                    .addComponent(lblTextIVAPrecio))
+                    .addComponent(lblIVAAplicado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(descuentoComboBoxSoloMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTextoDescuento))
                 .addGap(18, 18, 18)
-                .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTextTotal)
-                    .addComponent(lblTextPrecioTotal))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addComponent(lblTotalDeLaFactura))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTextoMontoRecibido)
+                    .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblTextoVuelto)
+                        .addComponent(lblVueltoDado)
+                        .addComponent(lblMontoQueSeRecibio)))
+                .addGap(26, 26, 26))
         );
 
-        panelAbsolute.add(panelFondoBlancoFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 870, 650));
+        panelAbsolute.add(panelFondoBlancoFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 870, 640));
 
         lblFondoImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/ImgFondoOpaco.jpeg"))); // NOI18N
         panelAbsolute.add(lblFondoImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, -1));
@@ -272,6 +330,52 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnVolverFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverFacturaActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("reportes");
+    }//GEN-LAST:event_btnVolverFacturaActionPerformed
+
+    public void setFactura(model.Factura factura) {
+
+        lblNumeroFactura.setText(factura.getNumeroFactura());
+        lblHoraFactura.setText(factura.getFechaHora().toString());
+        lblCedulaDelPago.setText(
+                factura.getCedulaCliente() == null ? "NO IDENTIFICADO" : factura.getCedulaCliente()
+        );
+
+        lblSubtotalDeLaFactura.setText("₡" + factura.getSubtotal());
+        lblIVAAplicado.setText("₡" + factura.getIva());
+        
+//        System.out.println("Subtotal recibido: " + factura.getSubtotal());
+//        System.out.println("IVA recibido: " + factura.getIva());
+        lblTotalDeLaFactura.setText("₡" + factura.getTotal());
+
+        lblMontoQueSeRecibio.setText("₡" + factura.getMontoRecibido());
+        lblVueltoDado.setText("₡" + factura.getVuelto());
+
+        var modelo = (javax.swing.table.DefaultTableModel) tableFactura.getModel();
+        modelo.setRowCount(0);
+
+        for (var d : factura.getDetalles()) {
+
+            modelo.addRow(new Object[]{
+                d.getNombreProducto(),
+                d.getCantidad(),
+                "₡" + d.getPrecioUnitario(),
+                "₡" + d.getSubtotal()
+            });
+        }
+        for (int i = 0; i < descuentoComboBoxSoloMostrar.getItemCount(); i++) {
+
+            Descuento d = descuentoComboBoxSoloMostrar.getItemAt(i);
+
+            if (d.getPorcentaje() == factura.getDescuento()) {
+                descuentoComboBoxSoloMostrar.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVolverFactura;
@@ -279,11 +383,11 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
     private javax.swing.JLabel lblCedulaDelPago;
     private javax.swing.JLabel lblFondoImg;
     private javax.swing.JLabel lblHoraFactura;
+    private javax.swing.JLabel lblIVAAplicado;
+    private javax.swing.JLabel lblMontoQueSeRecibio;
     private javax.swing.JLabel lblNumeroFactura;
+    private javax.swing.JLabel lblSubtotalDeLaFactura;
     private javax.swing.JLabel lblTextIVA;
-    private javax.swing.JLabel lblTextIVAPrecio;
-    private javax.swing.JLabel lblTextPrecioSubTotal;
-    private javax.swing.JLabel lblTextPrecioTotal;
     private javax.swing.JLabel lblTextSubTotal;
     private javax.swing.JLabel lblTextTotal;
     private javax.swing.JLabel lblTextoCafeteriaGranDia;
@@ -291,6 +395,10 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
     private javax.swing.JLabel lblTextoDescuento;
     private javax.swing.JLabel lblTextoFactura;
     private javax.swing.JLabel lblTextoFacturaHeader;
+    private javax.swing.JLabel lblTextoMontoRecibido;
+    private javax.swing.JLabel lblTextoVuelto;
+    private javax.swing.JLabel lblTotalDeLaFactura;
+    private javax.swing.JLabel lblVueltoDado;
     private javax.swing.JPanel panelAbsolute;
     private javax.swing.JPanel panelFondoAzulOscuro;
     private javax.swing.JPanel panelFondoBlancoFactura;

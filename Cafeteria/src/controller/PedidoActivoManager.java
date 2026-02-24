@@ -37,4 +37,23 @@ public class PedidoActivoManager {
     public Map<String, Pedido> getPedidos() {
         return pedidosPorMesa;
     }
+
+    public int generarNumeroDisponible() {
+
+        boolean[] usados = new boolean[10]; // hasta 9 pedidos
+
+        for (Pedido p : pedidosPorMesa.values()) {
+            if (p.getNumeroPedido() > 0 && p.getNumeroPedido() < usados.length) {
+                usados[p.getNumeroPedido()] = true;
+            }
+        }
+
+        for (int i = 1; i < usados.length; i++) {
+            if (!usados[i]) {
+                return i;
+            }
+        }
+
+        return usados.length; // fallback
+    }
 }

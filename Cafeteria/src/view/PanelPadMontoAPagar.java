@@ -32,6 +32,7 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         panelEntradaDigitar = new javax.swing.JPanel();
         btnPagar = new javax.swing.JButton();
         entradaMontoDigitadoDigitado = new javax.swing.JTextField();
+        lblTextoMontoRecibido = new javax.swing.JLabel();
         LabelRegresar = new javax.swing.JLabel();
         btnRegresar = new javax.swing.JButton();
         panelFondoPadNumerico = new javax.swing.JPanel();
@@ -67,28 +68,35 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         entradaMontoDigitadoDigitado.setBackground(new java.awt.Color(255, 255, 255));
         entradaMontoDigitadoDigitado.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         entradaMontoDigitadoDigitado.setForeground(new java.awt.Color(0, 0, 0));
-        entradaMontoDigitadoDigitado.setText("Monto recibido");
         entradaMontoDigitadoDigitado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 entradaMontoDigitadoDigitadoActionPerformed(evt);
             }
         });
 
+        lblTextoMontoRecibido.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTextoMontoRecibido.setForeground(new java.awt.Color(0, 0, 0));
+        lblTextoMontoRecibido.setText("Monto recibido");
+
         javax.swing.GroupLayout panelEntradaDigitarLayout = new javax.swing.GroupLayout(panelEntradaDigitar);
         panelEntradaDigitar.setLayout(panelEntradaDigitarLayout);
         panelEntradaDigitarLayout.setHorizontalGroup(
             panelEntradaDigitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEntradaDigitarLayout.createSequentialGroup()
-                .addComponent(entradaMontoDigitadoDigitado, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(entradaMontoDigitadoDigitado, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                .addGap(110, 110, 110)
+                .addComponent(lblTextoMontoRecibido)
+                .addGap(18, 18, 18)
                 .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         panelEntradaDigitarLayout.setVerticalGroup(
             panelEntradaDigitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEntradaDigitarLayout.createSequentialGroup()
                 .addGroup(panelEntradaDigitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnPagar, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                    .addComponent(entradaMontoDigitadoDigitado))
+                    .addGroup(panelEntradaDigitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnPagar, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                        .addComponent(lblTextoMontoRecibido))
+                    .addComponent(entradaMontoDigitadoDigitado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -306,11 +314,112 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        frame.mostrar("");
+        frame.mostrar("seleccionPago");
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void btnPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPagarActionPerformed
         // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        var factura = frame.getFacturaEnProceso();
+
+        if (factura == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "No hay factura en proceso");
+            return;
+        }
+
+        String metodo = frame.getMetodoPagoSeleccionado();
+        double total = factura.getTotal();
+
+        double recibido;
+
+        try {
+            recibido = Double.parseDouble(entradaMontoDigitadoDigitado.getText());
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Monto inválido");
+            return;
+        }
+
+        double diferencia = recibido - total;
+
+        factura.setMontoRecibido(recibido);
+        factura.setVuelto(Math.max(diferencia, 0));
+
+        // ===== VALIDACIONES =====
+        if ("EFECTIVO".equals(metodo)) {
+
+            if (recibido < total) {
+                int op = javax.swing.JOptionPane.showConfirmDialog(
+                        this,
+                        "Monto menor al total.\n¿Desea continuar?",
+                        "Advertencia",
+                        javax.swing.JOptionPane.YES_NO_OPTION
+                );
+
+                if (op != javax.swing.JOptionPane.YES_OPTION) {
+                    return;
+                }
+            }
+
+            if (recibido > total) {
+                javax.swing.JOptionPane.showMessageDialog(
+                        this,
+                        "Monto a devolver: ₡" + diferencia
+                );
+            }
+
+        } else {
+
+            if (recibido > total) {
+                javax.swing.JOptionPane.showMessageDialog(
+                        this,
+                        "Monto mayor al total.\nVerifique el cobro en el datáfono."
+                );
+            }
+
+            if (recibido < total) {
+                int op = javax.swing.JOptionPane.showConfirmDialog(
+                        this,
+                        "Monto menor al total.\n¿Desea continuar?",
+                        "Advertencia",
+                        javax.swing.JOptionPane.YES_NO_OPTION
+                );
+
+                if (op != javax.swing.JOptionPane.YES_OPTION) {
+                    return;
+                }
+            }
+        }
+
+        // ===== CONFIRMACION FINAL =====
+        int confirmar = javax.swing.JOptionPane.showConfirmDialog(
+                this,
+                "Confirmar pago y cerrar factura?",
+                "Confirmar",
+                javax.swing.JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirmar != javax.swing.JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        // ===== FINALIZAR =====
+        factura.setMetodoPago(metodo);
+        factura.marcarComoPagada();
+
+        frame.getFacturaDAO().guardar(factura);
+
+        var manager = frame.getPedidoActivoManager();
+        manager.eliminar(factura.getMesa());
+        manager.guardarSnapshot();
+
+        frame.getPanelMesas().liberarMesa(factura.getMesa());
+
+        frame.setFacturaEnProceso(null);
+
+        javax.swing.JOptionPane.showMessageDialog(this, "Venta finalizada");
+
+        frame.mostrar("mesas");
     }//GEN-LAST:event_btnPagarActionPerformed
 
     private void btnNumero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNumero1ActionPerformed
@@ -380,7 +489,6 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         return entradaMontoDigitadoDigitado.getText();
     }
 
-
     private void agregarNumero(String numero) {
         entradaMontoDigitadoDigitado.setText(
                 entradaMontoDigitadoDigitado.getText() + numero
@@ -405,6 +513,7 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
     private javax.swing.JButton btnRegresar;
     private javax.swing.JTextField entradaMontoDigitadoDigitado;
     private javax.swing.JLabel labelFondoImagen;
+    private javax.swing.JLabel lblTextoMontoRecibido;
     private javax.swing.JPanel panelEntradaDigitar;
     private javax.swing.JPanel panelFondoPadNumerico;
     private javax.swing.JPanel panelFondoTotal;

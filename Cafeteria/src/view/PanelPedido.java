@@ -377,6 +377,10 @@ public class PanelPedido extends javax.swing.JPanel {
             // liberar mesa visualmente
             frame.getPanelMesas().liberarMesa(mesaActual);
 
+            lblNumeroPedido.setText("-");
+            lblFechaHora.setText("-");
+            lblTituloPedido.setText("Pedido — " + mesaActual);
+
             // volver a mesas
             frame.mostrar("mesas");
         }
@@ -399,27 +403,29 @@ public class PanelPedido extends javax.swing.JPanel {
         // TODO add your handling code here:
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
 
-    var manager = frame.getPedidoActivoManager();
-    var pedido = manager.obtener(mesaActual);
+        var manager = frame.getPedidoActivoManager();
+        var pedido = manager.obtener(mesaActual);
 
-    if (pedido == null || pedido.getItems().isEmpty()) {
-        javax.swing.JOptionPane.showMessageDialog(this,
-                "No hay productos en el pedido");
-        return;
-    }
+        if (pedido == null || pedido.getItems().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "No hay productos en el pedido");
+            return;
+        }
 
-    // crear factura preview
-    var factura = frame.getFacturaService()
-            .crearDesdePedido(pedido, mesaActual);
+        // crear factura preview
+        var factura = frame.getFacturaService()
+                .crearDesdePedido(pedido, mesaActual);
 
-    // enviar a panel factura
-    frame.getPanelFactura().setFactura(factura);
+        // enviar a panel factura
+        frame.getPanelFactura().setFactura(factura);
 
-    frame.mostrar("factura");
+        frame.mostrar("factura");
     }//GEN-LAST:event_btnVerFacturaActionPerformed
 
     public void setMesa(String mesa) {
+
         this.mesaActual = mesa;
+
         if (mesa.toLowerCase().contains("llevar")) {
             btnLiberarMesa.setVisible(false);
         } else {
@@ -431,7 +437,7 @@ public class PanelPedido extends javax.swing.JPanel {
         var manager = frame.getPedidoActivoManager();
         var pedido = manager.obtenerOcrear(mesa);
 
-        lblTituloPedido.setText("Pedido - " + mesa);
+        actualizarHeaderPedido(pedido);
         lblUbicacion.setText(mesa);
 
         cargarItemsDesdePedido(pedido);
@@ -462,6 +468,7 @@ public class PanelPedido extends javax.swing.JPanel {
                     }
 
                     actualizarTotal(pedido);
+                    actualizarHeaderPedido(pedido);
 
                     frame.getPedidoActivoManager().guardarSnapshot();
                 });
@@ -482,7 +489,11 @@ public class PanelPedido extends javax.swing.JPanel {
         var manager = frame.getPedidoActivoManager();
         var pedido = manager.obtenerOcrear(mesaActual);
 
+        pedido.inicializarSiEsNuevo(manager);
+
         pedido.agregarProducto(producto);
+
+        actualizarHeaderPedido(pedido);
 
         frame.getPanelMesas().ocuparMesa(mesaActual);
 
@@ -525,6 +536,9 @@ public class PanelPedido extends javax.swing.JPanel {
 
         pedido.getItems().remove(d);
 
+        pedido.resetearSiVacio();
+        actualizarHeaderPedido(pedido);
+
         frame.getPedidoActivoManager().guardarSnapshot();
 
         refrescar();
@@ -534,6 +548,8 @@ public class PanelPedido extends javax.swing.JPanel {
 
         MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
         var pedido = frame.getPedidoActivoManager().obtenerOcrear(mesaActual);
+
+        actualizarHeaderPedido(pedido);
 
         cargarItemsDesdePedido(pedido);
     }
@@ -547,6 +563,25 @@ public class PanelPedido extends javax.swing.JPanel {
         }
 
         lblTotal.setText("₡" + String.format("%,.0f", total));
+    }
+
+    private void actualizarHeaderPedido(model.Pedido pedido) {
+
+        if (pedido.getNumeroPedido() > 0) {
+
+            java.time.format.DateTimeFormatter fmt
+                    = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+            lblNumeroPedido.setText("#" + pedido.getNumeroPedido());
+            lblFechaHora.setText(pedido.getFechaCreacion().format(fmt));
+            lblTituloPedido.setText("Pedido #" + pedido.getNumeroPedido() + " — " + mesaActual);
+
+        } else {
+
+            lblNumeroPedido.setText("-");
+            lblFechaHora.setText("-");
+            lblTituloPedido.setText("Pedido — " + mesaActual);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

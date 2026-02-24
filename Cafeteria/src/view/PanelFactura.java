@@ -20,6 +20,7 @@ public class PanelFactura extends javax.swing.JPanel {
      */
     public PanelFactura() {
         initComponents();
+        tableFactura.setEnabled(false);
         textFieldCedulaDigitada.addMouseListener(new java.awt.event.MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
@@ -76,7 +77,9 @@ public class PanelFactura extends javax.swing.JPanel {
 
         panelFondoAzulOscuro.setBackground(new java.awt.Color(31, 42, 56));
 
-        lblTextoFacturaHeader.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTextoFacturaHeader.setBackground(new java.awt.Color(255, 255, 255));
+        lblTextoFacturaHeader.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        lblTextoFacturaHeader.setForeground(new java.awt.Color(255, 255, 255));
         lblTextoFacturaHeader.setText("Factura");
 
         btnProcederPago.setBackground(new java.awt.Color(0, 204, 51));
@@ -93,15 +96,20 @@ public class PanelFactura extends javax.swing.JPanel {
         btnVolverFactura.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnVolverFactura.setForeground(new java.awt.Color(0, 0, 0));
         btnVolverFactura.setText("Volver");
+        btnVolverFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverFacturaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelFondoAzulOscuroLayout = new javax.swing.GroupLayout(panelFondoAzulOscuro);
         panelFondoAzulOscuro.setLayout(panelFondoAzulOscuroLayout);
         panelFondoAzulOscuroLayout.setHorizontalGroup(
             panelFondoAzulOscuroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoAzulOscuroLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(lblTextoFacturaHeader)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 527, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
+                .addComponent(lblTextoFacturaHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 377, Short.MAX_VALUE)
                 .addComponent(btnProcederPago, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnVolverFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -115,7 +123,7 @@ public class PanelFactura extends javax.swing.JPanel {
                     .addComponent(lblTextoFacturaHeader)
                     .addComponent(btnProcederPago, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnVolverFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         panelAbsolute.add(panelFondoAzulOscuro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1024, 80));
@@ -251,10 +259,10 @@ public class PanelFactura extends javax.swing.JPanel {
                                         .addGroup(panelFondoBlancoFacturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(lblIVAPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lblPrecioSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(descuentoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(descuentoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(105, 105, 105))
                                     .addGroup(panelFondoBlancoFacturaLayout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
+                                        .addGap(113, 113, 113)
                                         .addComponent(lblPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap())
         );
@@ -371,6 +379,7 @@ public class PanelFactura extends javax.swing.JPanel {
         }
 
         // siguiente paso será selección de pago
+        frame.setFacturaEnProceso(facturaActual);
         frame.mostrar("seleccionPago");
     }//GEN-LAST:event_btnProcederPagoActionPerformed
 
@@ -378,6 +387,12 @@ public class PanelFactura extends javax.swing.JPanel {
         // TODO add your handling code here:
         actualizarTotales();
     }//GEN-LAST:event_descuentoComboBoxActionPerformed
+
+    private void btnVolverFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverFacturaActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_btnVolverFacturaActionPerformed
 
     public void setFactura(model.Factura factura) {
 

@@ -48,9 +48,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="lblTextoFacturaHeader" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="527" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="lblTextoFacturaHeader" min="-2" pref="213" max="-2" attributes="0"/>
+                      <EmptySpace pref="377" max="32767" attributes="0"/>
                       <Component id="btnProcederPago" min="-2" pref="204" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btnVolverFactura" min="-2" pref="159" max="-2" attributes="0"/>
@@ -67,7 +67,7 @@
                           <Component id="btnProcederPago" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                           <Component id="btnVolverFactura" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                      <EmptySpace pref="8" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -75,8 +75,14 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lblTextoFacturaHeader">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="24" style="0"/>
+                  <Font name="Segoe UI" size="36" style="0"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Factura"/>
               </Properties>
@@ -111,6 +117,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Volver"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverFacturaActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -177,12 +186,12 @@
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Component id="lblIVAPrecio" min="-2" pref="80" max="-2" attributes="0"/>
                                                   <Component id="lblPrecioSubTotal" min="-2" pref="80" max="-2" attributes="0"/>
-                                                  <Component id="descuentoComboBox" alignment="1" min="-2" pref="115" max="-2" attributes="0"/>
+                                                  <Component id="descuentoComboBox" alignment="1" min="-2" pref="193" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="105" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                                               <Component id="lblPrecioTotal" min="-2" pref="115" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
