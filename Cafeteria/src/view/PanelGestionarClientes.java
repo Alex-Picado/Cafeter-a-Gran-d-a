@@ -15,13 +15,14 @@ import model.Cliente;
 public class PanelGestionarClientes extends javax.swing.JPanel {
 
     private ClienteController clienteController;
+    private String origen;
 
     public PanelGestionarClientes(ClienteController clienteController) {
         initComponents();
         this.clienteController = clienteController;
         configurarComboBox();
     }
-    
+
     private void configurarComboBox() {
         tipoFrecuenteComboBox.removeAllItems();
         tipoFrecuenteComboBox.addItem("Frecuente");
@@ -322,6 +323,17 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    public void prefillCedula(String cedula) {
+        identificacionTextField.setText(cedula);
+    }
+
+    public void setOrigen(String origen) {
+        this.origen = origen;
+    }
+
+    public String getOrigen() {
+        return origen;
+    }
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         limpiarCampos();
@@ -330,7 +342,11 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
     private void btnRegresarPanelDatosClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPanelDatosClienteActionPerformed
 
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        frame.mostrar("menu");
+        if ("factura".equals(origen)) {
+            frame.mostrar("factura");
+        } else {
+            frame.mostrar("menu");
+        }
     }//GEN-LAST:event_btnRegresarPanelDatosClienteActionPerformed
 
     private void btnMostrarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarClientesActionPerformed
@@ -338,7 +354,7 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
         ClienteListDialog dialog = new ClienteListDialog(frame, true, clienteController, this);
         dialog.setVisible(true);
     }//GEN-LAST:event_btnMostrarClientesActionPerformed
-    
+
     /**
      * Popula el formulario con los datos del cliente seleccionado
      */
@@ -357,7 +373,7 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
             String id = identificacionTextField.getText().trim();
-            
+
             if (id.isEmpty()) {
                 JOptionPane.showMessageDialog(this,
                         "Por favor, ingrese o seleccione un cliente para eliminar.",
@@ -365,12 +381,12 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
                         JOptionPane.WARNING_MESSAGE);
                 return;
             }
-            
+
             int confirmacion = JOptionPane.showConfirmDialog(this,
                     "¿Estás seguro de que quieres eliminarlo?",
                     "Confirmar eliminación",
                     JOptionPane.YES_NO_OPTION);
-            
+
             if (confirmacion == JOptionPane.YES_OPTION) {
                 clienteController.eliminarCliente(id);
                 JOptionPane.showMessageDialog(this,
@@ -379,7 +395,7 @@ public class PanelGestionarClientes extends javax.swing.JPanel {
                         JOptionPane.INFORMATION_MESSAGE);
                 limpiarCampos();
             }
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this,
                     e.getMessage(),

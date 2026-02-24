@@ -11,8 +11,10 @@ import controller.ProductoController;
 import controller.RecuperacionController;
 import java.awt.CardLayout;
 import model.CategoriaDAO;
+import model.FacturaDAO;
 import model.PedidoActivoSnapshot;
 import model.ProductoDAO;
+import service.FacturaService;
 
 /**
  *
@@ -28,8 +30,15 @@ public class MainFrame extends javax.swing.JFrame {
     private PanelPadNumerico panelPadNumerico;
     private PanelPedido panelPedido;
     private PanelMesas panelMesas;
+    private PanelFactura panelFactura;
     private ClienteController clienteController;
     private PedidoActivoManager pedidoActivoManager = new PedidoActivoManager();
+    private FacturaService facturaService = new FacturaService();
+    private FacturaDAO facturaDAO = new FacturaDAO();
+    private String destinoPad;
+    private PanelGestionarClientes panelGestionarClientes;
+    private PanelSeleccionPago panelSeleccionPago;
+    private String metodoPagoSeleccionado;
 
     /**
      * Creates new form MainFrame
@@ -45,6 +54,9 @@ public class MainFrame extends javax.swing.JFrame {
         panelPedido = new PanelPedido();
         panelMesas = new PanelMesas();
         clienteController = new ClienteController();
+        panelFactura = new PanelFactura();
+        panelGestionarClientes = new PanelGestionarClientes(clienteController);
+        panelSeleccionPago = new PanelSeleccionPago();
 
         PedidoActivoSnapshot snap = new PedidoActivoSnapshot();
         RecuperacionController rec
@@ -76,16 +88,15 @@ public class MainFrame extends javax.swing.JFrame {
         panelContenedor.add(panelMesas, "mesas");
         panelContenedor.add(panelProductos, "productos");
 
-        panelContenedor.add(
-                new PanelGestionarClientes(clienteController),
-                "clientes"
-        );
+        panelContenedor.add(panelGestionarClientes, "clientes");
 
         panelContenedor.add(panelAgregarProducto, "agregarProducto");
         panelContenedor.add(new PanelReportesYEstadisticas(), "reportes");
         panelContenedor.add(panelPedido, "pedidos");
         panelContenedor.add(new PanelHistorialVentas(), "historial");
         panelContenedor.add(panelPadNumerico, "padNumerico");
+        panelContenedor.add(panelFactura, "factura");
+        panelContenedor.add(panelSeleccionPago, "seleccionPago");
 
         productoController.cargarProductosEnVista();
     }
@@ -157,6 +168,26 @@ public class MainFrame extends javax.swing.JFrame {
         mostrar("menu");
     }//GEN-LAST:event_btnIniciarActionPerformed
 
+    public void setMetodoPagoSeleccionado(String metodo) {
+        this.metodoPagoSeleccionado = metodo;
+    }
+
+    public String getMetodoPagoSeleccionado() {
+        return metodoPagoSeleccionado;
+    }
+
+    public FacturaDAO getFacturaDAO() {
+        return facturaDAO;
+    }
+
+    public PanelFactura getPanelFactura() {
+        return panelFactura;
+    }
+
+    public FacturaService getFacturaService() {
+        return facturaService;
+    }
+
     public void mostrar(String nombre) {
         cardLayout.show(panelContenedor, nombre);
     }
@@ -187,6 +218,23 @@ public class MainFrame extends javax.swing.JFrame {
 
     public PanelProductos getPanelProductos() {
         return panelProductos;
+    }
+
+    public void abrirPadParaFactura() {
+        destinoPad = "FACTURA";
+        mostrar("padNumerico");
+    }
+
+    public String getDestinoPad() {
+        return destinoPad;
+    }
+
+    public ClienteController getClienteController() {
+        return clienteController;
+    }
+
+    public PanelGestionarClientes getPanelGestionarClientes() {
+        return panelGestionarClientes;
     }
 
     /**

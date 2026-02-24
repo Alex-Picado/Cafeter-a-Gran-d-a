@@ -216,6 +216,11 @@ public class PanelPedido extends javax.swing.JPanel {
         btnVerFactura.setFont(new java.awt.Font("Segoe UI", 0, 46)); // NOI18N
         btnVerFactura.setForeground(new java.awt.Color(255, 255, 255));
         btnVerFactura.setText("Ver factura");
+        btnVerFactura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerFacturaActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setBackground(new java.awt.Color(240, 67, 67));
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 46)); // NOI18N
@@ -389,6 +394,29 @@ public class PanelPedido extends javax.swing.JPanel {
 
         frame.mostrar("productos");
     }//GEN-LAST:event_btnAgregarProductosActionPerformed
+
+    private void btnVerFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerFacturaActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+    var manager = frame.getPedidoActivoManager();
+    var pedido = manager.obtener(mesaActual);
+
+    if (pedido == null || pedido.getItems().isEmpty()) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "No hay productos en el pedido");
+        return;
+    }
+
+    // crear factura preview
+    var factura = frame.getFacturaService()
+            .crearDesdePedido(pedido, mesaActual);
+
+    // enviar a panel factura
+    frame.getPanelFactura().setFactura(factura);
+
+    frame.mostrar("factura");
+    }//GEN-LAST:event_btnVerFacturaActionPerformed
 
     public void setMesa(String mesa) {
         this.mesaActual = mesa;

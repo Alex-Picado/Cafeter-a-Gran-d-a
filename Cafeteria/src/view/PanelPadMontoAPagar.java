@@ -56,7 +56,7 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         btnPagar.setBackground(new java.awt.Color(102, 255, 102));
         btnPagar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnPagar.setForeground(new java.awt.Color(0, 0, 0));
-        btnPagar.setText("Ir");
+        btnPagar.setText("Pagar");
         btnPagar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnPagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

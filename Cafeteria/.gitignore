@@ -2,3 +2,7 @@
 /dist/
 nbproject/private/
 *.class
+clientes.txt
+pedidos_activos.txt
+facturas.txt
+productos.txt
