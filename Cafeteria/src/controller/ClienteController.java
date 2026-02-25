@@ -3,14 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+
 import java.util.Collection;
 import model.Cliente;
 import model.ClienteDAO;
 
 /**
- * Controlador que administra las operaciones relacionadas con cliente.
- * Delega la persistencia al ClienteDAO.
- * 
+ * Controlador que administra las operaciones relacionadas con cliente. Delega
+ * la persistencia al ClienteDAO.
+ *
  * @author Eidan Alexandre Picado Leiva - C4I410
  */
 public class ClienteController {
@@ -23,6 +24,7 @@ public class ClienteController {
 
     /**
      * Registra un nuevo cliente en el sistema.
+     *
      * @param cliente el cliente a registrar
      * @throws IllegalArgumentException si el cliente es nulo o ya existe
      */
@@ -32,6 +34,7 @@ public class ClienteController {
 
     /**
      * Busca un cliente por su ID.
+     *
      * @param id la identificación del cliente
      * @return el cliente encontrado
      * @throws IllegalArgumentException si el cliente no existe
@@ -42,6 +45,7 @@ public class ClienteController {
 
     /**
      * Modifica los datos de un cliente existente.
+     *
      * @param id la identificación del cliente
      * @param nombre el nuevo nombre
      * @param telefono el nuevo teléfono
@@ -50,10 +54,10 @@ public class ClienteController {
      * @throws IllegalArgumentException si el cliente no existe
      */
     public void modificarCliente(String id,
-                                 String nombre,
-                                 String telefono,
-                                 String correo,
-                                 String direccion) {
+            String nombre,
+            String telefono,
+            String correo,
+            String direccion) {
 
         if (id == null || id.isBlank()) {
             throw new IllegalArgumentException("La identificación es obligatoria.");
@@ -71,20 +75,22 @@ public class ClienteController {
 
     /**
      * Modifica los datos de un cliente existente incluyendo su frecuencia.
+     *
      * @param id la identificación del cliente
      * @param nombre el nuevo nombre
      * @param telefono el nuevo teléfono
      * @param correo el nuevo correo
      * @param direccion la nueva dirección
-     * @param frecuencia la frecuencia del cliente (Frecuente, Poco Frecuente, Muy Poco Frecuente)
+     * @param frecuencia la frecuencia del cliente (Frecuente, Poco Frecuente,
+     * Muy Poco Frecuente)
      * @throws IllegalArgumentException si el cliente no existe
      */
     public void modificarClienteConFrecuencia(String id,
-                                              String nombre,
-                                              String telefono,
-                                              String correo,
-                                              String direccion,
-                                              String frecuencia) {
+            String nombre,
+            String telefono,
+            String correo,
+            String direccion,
+            String frecuencia) {
 
         if (id == null || id.isBlank()) {
             throw new IllegalArgumentException("La identificación es obligatoria.");
@@ -103,6 +109,7 @@ public class ClienteController {
 
     /**
      * Elimina un cliente del sistema.
+     *
      * @param id la identificación del cliente
      * @throws IllegalArgumentException si el cliente no existe
      */
@@ -112,6 +119,7 @@ public class ClienteController {
 
     /**
      * Obtiene todos los clientes registrados.
+     *
      * @return colección de todos los clientes
      */
     public Collection<Cliente> obtenerTodosLosClientes() {
@@ -120,6 +128,7 @@ public class ClienteController {
 
     /**
      * Verifica si existe un cliente con el ID especificado.
+     *
      * @param id la identificación a verificar
      * @return true si existe, false en caso contrario
      */
@@ -129,6 +138,7 @@ public class ClienteController {
 
     /**
      * Obtiene la cantidad total de clientes registrados.
+     *
      * @return número de clientes
      */
     public int contarClientes() {

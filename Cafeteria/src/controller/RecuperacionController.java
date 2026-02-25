@@ -24,6 +24,12 @@ public class RecuperacionController {
         this.productoDAO = productoDAO;
     }
 
+    /**
+     * Recupera los pedidos activos almacenados en el snapshot utilizando la
+     * información de productos disponible.
+     *
+     * @return Mapa de pedidos por mesa.
+     */
     public Map<String, Pedido> recuperar() {
         return snapshot.cargar(productoDAO);
     }
