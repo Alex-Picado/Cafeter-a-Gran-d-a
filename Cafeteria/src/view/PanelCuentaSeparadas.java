@@ -3,12 +3,22 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package view;
-import model.Descuento;
+
+import model.DivisionCuenta;
+import model.Producto;
+import model.ProductoDAO;
+import java.util.Map;
+
 /**
  *
  * @author eidan
  */
 public class PanelCuentaSeparadas extends javax.swing.JPanel {
+
+    private int persona;
+    private DivisionCuenta division;
+    private ProductoDAO productoDAO = new ProductoDAO();
+    private String mesa;
 
     /**
      * Creates new form PanelCuentaSeparadas
@@ -29,16 +39,14 @@ public class PanelCuentaSeparadas extends javax.swing.JPanel {
         panelFondo = new javax.swing.JPanel();
         lblIconoPersona = new javax.swing.JLabel();
         lblPersonaNumero = new javax.swing.JLabel();
-        cedulaDigitada = new javax.swing.JTextField();
         lblTextoTotalAPagar = new javax.swing.JLabel();
         lblTotalAPagar = new javax.swing.JLabel();
-        lblTextoDescuento = new javax.swing.JLabel();
         lblTextoIVA = new javax.swing.JLabel();
         lblSubtotalMasIVA = new javax.swing.JLabel();
         lblTextoSubtotal = new javax.swing.JLabel();
         lblSubtotal = new javax.swing.JLabel();
+        scrollListaDeProductosEnFactura = new javax.swing.JScrollPane();
         panelListaDeProductosEnFactura = new javax.swing.JPanel();
-        cBoxDescuentos = new javax.swing.JComboBox<>();
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -48,10 +56,6 @@ public class PanelCuentaSeparadas extends javax.swing.JPanel {
         lblPersonaNumero.setForeground(new java.awt.Color(0, 0, 0));
         lblPersonaNumero.setText("Persona 1");
 
-        cedulaDigitada.setBackground(new java.awt.Color(204, 204, 204));
-        cedulaDigitada.setForeground(new java.awt.Color(102, 102, 102));
-        cedulaDigitada.setText("Cedula (Opcional)");
-
         lblTextoTotalAPagar.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         lblTextoTotalAPagar.setForeground(new java.awt.Color(0, 0, 0));
         lblTextoTotalAPagar.setText("Total a pagar:");
@@ -59,9 +63,6 @@ public class PanelCuentaSeparadas extends javax.swing.JPanel {
         lblTotalAPagar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblTotalAPagar.setForeground(new java.awt.Color(0, 0, 0));
         lblTotalAPagar.setText("₡5650");
-
-        lblTextoDescuento.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextoDescuento.setText("Descuento % :");
 
         lblTextoIVA.setForeground(new java.awt.Color(0, 0, 0));
         lblTextoIVA.setText("IVA (13%) :");
@@ -78,6 +79,7 @@ public class PanelCuentaSeparadas extends javax.swing.JPanel {
         lblSubtotal.setText("₡5650");
 
         panelListaDeProductosEnFactura.setLayout(new javax.swing.BoxLayout(panelListaDeProductosEnFactura, javax.swing.BoxLayout.Y_AXIS));
+        scrollListaDeProductosEnFactura.setViewportView(panelListaDeProductosEnFactura);
 
         javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
         panelFondo.setLayout(panelFondoLayout);
@@ -86,31 +88,26 @@ public class PanelCuentaSeparadas extends javax.swing.JPanel {
             .addGroup(panelFondoLayout.createSequentialGroup()
                 .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelFondoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblIconoPersona)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblPersonaNumero))
-                    .addGroup(panelFondoLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cedulaDigitada, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createSequentialGroup()
+                        .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFondoLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(lblIconoPersona)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblPersonaNumero))
+                            .addGroup(panelFondoLayout.createSequentialGroup()
+                                .addGap(12, 12, 12)
                                 .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblTextoTotalAPagar)
                                     .addComponent(lblTextoIVA)
-                                    .addComponent(lblTextoDescuento)
                                     .addComponent(lblTextoSubtotal))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(96, 96, 96)
                                 .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(lblTotalAPagar, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                                            .addComponent(lblSubtotalMasIVA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addComponent(cBoxDescuentos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(12, 12, 12)))))
-                .addContainerGap(18, Short.MAX_VALUE))
-            .addComponent(panelListaDeProductosEnFactura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lblTotalAPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblSubtotalMasIVA, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(scrollListaDeProductosEnFactura, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         panelFondoLayout.setVerticalGroup(
             panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,19 +119,13 @@ public class PanelCuentaSeparadas extends javax.swing.JPanel {
                     .addGroup(panelFondoLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(lblPersonaNumero)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cedulaDigitada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelListaDeProductosEnFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
+                .addGap(18, 18, 18)
+                .addComponent(scrollListaDeProductosEnFactura, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTextoSubtotal)
                     .addComponent(lblSubtotal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTextoDescuento)
-                    .addComponent(cBoxDescuentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTextoIVA)
                     .addComponent(lblSubtotalMasIVA))
@@ -157,20 +148,93 @@ public class PanelCuentaSeparadas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setPersonaNumero(String texto) {
+        lblPersonaNumero.setText(texto);
+    }
+
+    public void configurar(int persona, DivisionCuenta division) {
+
+        this.persona = persona;
+        this.division = division;
+
+        setPersonaNumero("Persona " + persona);
+
+        actualizarVista();
+    }
+
+    public void actualizarVista() {
+
+        if (division == null) {
+            return;
+        }
+
+        panelListaDeProductosEnFactura.removeAll();
+
+        double subtotal = 0;
+
+        Map<String, Integer> productos = division.getProductosPersona(persona);
+
+        if (productos == null || productos.isEmpty()) {
+
+            lblSubtotal.setText("₡0");
+            lblSubtotalMasIVA.setText("₡0");
+            lblTotalAPagar.setText("₡0");
+
+            panelListaDeProductosEnFactura.revalidate();
+            panelListaDeProductosEnFactura.repaint();
+
+        } else {
+
+            for (var entry : productos.entrySet()) {
+
+                String productoId = entry.getKey();
+                int cantidad = entry.getValue();
+
+                Producto p = productoDAO.buscarPorId(productoId);
+                if (p == null) {
+                    continue;
+                }
+
+                double totalLinea = p.getPrecio() * cantidad;
+                subtotal += totalLinea;
+
+                PanelProductosPorFactura panel = new PanelProductosPorFactura();
+                panel.configurar(p.getNombre(), cantidad, totalLinea);
+
+                panelListaDeProductosEnFactura.add(panel);
+            }
+
+            double iva = subtotal * 0.13;
+            double total = subtotal + iva;
+
+            lblSubtotal.setText("₡" + Math.round(subtotal));
+            lblSubtotalMasIVA.setText("₡" + Math.round(iva));
+            lblTotalAPagar.setText("₡" + Math.round(total));
+
+            panelListaDeProductosEnFactura.revalidate();
+            panelListaDeProductosEnFactura.repaint();
+
+        }
+
+    }
+
+    public void setDivision(DivisionCuenta division, String mesa) {
+        this.division = division;
+        this.mesa = mesa;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Descuento> cBoxDescuentos;
-    private javax.swing.JTextField cedulaDigitada;
     private javax.swing.JLabel lblIconoPersona;
     private javax.swing.JLabel lblPersonaNumero;
     private javax.swing.JLabel lblSubtotal;
     private javax.swing.JLabel lblSubtotalMasIVA;
-    private javax.swing.JLabel lblTextoDescuento;
     private javax.swing.JLabel lblTextoIVA;
     private javax.swing.JLabel lblTextoSubtotal;
     private javax.swing.JLabel lblTextoTotalAPagar;
     private javax.swing.JLabel lblTotalAPagar;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JPanel panelListaDeProductosEnFactura;
+    private javax.swing.JScrollPane scrollListaDeProductosEnFactura;
     // End of variables declaration//GEN-END:variables
 }

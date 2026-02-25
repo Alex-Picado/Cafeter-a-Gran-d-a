@@ -53,7 +53,7 @@ public class Factura {
                 .mapToDouble(DetalleFactura::getSubtotal)
                 .sum();
 
-        iva = subtotal * 0.13; // IVA CR 13%
+        iva = subtotal * 0.13;
 
         double totalAntesDescuento = subtotal + iva;
         double montoDescuento = totalAntesDescuento * (descuento / 100.0);

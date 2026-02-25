@@ -15,6 +15,10 @@ public class PanelProductosPorFactura extends javax.swing.JPanel {
      */
     public PanelProductosPorFactura() {
         initComponents();
+        int alturaFija = 32;
+        setPreferredSize(new java.awt.Dimension(getPreferredSize().width, alturaFija));
+        setMinimumSize(new java.awt.Dimension(getMinimumSize().width, alturaFija));
+        setMaximumSize(new java.awt.Dimension(Integer.MAX_VALUE, alturaFija));
     }
 
     /**
@@ -32,42 +36,22 @@ public class PanelProductosPorFactura extends javax.swing.JPanel {
         lblPrecioTotalPorCantidadProducto = new javax.swing.JLabel();
 
         panelFondoTotal.setBackground(new java.awt.Color(255, 255, 255));
+        panelFondoTotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblCantidadProductoEnFactura.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         lblCantidadProductoEnFactura.setForeground(new java.awt.Color(0, 0, 0));
         lblCantidadProductoEnFactura.setText("x2");
+        panelFondoTotal.add(lblCantidadProductoEnFactura, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         lblNombreProductoAsignado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblNombreProductoAsignado.setForeground(new java.awt.Color(0, 0, 0));
         lblNombreProductoAsignado.setText("Café Americano");
+        panelFondoTotal.add(lblNombreProductoAsignado, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 6, -1, -1));
 
         lblPrecioTotalPorCantidadProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lblPrecioTotalPorCantidadProducto.setForeground(new java.awt.Color(0, 0, 0));
         lblPrecioTotalPorCantidadProducto.setText("₡3000");
-
-        javax.swing.GroupLayout panelFondoTotalLayout = new javax.swing.GroupLayout(panelFondoTotal);
-        panelFondoTotal.setLayout(panelFondoTotalLayout);
-        panelFondoTotalLayout.setHorizontalGroup(
-            panelFondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFondoTotalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblCantidadProductoEnFactura)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblNombreProductoAsignado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(lblPrecioTotalPorCantidadProducto)
-                .addContainerGap())
-        );
-        panelFondoTotalLayout.setVerticalGroup(
-            panelFondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelFondoTotalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelFondoTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCantidadProductoEnFactura)
-                    .addComponent(lblNombreProductoAsignado)
-                    .addComponent(lblPrecioTotalPorCantidadProducto))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        panelFondoTotal.add(lblPrecioTotalPorCantidadProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 6, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,7 +65,11 @@ public class PanelProductosPorFactura extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-
+    public void configurar(String nombre, int cantidad, double total) {
+        lblNombreProductoAsignado.setText(nombre);
+        lblCantidadProductoEnFactura.setText("x" + cantidad);
+        lblPrecioTotalPorCantidadProducto.setText("₡" + Math.round(total));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel lblCantidadProductoEnFactura;
     private javax.swing.JLabel lblNombreProductoAsignado;

@@ -6,6 +6,7 @@ package view;
 
 import javax.swing.JOptionPane;
 import model.Descuento;
+import model.Pedido;
 
 /**
  *
@@ -14,6 +15,8 @@ import model.Descuento;
 public class PanelFactura extends javax.swing.JPanel {
 
     private model.Factura facturaActual;
+    private int personaDivision;
+    private String mesaDivision;
 
     /**
      * Creates new form PanelFactura
@@ -327,22 +330,15 @@ public class PanelFactura extends javax.swing.JPanel {
 
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
 
-        // validar cédula
         String cedula = textFieldCedulaDigitada.getText().trim();
 
         var clienteController = frame.getClienteController();
 
         if (cedula.isBlank()) {
-
-            // factura sin cliente
             facturaActual.setCedulaCliente("NO IDENTIFICADO");
-
         } else {
-
             boolean existe = clienteController.clienteExiste(cedula);
-
             if (!existe) {
-
                 int opcion = JOptionPane.showConfirmDialog(
                         this,
                         "Este cliente no está registrado en el sistema.\n¿Desea añadirlo?",
@@ -351,17 +347,14 @@ public class PanelFactura extends javax.swing.JPanel {
                 );
 
                 if (opcion == JOptionPane.YES_OPTION) {
-
                     var panelClientes = frame.getPanelGestionarClientes();
-
                     panelClientes.prefillCedula(cedula);
                     panelClientes.setOrigen("factura");
-
                     frame.mostrar("clientes");
                     return;
 
                 } else {
-                    // continuar sin registrar cliente
+                    
                     facturaActual.setCedulaCliente("NO IDENTIFICADO");
                 }
 
@@ -369,7 +362,6 @@ public class PanelFactura extends javax.swing.JPanel {
                 facturaActual.setCedulaCliente(cedula);
             }
         }
-        // cliente válido  guardar datos en factura (pero aún NO pagar)
         facturaActual.setCedulaCliente(cedula);
 
         Descuento d = (Descuento) descuentoComboBox.getSelectedItem();
@@ -378,7 +370,6 @@ public class PanelFactura extends javax.swing.JPanel {
             facturaActual.setDescuento(d.getPorcentaje());
         }
 
-        // siguiente paso será selección de pago
         frame.setFacturaEnProceso(facturaActual);
         frame.mostrar("seleccionPago");
     }//GEN-LAST:event_btnProcederPagoActionPerformed
@@ -391,25 +382,25 @@ public class PanelFactura extends javax.swing.JPanel {
     private void btnVolverFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverFacturaActionPerformed
         // TODO add your handling code here:
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        frame.mostrar("pedidos");
+
+        if (personaDivision != 0) {
+            frame.mostrar("dividir");
+        } else {
+            frame.mostrar("pedidos");
+        }
     }//GEN-LAST:event_btnVolverFacturaActionPerformed
 
     public void setFactura(model.Factura factura) {
-
         this.facturaActual = factura;
-
         actualizarTotales();
 
-        // numero
         lblNumeroFactura.setText(factura.getNumeroFactura());
 
-        // hora
         java.time.format.DateTimeFormatter fmt
                 = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
 
         lblHoraFactura.setText(factura.getFechaHora().format(fmt));
 
-        // tabla
         var modelo = (javax.swing.table.DefaultTableModel) tableFactura.getModel();
         modelo.setRowCount(0);
 
@@ -440,6 +431,42 @@ public class PanelFactura extends javax.swing.JPanel {
         lblIVAPrecio.setText("₡" + facturaActual.getIva());
         lblPrecioTotal.setText("₡" + facturaActual.getTotal());
     }
+
+    public void cargarPedidoDesdeDivision(Pedido pedido, String mesa, int persona) {
+
+        this.personaDivision = persona;
+        this.mesaDivision = mesa;
+
+        cargarPedido(pedido, mesa);
+    }
+
+    public void cargarPedido(Pedido pedido, String mesa) {
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        var service = frame.getFacturaService();
+
+        var factura = service.crearDesdePedido(pedido, mesa);
+
+        setFactura(factura);
+    }
+
+    public void setFacturaDesdeDivision(model.Factura factura, String mesa, int persona) {
+
+        this.personaDivision = persona;
+        this.mesaDivision = mesa;
+
+        setFactura(factura);
+    }
+
+    public int getPersonaDivision() {
+        return personaDivision;
+    }
+
+    public String getMesaDivision() {
+        return mesaDivision;
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProcederPago;

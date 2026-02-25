@@ -41,4 +41,8 @@ public class DetallePedido {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 }

@@ -4,11 +4,23 @@
  */
 package view;
 
+import java.util.Map;
+import javax.swing.JOptionPane;
+import model.DivisionCuenta;
+import model.Pedido;
+import model.Producto;
+import model.ProductoDAO;
+
 /**
  *
  * @author eidan
  */
 public class PanelDividirCuenta extends javax.swing.JPanel {
+
+    private model.Pedido pedidoActual;
+    private DivisionCuenta division;
+    private String mesa;
+    private int personas = 2;
 
     /**
      * Creates new form PanelDividirCuenta
@@ -44,16 +56,6 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
         btnConfirmar = new javax.swing.JButton();
         scrollPaneCuentasSeparadas = new javax.swing.JScrollPane();
         panelCuentasSeparadas = new javax.swing.JPanel();
-        panelResumenGeneral = new javax.swing.JPanel();
-        lblTextoResumenGeneral = new javax.swing.JLabel();
-        lblTextoTotalOriginal = new javax.swing.JLabel();
-        lblTextoTotalAsignado = new javax.swing.JLabel();
-        lblTextoPendienteAsignar = new javax.swing.JLabel();
-        lblTextoUnidadesPendientes = new javax.swing.JLabel();
-        lblTotalOriginal = new javax.swing.JLabel();
-        lblTotalAsignado = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        lblUnidadesPendientes = new javax.swing.JLabel();
         lblFondoImagen = new javax.swing.JLabel();
 
         panelFondoTotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -68,6 +70,11 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
         btnVolver.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         btnVolver.setForeground(new java.awt.Color(255, 255, 255));
         btnVolver.setText("Regresar");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         panelConfigurarBotones.setBackground(new java.awt.Color(55, 65, 82));
         panelConfigurarBotones.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -77,12 +84,22 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
         btnMenos.setForeground(new java.awt.Color(255, 255, 255));
         btnMenos.setText("-");
         btnMenos.setPreferredSize(new java.awt.Dimension(46, 46));
+        btnMenos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenosActionPerformed(evt);
+            }
+        });
 
         btnMas.setBackground(new java.awt.Color(103, 127, 235));
         btnMas.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         btnMas.setForeground(new java.awt.Color(255, 255, 255));
         btnMas.setText("+");
         btnMas.setPreferredSize(new java.awt.Dimension(46, 46));
+        btnMas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasActionPerformed(evt);
+            }
+        });
 
         lblNumeroDePersonasADividir.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblNumeroDePersonasADividir.setForeground(new java.awt.Color(255, 255, 255));
@@ -133,62 +150,76 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
         );
         panelHeaderLayout.setVerticalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelHeaderLayout.createSequentialGroup()
-                .addComponent(panelConfigurarBotones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(panelHeaderLayout.createSequentialGroup()
                 .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelConfigurarBotones, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelHeaderLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(btnVolver))
-                    .addGroup(panelHeaderLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTextoPersonas)
-                            .addComponent(lblTituloDivision))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelHeaderLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addComponent(btnVolver))
+                            .addGroup(panelHeaderLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblTextoPersonas)
+                                    .addComponent(lblTituloDivision))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
 
         panelFondoTotal.add(panelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1024, 80));
 
-        panelFondoDistribucion.setBackground(new java.awt.Color(204, 204, 204));
+        panelFondoDistribucion.setBackground(new java.awt.Color(255, 255, 255));
         panelFondoDistribucion.setForeground(new java.awt.Color(102, 255, 255));
 
         scrollPaneDistribucionDeProductos.setBackground(new java.awt.Color(255, 255, 255));
         scrollPaneDistribucionDeProductos.setForeground(new java.awt.Color(255, 255, 255));
         scrollPaneDistribucionDeProductos.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPaneDistribucionDeProductos.setMaximumSize(new java.awt.Dimension(676, 32767));
 
         panelDistribucionDeProductos.setBackground(new java.awt.Color(255, 255, 255));
         panelDistribucionDeProductos.setForeground(new java.awt.Color(255, 255, 255));
-        panelDistribucionDeProductos.setLayout(new javax.swing.BoxLayout(panelDistribucionDeProductos, javax.swing.BoxLayout.LINE_AXIS));
+        panelDistribucionDeProductos.setLayout(new javax.swing.BoxLayout(panelDistribucionDeProductos, javax.swing.BoxLayout.Y_AXIS));
         scrollPaneDistribucionDeProductos.setViewportView(panelDistribucionDeProductos);
 
         panelFooter.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Para poder confirmar debe distribuir todos las unidades del pedido.");
 
         btnCancelar.setBackground(new java.awt.Color(255, 102, 102));
-        btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCancelar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("Cancelar división");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
+        btnConfirmar.setBackground(new java.awt.Color(0, 204, 0));
+        btnConfirmar.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnConfirmar.setForeground(new java.awt.Color(255, 255, 255));
-        btnConfirmar.setText("Confirmar y crear facturas separadas");
+        btnConfirmar.setText("Facturar cuentas");
+        btnConfirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelFooterLayout = new javax.swing.GroupLayout(panelFooter);
         panelFooter.setLayout(panelFooterLayout);
         panelFooterLayout.setHorizontalGroup(
             panelFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFooterLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(jLabel2)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 519, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnConfirmar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
         panelFooterLayout.setVerticalGroup(
             panelFooterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,110 +239,25 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
         panelCuentasSeparadas.setLayout(new javax.swing.BoxLayout(panelCuentasSeparadas, javax.swing.BoxLayout.Y_AXIS));
         scrollPaneCuentasSeparadas.setViewportView(panelCuentasSeparadas);
 
-        panelResumenGeneral.setBackground(new java.awt.Color(255, 255, 255));
-
-        lblTextoResumenGeneral.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        lblTextoResumenGeneral.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextoResumenGeneral.setText("Resumen general");
-
-        lblTextoTotalOriginal.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextoTotalOriginal.setText("Total original:");
-
-        lblTextoTotalAsignado.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextoTotalAsignado.setText("Total asignado:");
-
-        lblTextoPendienteAsignar.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextoPendienteAsignar.setText("Pendiente asignar");
-
-        lblTextoUnidadesPendientes.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        lblTextoUnidadesPendientes.setForeground(new java.awt.Color(0, 0, 0));
-        lblTextoUnidadesPendientes.setText("Unidades pendientes:");
-
-        lblTotalOriginal.setForeground(new java.awt.Color(0, 0, 0));
-        lblTotalOriginal.setText("₡21500");
-
-        lblTotalAsignado.setForeground(new java.awt.Color(0, 0, 0));
-        lblTotalAsignado.setText("₡0");
-
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel1.setText("₡21500");
-
-        lblUnidadesPendientes.setForeground(new java.awt.Color(0, 0, 0));
-        lblUnidadesPendientes.setText("8");
-
-        javax.swing.GroupLayout panelResumenGeneralLayout = new javax.swing.GroupLayout(panelResumenGeneral);
-        panelResumenGeneral.setLayout(panelResumenGeneralLayout);
-        panelResumenGeneralLayout.setHorizontalGroup(
-            panelResumenGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelResumenGeneralLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelResumenGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelResumenGeneralLayout.createSequentialGroup()
-                        .addGroup(panelResumenGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelResumenGeneralLayout.createSequentialGroup()
-                                .addGroup(panelResumenGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTextoTotalOriginal, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblTextoTotalAsignado, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblTextoUnidadesPendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(panelResumenGeneralLayout.createSequentialGroup()
-                                .addComponent(lblTextoPendienteAsignar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(128, 128, 128)))
-                        .addGroup(panelResumenGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTotalOriginal, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                            .addComponent(lblTotalAsignado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblUnidadesPendientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(panelResumenGeneralLayout.createSequentialGroup()
-                        .addComponent(lblTextoResumenGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        panelResumenGeneralLayout.setVerticalGroup(
-            panelResumenGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelResumenGeneralLayout.createSequentialGroup()
-                .addComponent(lblTextoResumenGeneral)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelResumenGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTextoTotalOriginal)
-                    .addComponent(lblTotalOriginal))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelResumenGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTextoTotalAsignado)
-                    .addComponent(lblTotalAsignado))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelResumenGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTextoPendienteAsignar)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelResumenGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTextoUnidadesPendientes)
-                    .addComponent(lblUnidadesPendientes))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout panelFondoDistribucionLayout = new javax.swing.GroupLayout(panelFondoDistribucion);
         panelFondoDistribucion.setLayout(panelFondoDistribucionLayout);
         panelFondoDistribucionLayout.setHorizontalGroup(
             panelFondoDistribucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoDistribucionLayout.createSequentialGroup()
-                .addComponent(scrollPaneDistribucionDeProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelFondoDistribucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneCuentasSeparadas)
-                    .addComponent(panelResumenGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addComponent(panelFooter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelFondoDistribucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(panelFooter, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelFondoDistribucionLayout.createSequentialGroup()
+                        .addComponent(scrollPaneDistribucionDeProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 676, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(scrollPaneCuentasSeparadas)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelFondoDistribucionLayout.setVerticalGroup(
             panelFondoDistribucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelFondoDistribucionLayout.createSequentialGroup()
                 .addGroup(panelFondoDistribucionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneDistribucionDeProductos)
-                    .addGroup(panelFondoDistribucionLayout.createSequentialGroup()
-                        .addComponent(scrollPaneCuentasSeparadas, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelResumenGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(scrollPaneDistribucionDeProductos, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+                    .addComponent(scrollPaneCuentasSeparadas))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelFooter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -333,6 +279,276 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenosActionPerformed
+        // TODO add your handling code here:
+        if (tieneAsignaciones()) {
+            return;
+        }
+        if (personas <= 2) {
+            return;
+        }
+
+        personas--;
+
+        lblNumeroDePersonasADividir.setText(String.valueOf(personas));
+
+        division.ajustarPersonas(personas);
+
+        reconstruirDistribucion();
+        reconstruirCuentas();
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getDivisionManager().guardar();
+    }//GEN-LAST:event_btnMenosActionPerformed
+
+    private void btnMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasActionPerformed
+        // TODO add your handling code here:
+        if (tieneAsignaciones()) {
+            return;
+        }
+
+        if (personas >= 4) {
+            return;
+        }
+
+        personas++;
+
+        lblNumeroDePersonasADividir.setText(String.valueOf(personas));
+
+        division.ajustarPersonas(personas);
+
+        reconstruirDistribucion();
+        reconstruirCuentas();
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.getDivisionManager().guardar();
+    }//GEN-LAST:event_btnMasActionPerformed
+
+    private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
+        // TODO add your handling code here:
+
+        String[] opciones = new String[personas];
+
+        for (int i = 0; i < personas; i++) {
+            opciones[i] = "Persona " + (i + 1);
+        }
+
+        String seleccion = (String) JOptionPane.showInputDialog(
+                this,
+                "Seleccione la factura a pagar",
+                "Facturar",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                opciones,
+                opciones[0]
+        );
+
+        if (seleccion == null) {
+            return;
+        }
+
+        int persona = Integer.parseInt(seleccion.split(" ")[1]);
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+
+        var persistida = frame.getDivisionManager().obtener(mesa);
+
+        if (persistida != null && persistida.estaPagada(persona)) {
+
+            JOptionPane.showMessageDialog(this, "Esta persona ya pagó");
+            return;
+        }
+        var productosPersona = division.getProductosPersona(persona);
+        
+        if (productosPersona == null || productosPersona.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No se puede facturar, no se le asignó nada a esta persona");
+            return;
+        }
+        model.Factura facturaPersona = construirFacturaPersona(persona);
+
+        frame.getPanelFactura().setFacturaDesdeDivision(
+                facturaPersona,
+                mesa,
+                persona
+        );
+        frame.mostrar("factura");
+    }//GEN-LAST:event_btnConfirmarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        int op = javax.swing.JOptionPane.showConfirmDialog(
+                this,
+                "Cancelar división y volver al pedido?",
+                "Confirmar",
+                javax.swing.JOptionPane.YES_NO_OPTION
+        );
+
+        if (op != javax.swing.JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        frame.getDivisionManager().eliminar(mesa);
+
+        frame.mostrar("pedidos");
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void irAFacturarPersona(int persona) {
+        System.out.println("Facturar persona " + persona);
+    }
+
+    public void cargarPedido(Pedido pedido, String mesa) {
+
+        this.pedidoActual = pedido;
+        this.mesa = mesa;
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        var persistida = frame.getDivisionManager()
+                .obtenerOcrear(mesa, personas);
+
+        this.division = persistida.getDivision();
+
+        lblTituloDivision.setText("Dividir cuenta - " + mesa);
+
+        reconstruirDistribucion();
+        reconstruirCuentas();
+        frame.getDivisionManager().guardar();
+    }
+
+    public void reconstruirDistribucion() {
+
+        panelDistribucionDeProductos.removeAll();
+
+        if (pedidoActual == null) {
+            return;
+        }
+
+        for (var item : pedidoActual.getItems()) {
+
+            PanelDistribucionDeProductos panel = new PanelDistribucionDeProductos();
+
+            panel.setProducto(
+                    item.getProducto(),
+                    item.getCantidad(),
+                    division,
+                    personas,
+                    this
+            );
+
+            panelDistribucionDeProductos.add(panel);
+        }
+
+        panelDistribucionDeProductos.revalidate();
+        panelDistribucionDeProductos.repaint();
+    }
+
+    public void reconstruirCuentas() {
+
+        panelCuentasSeparadas.removeAll();
+
+        for (int i = 1; i <= personas; i++) {
+
+            PanelCuentaSeparadas cuenta = new PanelCuentaSeparadas();
+
+            cuenta.configurar(i, division);
+
+            panelCuentasSeparadas.add(cuenta);
+        }
+
+        panelCuentasSeparadas.revalidate();
+        panelCuentasSeparadas.repaint();
+    }
+
+    public boolean tieneAsignaciones() {
+        if (division.tieneAsignaciones()) {
+
+            JOptionPane.showMessageDialog(this,
+                    "No puede cambiar personas después de asignar productos.");
+
+            return true;
+        }
+        return false;
+    }
+
+    public void actualizarCuentasSeparadas() {
+        for (java.awt.Component comp : panelCuentasSeparadas.getComponents()) {
+
+            if (comp instanceof PanelCuentaSeparadas pcs) {
+                pcs.actualizarVista();
+            }
+        }
+
+        panelCuentasSeparadas.revalidate();
+        panelCuentasSeparadas.repaint();
+    }
+
+    public void guardarDivision() {
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        if (frame != null) {
+            frame.getDivisionManager().guardar();
+        }
+    }
+
+    public int totalAsignadoProducto(String productoId) {
+
+        int total = 0;
+
+        for (Map<String, Integer> mapa : division.getAsignaciones().values()) {
+            total += mapa.getOrDefault(productoId, 0);
+        }
+
+        return total;
+    }
+
+    public Pedido construirPedidoPersona(int persona) {
+
+        Pedido pedidoPersona = new Pedido();
+
+        var productos = division.getProductosPersona(persona);
+
+        for (var entry : productos.entrySet()) {
+
+            String productoId = entry.getKey();
+            int cantidad = entry.getValue();
+
+            ProductoDAO dao = new ProductoDAO();
+            Producto p = dao.buscarPorId(productoId);
+
+            if (p != null) {
+                for (int i = 0; i < cantidad; i++) {
+                    pedidoPersona.agregarProducto(p);
+                }
+            }
+        }
+
+        return pedidoPersona;
+    }
+
+    private model.Factura construirFacturaPersona(int persona) {
+
+        Pedido pedidoPersona = construirPedidoPersona(persona);
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        var service = frame.getFacturaService();
+
+        return service.crearDesdePedido(pedidoPersona, mesa);
+    }
+
+    public String getMesaActual() {
+        return mesa;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
@@ -340,20 +556,11 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
     private javax.swing.JButton btnMas;
     private javax.swing.JButton btnMenos;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblFondoImagen;
     private javax.swing.JLabel lblNumeroDePersonasADividir;
-    private javax.swing.JLabel lblTextoPendienteAsignar;
     private javax.swing.JLabel lblTextoPersonas;
-    private javax.swing.JLabel lblTextoResumenGeneral;
-    private javax.swing.JLabel lblTextoTotalAsignado;
-    private javax.swing.JLabel lblTextoTotalOriginal;
-    private javax.swing.JLabel lblTextoUnidadesPendientes;
     private javax.swing.JLabel lblTituloDivision;
-    private javax.swing.JLabel lblTotalAsignado;
-    private javax.swing.JLabel lblTotalOriginal;
-    private javax.swing.JLabel lblUnidadesPendientes;
     private javax.swing.JPanel panelConfigurarBotones;
     private javax.swing.JPanel panelCuentasSeparadas;
     private javax.swing.JPanel panelDistribucionDeProductos;
@@ -361,7 +568,6 @@ public class PanelDividirCuenta extends javax.swing.JPanel {
     private javax.swing.JPanel panelFondoTotal;
     private javax.swing.JPanel panelFooter;
     private javax.swing.JPanel panelHeader;
-    private javax.swing.JPanel panelResumenGeneral;
     private javax.swing.JScrollPane scrollPaneCuentasSeparadas;
     private javax.swing.JScrollPane scrollPaneDistribucionDeProductos;
     // End of variables declaration//GEN-END:variables

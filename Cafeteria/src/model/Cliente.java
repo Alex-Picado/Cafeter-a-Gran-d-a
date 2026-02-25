@@ -36,7 +36,7 @@ public class Cliente implements Serializable, Persistible {
         this.telefono = telefono == null ? "" : telefono.trim();
         this.correo = correo == null ? "" : correo.trim();
         this.direccion = direccion == null ? "" : direccion.trim();
-        this.frecuencia = "Frecuente"; // Valor por defecto
+        this.frecuencia = "Frecuente";
     }
 
     public Cliente(String id,
@@ -62,9 +62,6 @@ public class Cliente implements Serializable, Persistible {
         this.frecuencia = frecuencia == null ? "Frecuente" : frecuencia.trim();
     }
 
-    // =========================
-    // GETTERS
-    // =========================
     public String getId() {
         return id;
     }
@@ -89,9 +86,6 @@ public class Cliente implements Serializable, Persistible {
         return frecuencia;
     }
 
-    // =========================
-    // SETTERS CONTROLADOS
-    // =========================
     public void setNombre(String nombre) {
         if (nombre == null || nombre.isBlank()) {
             throw new IllegalArgumentException("Nombre inválido");
@@ -115,9 +109,6 @@ public class Cliente implements Serializable, Persistible {
         this.frecuencia = frecuencia == null ? "Frecuente" : frecuencia.trim();
     }
 
-    // =========================
-    // PERSISTENCIA
-    // =========================
     @Override
     public String toDataString() {
         return id + ";"
@@ -128,9 +119,6 @@ public class Cliente implements Serializable, Persistible {
                 + frecuencia;
     }
 
-    // =========================
-    // OVERRIDES IMPORTANTES
-    // =========================
     @Override
     public String toString() {
         return "Cliente{"

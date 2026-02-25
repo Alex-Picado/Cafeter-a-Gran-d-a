@@ -14,7 +14,6 @@ public class VentaRepository {
     private static final String ARCHIVO = "ventas.txt";
 
     public void guardar(Factura factura) {
-
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(ARCHIVO, true))) {
 
             bw.write("Factura: " + factura.getNumeroFactura());

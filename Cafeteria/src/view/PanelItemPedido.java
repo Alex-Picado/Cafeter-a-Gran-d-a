@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author eidan
@@ -149,30 +151,50 @@ public class PanelItemPedido extends javax.swing.JPanel {
         // TODO add your handling code here:
         detalle.decrementarCantidad();
 
-    if (detalle.getCantidad() <= 0) {
-        onCambio.accept(true);
-    } else {
-        lblCantidad.setText(String.valueOf(detalle.getCantidad()));
-        onCambio.accept(false);
-    }
+        if (detalle.getCantidad() <= 0) {
+            onCambio.accept(true);
+        } else {
+            lblCantidad.setText(String.valueOf(detalle.getCantidad()));
+            onCambio.accept(false);
+        }
     }//GEN-LAST:event_btnMenosActionPerformed
 
     private void btnMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasActionPerformed
-        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        var productoDAO = frame.getProductoController();
+        var productoActualizado = productoDAO.buscarProducto(detalle.getProducto().getId());
+
+// usar producto actualizado
+        detalle.setProducto(productoActualizado);
+
+        var pedidoManager = frame.getPedidoActivoManager();
+
+        int reservado = pedidoManager.cantidadReservada(productoActualizado.getId());
+        int disponible = productoActualizado.getStock() - reservado;
+
+        if (disponible <= 0) {
+
+            JOptionPane.showMessageDialog(this,
+                    "No hay suficiente stock disponible");
+
+            return;
+        }
+
         detalle.incrementarCantidad();
 
-    lblCantidad.setText(String.valueOf(detalle.getCantidad()));
+        lblCantidad.setText(String.valueOf(detalle.getCantidad()));
 
-    onCambio.accept(false);
+        onCambio.accept(false);
     }//GEN-LAST:event_btnMasActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
- 
-    detalle.setCantidad(0);
 
-    onCambio.accept(true);
-        
+        detalle.setCantidad(0);
+
+        onCambio.accept(true);
+
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     public void setNombre(String nombre) {

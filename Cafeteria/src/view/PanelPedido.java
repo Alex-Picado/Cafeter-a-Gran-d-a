@@ -236,6 +236,11 @@ public class PanelPedido extends javax.swing.JPanel {
         btnDividir.setFont(new java.awt.Font("Segoe UI", 0, 46)); // NOI18N
         btnDividir.setForeground(new java.awt.Color(255, 255, 255));
         btnDividir.setText("Dividir");
+        btnDividir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDividirActionPerformed(evt);
+            }
+        });
 
         lblTextoTotal.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         lblTextoTotal.setForeground(new java.awt.Color(51, 255, 51));
@@ -338,11 +343,9 @@ public class PanelPedido extends javax.swing.JPanel {
 
             var manager = frame.getPedidoActivoManager();
 
-            //Borrar pedido persistido
             manager.eliminar(mesaActual);
             manager.guardarSnapshot();
 
-            //Actualizar estado visual
             frame.getPanelMesas().liberarMesa(mesaActual);
 
             frame.mostrar("mesas");
@@ -368,20 +371,16 @@ public class PanelPedido extends javax.swing.JPanel {
 
             var manager = frame.getPedidoActivoManager();
 
-            // borrar pedido real
             manager.eliminar(mesaActual);
 
-            // guardar cambios
             manager.guardarSnapshot();
 
-            // liberar mesa visualmente
             frame.getPanelMesas().liberarMesa(mesaActual);
 
             lblNumeroPedido.setText("-");
             lblFechaHora.setText("-");
             lblTituloPedido.setText("Pedido — " + mesaActual);
 
-            // volver a mesas
             frame.mostrar("mesas");
         }
 
@@ -412,51 +411,69 @@ public class PanelPedido extends javax.swing.JPanel {
             return;
         }
 
-        // crear factura preview
         var factura = frame.getFacturaService()
                 .crearDesdePedido(pedido, mesaActual);
 
-        // enviar a panel factura
         frame.getPanelFactura().setFactura(factura);
 
         frame.mostrar("factura");
     }//GEN-LAST:event_btnVerFacturaActionPerformed
 
+    private void btnDividirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDividirActionPerformed
+        // TODO add your handling code here:
+        MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
+
+        var managerPedido = frame.getPedidoActivoManager();
+        var pedido = managerPedido.obtener(mesaActual);
+
+        if (pedido == null || pedido.getItems().isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "No hay productos para dividir");
+            return;
+        }
+
+        int totalUnidades = pedido.getItems()
+                .stream()
+                .mapToInt(item -> item.getCantidad())
+                .sum();
+
+        if (totalUnidades < 2) {
+
+            JOptionPane.showMessageDialog(this,
+                    "Debe haber al menos 2 unidades para dividir la cuenta.");
+
+            return;
+        }
+
+        var panelDividir = frame.getPanelDividirCuenta();
+
+        panelDividir.cargarPedido(pedido, mesaActual);
+
+        frame.mostrar("dividir");
+    }//GEN-LAST:event_btnDividirActionPerformed
+
     public void setMesa(String mesa) {
-
         this.mesaActual = mesa;
-
         if (mesa.toLowerCase().contains("llevar")) {
             btnLiberarMesa.setVisible(false);
         } else {
             btnLiberarMesa.setVisible(true);
         }
-
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-
         var manager = frame.getPedidoActivoManager();
         var pedido = manager.obtenerOcrear(mesa);
-
         actualizarHeaderPedido(pedido);
         lblUbicacion.setText(mesa);
-
         cargarItemsDesdePedido(pedido);
     }
 
     private void cargarItemsDesdePedido(model.Pedido pedido) {
-
         panelListaProductos.removeAll();
-
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-
         if (pedido.getItems().isEmpty()) {
-
             panelListaProductos.add(lblAvisoSinProductosEnPedido);
-
         } else {
-
             for (var item : pedido.getItems()) {
-
                 PanelItemPedido panelItem = new PanelItemPedido();
 
                 panelItem.setDetalle(item, eliminar -> {
@@ -486,11 +503,23 @@ public class PanelPedido extends javax.swing.JPanel {
 
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
 
+        var pedidoManager = frame.getPedidoActivoManager();
+
+        int reservado = pedidoManager.cantidadReservada(producto.getId());
+        int disponible = producto.getStock() - reservado;
+
+        if (disponible <= 0) {
+
+            JOptionPane.showMessageDialog(this,
+                    "No hay stock disponible para " + producto.getNombre());
+
+            return;
+        }
+
         var manager = frame.getPedidoActivoManager();
         var pedido = manager.obtenerOcrear(mesaActual);
 
         pedido.inicializarSiEsNuevo(manager);
-
         pedido.agregarProducto(producto);
 
         actualizarHeaderPedido(pedido);
@@ -500,38 +529,45 @@ public class PanelPedido extends javax.swing.JPanel {
         manager.guardarSnapshot();
 
         cargarItemsDesdePedido(pedido);
+
+        frame.getProductoController().cargarProductosEnVista();
     }
 
     public void incrementar(model.DetallePedido d) {
 
+        if (d.getProducto().getStock() <= 0) {
+
+            JOptionPane.showMessageDialog(this,
+                    "No hay más stock disponible");
+
+            return;
+        }
+
         d.incrementarCantidad();
 
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
         frame.getPedidoActivoManager().guardarSnapshot();
 
         refrescar();
     }
 
     public void decrementar(model.DetallePedido d) {
-
         d.decrementarCantidad();
 
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-
+   
         if (d.getCantidad() <= 0) {
             eliminar(d);
             return;
         }
-
         frame.getPedidoActivoManager().guardarSnapshot();
-
         refrescar();
     }
 
     public void eliminar(model.DetallePedido d) {
-
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-
+     
         var pedido = frame.getPedidoActivoManager().obtenerOcrear(mesaActual);
 
         pedido.getItems().remove(d);
@@ -545,7 +581,6 @@ public class PanelPedido extends javax.swing.JPanel {
     }
 
     private void refrescar() {
-
         MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
         var pedido = frame.getPedidoActivoManager().obtenerOcrear(mesaActual);
 
@@ -555,7 +590,6 @@ public class PanelPedido extends javax.swing.JPanel {
     }
 
     private void actualizarTotal(model.Pedido pedido) {
-
         double total = 0;
 
         for (var item : pedido.getItems()) {

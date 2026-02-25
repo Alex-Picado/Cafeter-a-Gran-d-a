@@ -24,6 +24,7 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
     private Producto productoActual;
     private boolean modoEdicion = false;
     private String nombreImagenSeleccionada = null;
+    private String imagenAnterior = null;
     private CategoriaController categoriaController;
 
     /**
@@ -111,7 +112,6 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         txtID.setBackground(new java.awt.Color(255, 255, 255));
         txtID.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtID.setForeground(new java.awt.Color(0, 0, 0));
-        txtID.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtIDActionPerformed(evt);
@@ -132,7 +132,6 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255));
         txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblTextoCategoria.setFont(new java.awt.Font("Segoe UI", 0, 32)); // NOI18N
         lblTextoCategoria.setForeground(new java.awt.Color(0, 0, 0));
@@ -148,7 +147,6 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
 
         txtPrecio.setBackground(new java.awt.Color(255, 255, 255));
         txtPrecio.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtPrecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtPrecioActionPerformed(evt);
@@ -162,7 +160,6 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
         txtStock.setBackground(new java.awt.Color(255, 255, 255));
         txtStock.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtStock.setForeground(new java.awt.Color(0, 0, 0));
-        txtStock.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         txtStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtStockActionPerformed(evt);
@@ -228,20 +225,18 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSubirImg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtNombre)
-                    .addComponent(txtPrecio)
-                    .addComponent(txtStock)
                     .addComponent(btnRegistrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelFondoCentralLayout.createSequentialGroup()
                         .addComponent(lblTextoAgregarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                         .addComponent(btnRegresar, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEliminarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtNombre)
+                    .addComponent(txtPrecio)
+                    .addComponent(txtStock)
                     .addGroup(panelFondoCentralLayout.createSequentialGroup()
                         .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTextoCategoria)
-                            .addComponent(lblTextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTextoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTextoStock, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(panelFondoCentralLayout.createSequentialGroup()
                                 .addComponent(boxCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(30, 30, 30)
@@ -250,9 +245,11 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
                                 .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnNumpad, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lblTextoId))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btnEliminarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblTextoId)
+                            .addComponent(lblTextoNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTextoPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblTextoStock, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelFondoCentralLayout.setVerticalGroup(
@@ -269,11 +266,11 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
                 .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnNumpad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtID))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTextoNombre)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTextoCategoria)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelFondoCentralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -283,17 +280,17 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
                 .addComponent(lblTextoPrecio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTextoStock)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSubirImg)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRegistrar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEliminarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(btnEliminarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
+                .addGap(30, 30, 30))
         );
 
         panelFondoTotal.add(panelFondoCentral, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 890, 760));
@@ -356,7 +353,11 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
             String rutaImagen;
 
             if (nombreImagenSeleccionada != null) {
+
                 rutaImagen = nombreImagenSeleccionada;
+            } else if (modoEdicion && imagenAnterior != null) {
+
+                rutaImagen = imagenAnterior;
             } else {
                 rutaImagen = obtenerImagenDefault(categoria);
             }
@@ -377,6 +378,9 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
             }
 
             JOptionPane.showMessageDialog(this, "Producto guardado");
+
+            nombreImagenSeleccionada = null;
+            imagenAnterior = null;
 
             MainFrame frame
                     = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
@@ -529,6 +533,10 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
             productoActual = p;
             modoEdicion = true;
 
+            
+            imagenAnterior = p.getRutaImagen();
+            nombreImagenSeleccionada = null;
+
             txtNombre.setText(p.getNombre());
             txtPrecio.setText(String.valueOf(p.getPrecio()));
             txtStock.setText(String.valueOf(p.getStock()));
@@ -539,6 +547,8 @@ public class PanelAgregarProducto extends javax.swing.JPanel {
 
         } else {
             modoEdicion = false;
+            imagenAnterior = null;
+            nombreImagenSeleccionada = null;
 
             txtNombre.setText("");
             txtPrecio.setText("");

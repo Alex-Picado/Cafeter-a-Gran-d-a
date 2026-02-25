@@ -19,8 +19,6 @@ public class CategoriaProducto implements Serializable {
     private String nombre;
     private boolean activa;
 
-    // ================= CONSTRUCTORES =================
-
     public CategoriaProducto(String id, String nombre, boolean activa) {
         this.id = id;
         this.nombre = nombre;
@@ -34,8 +32,6 @@ public class CategoriaProducto implements Serializable {
     public CategoriaProducto() {
     }
 
-    // ================= GETTERS =================
-
     public String getId() {
         return id;
     }
@@ -48,8 +44,6 @@ public class CategoriaProducto implements Serializable {
         return activa;
     }
 
-    // ================= SETTERS =================
-
     public void setId(String id) {
         this.id = id;
     }
@@ -61,8 +55,6 @@ public class CategoriaProducto implements Serializable {
     public void setActiva(boolean activa) {
         this.activa = activa;
     }
-
-    // ================= UTILIDADES =================
 
     /**
      * Permite que JComboBox muestre el nombre de la categoría.

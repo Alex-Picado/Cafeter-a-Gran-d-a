@@ -18,11 +18,8 @@ public class PanelVentasMesasYGlobales extends javax.swing.JPanel {
     }
 
     public void cargarReporte() {
-
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-
         var facturas = frame.getFacturaDAO().obtenerTodas();
-
         double mesa1 = 0;
         double mesa2 = 0;
         double mesa3 = 0;

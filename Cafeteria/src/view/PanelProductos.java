@@ -6,7 +6,6 @@ package view;
 
 import controller.ProductoController;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -251,7 +250,7 @@ public class PanelProductos extends javax.swing.JPanel {
 
         comboBoxFiltradoPorCategoria.removeAllItems();
 
-        comboBoxFiltradoPorCategoria.addItem(null); // todas
+        comboBoxFiltradoPorCategoria.addItem(null);
 
         for (CategoriaProducto c : categorias) {
             comboBoxFiltradoPorCategoria.addItem(c);
@@ -260,34 +259,26 @@ public class PanelProductos extends javax.swing.JPanel {
 
     public void refrescarLista(List<Producto> productos) {
         panelLista.removeAll();
-
-        System.out.println("DEBUG lista productos:");
-
         for (Producto p : productos) {
             System.out.println(" -> " + p);
-
             PanelProducto tarjeta = new PanelProducto();
             tarjeta.setProducto(p);
             panelLista.add(tarjeta);
         }
-
         panelLista.revalidate();
         panelLista.repaint();
     }
 
     public void cargarCategorias(List<CategoriaProducto> categorias) {
-
         comboBoxFiltradoPorCategoria.removeAllItems();
-
         comboBoxFiltradoPorCategoria.addItem(null); // todas
-
         for (CategoriaProducto c : categorias) {
             comboBoxFiltradoPorCategoria.addItem(c);
         }
     }
 
     private void filtrarPorCategoria() {
-
+        
         if (controller == null) {
             return;
         }
@@ -316,13 +307,9 @@ public class PanelProductos extends javax.swing.JPanel {
 
     public void buscarProducto() {
         String id = txtBarraBusqueda.getText().trim();
-
         MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
-
         ProductoController controller = frame.getProductoController();
-
         List<Producto> resultado = controller.buscarPorIdExacto(id);
-
         controller.mostrarProductos(resultado);
     }
 

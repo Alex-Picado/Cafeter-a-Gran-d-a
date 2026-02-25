@@ -123,12 +123,13 @@ public class PanelMesas extends javax.swing.JPanel {
         });
         btnMesa2.setLayout(new java.awt.BorderLayout());
 
-        panelStatusMesa2.setBackground(new java.awt.Color(239, 68, 68));
+        panelStatusMesa2.setBackground(new java.awt.Color(0, 204, 51));
+        panelStatusMesa2.setToolTipText("");
         panelStatusMesa2.setPreferredSize(new java.awt.Dimension(60, 140));
 
         lblStatusMesa2.setForeground(new java.awt.Color(255, 255, 255));
         lblStatusMesa2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblStatusMesa2.setText("Ocupada");
+        lblStatusMesa2.setText("Disponible");
 
         javax.swing.GroupLayout panelStatusMesa2Layout = new javax.swing.GroupLayout(panelStatusMesa2);
         panelStatusMesa2.setLayout(panelStatusMesa2Layout);
@@ -469,7 +470,6 @@ public class PanelMesas extends javax.swing.JPanel {
     }
 
     public void marcarOcupadas(java.util.Set<String> mesasOcupadas) {
-
         for (String mesa : mesasOcupadas) {
             ocuparMesa(mesa);
         }
