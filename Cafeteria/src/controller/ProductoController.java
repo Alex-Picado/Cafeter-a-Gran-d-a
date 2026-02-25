@@ -11,10 +11,10 @@ import java.util.List;
 import view.MainFrame;
 
 /**
- * Controlador encargado de coordinar operaciones sobre productos. Maneja la
- * comunicación entre la vista y el DAO.
- *
- * @author Eidan Alexandre Picado Leiva - C4I410
+ * Controlador encargado de coordinar las operaciones relacionadas con los
+ * productos. Gestiona la comunicación entre la interfaz de usuario y el
+ * acceso a datos, además de actualizar la vista según el estado del stock
+ * y los pedidos activos.
  */
 public class ProductoController {
 
@@ -28,6 +28,10 @@ public class ProductoController {
         this.panelProductos = panelProductos;
     }
 
+    /**
+     * Carga los productos activos en la vista, calculando el stock disponible
+     * considerando las cantidades reservadas en pedidos activos.
+     */
     public void cargarProductosEnVista() {
 
         List<Producto> productos = productoDAO.listarActivos();
@@ -55,6 +59,12 @@ public class ProductoController {
         listaPanel.repaint();
     }
 
+    /**
+     * Busca productos por coincidencia parcial de identificador.
+     *
+     * @param id Texto de búsqueda.
+     * @return Lista de productos encontrados.
+     */
     public List<Producto> buscarPorIdParcial(String id) {
 
         if (id == null || id.isBlank()) {
@@ -70,10 +80,20 @@ public class ProductoController {
         return List.of();
     }
 
+      /**
+     * Obtiene todos los productos activos.
+     *
+     * @return Lista de productos.
+     */
     public List<Producto> obtenerTodos() {
         return productoDAO.listarActivos();
     }
 
+       /**
+     * Actualiza la lista visual de productos en la interfaz.
+     *
+     * @param productos Productos a mostrar.
+     */
     public void mostrarProductos(List<Producto> productos) {
 
         JPanel listaPanel = panelProductos.getPanelLista();
@@ -115,6 +135,11 @@ public class ProductoController {
                 .toList();
     }
 
+        /**
+     * Agrega un nuevo producto al sistema aplicando imagen por defecto si es necesario.
+     *
+     * @param producto Producto a registrar.
+     */
     public void agregarProducto(Producto producto) {
 
         aplicarImagenDefaultSiNecesario(producto);
@@ -123,6 +148,11 @@ public class ProductoController {
         cargarProductosEnVista();
     }
 
+     /**
+     * Actualiza los datos de un producto existente.
+     *
+     * @param producto Producto actualizado.
+     */
     public void actualizarProducto(Producto producto) {
 
         aplicarImagenDefaultSiNecesario(producto);
@@ -131,14 +161,28 @@ public class ProductoController {
         cargarProductosEnVista();
     }
 
+    /**
+     * Persiste los cambios realizados en los productos.
+     */
     public void guardarCambios() {
         productoDAO.guardarCambios();
     }
 
+     /**
+     * Busca un producto por su identificador.
+     *
+     * @param id Identificador del producto.
+     * @return Producto encontrado o null.
+     */
     public Producto buscarProducto(String id) {
         return productoDAO.buscarPorId(id);
     }
 
+     /**
+     * Elimina un producto del sistema.
+     *
+     * @param id Identificador del producto.
+     */
     public void borrarProducto(String id) {
         productoDAO.borrarProducto(id);
         cargarProductosEnVista();
