@@ -5,6 +5,5 @@ package model;
  * convertirse en representación persistente.
  */
 public interface Persistible {
-
     String toDataString();
 }

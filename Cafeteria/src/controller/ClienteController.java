@@ -21,9 +21,6 @@ public class ClienteController {
         this.clienteDAO = new ClienteDAO();
     }
 
-    // =========================
-    // REGISTRAR
-    // =========================
     /**
      * Registra un nuevo cliente en el sistema.
      * @param cliente el cliente a registrar
@@ -33,9 +30,6 @@ public class ClienteController {
         clienteDAO.guardar(cliente);
     }
 
-    // =========================
-    // BUSCAR
-    // =========================
     /**
      * Busca un cliente por su ID.
      * @param id la identificación del cliente
@@ -46,9 +40,6 @@ public class ClienteController {
         return clienteDAO.buscar(id);
     }
 
-    // =========================
-    // MODIFICAR
-    // =========================
     /**
      * Modifica los datos de un cliente existente.
      * @param id la identificación del cliente
@@ -110,9 +101,6 @@ public class ClienteController {
         clienteDAO.actualizar(cliente);
     }
 
-    // =========================
-    // ELIMINAR
-    // =========================
     /**
      * Elimina un cliente del sistema.
      * @param id la identificación del cliente
@@ -122,9 +110,6 @@ public class ClienteController {
         clienteDAO.eliminar(id);
     }
 
-    // =========================
-    // CONSULTAR
-    // =========================
     /**
      * Obtiene todos los clientes registrados.
      * @return colección de todos los clientes

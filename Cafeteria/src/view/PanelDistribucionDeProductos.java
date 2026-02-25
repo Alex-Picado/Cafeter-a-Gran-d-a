@@ -4,11 +4,21 @@
  */
 package view;
 
+import model.DivisionCuenta;
+import model.Producto;
+
 /**
  *
  * @author eidan
  */
 public class PanelDistribucionDeProductos extends javax.swing.JPanel {
+
+    private Producto producto;
+    private DivisionCuenta division;
+    private int total;
+    private int personas;
+    private PanelDividirCuenta parent;
+    private int asignadas = 0;
 
     /**
      * Creates new form PanelDistribucionDeProductos
@@ -26,6 +36,7 @@ public class PanelDistribucionDeProductos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         panelListaPersonas = new javax.swing.JPanel();
         panelHeader = new javax.swing.JPanel();
         lblTextoProducto = new javax.swing.JLabel();
@@ -35,6 +46,18 @@ public class PanelDistribucionDeProductos extends javax.swing.JPanel {
         lblTotalPorAsignarDelProducto = new javax.swing.JLabel();
         lblTextoAsignadas = new javax.swing.JLabel();
         lblCantidadYaAsignada = new javax.swing.JLabel();
+        separadorLinea = new javax.swing.JSeparator();
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         panelListaPersonas.setBackground(new java.awt.Color(255, 255, 255));
         panelListaPersonas.setForeground(new java.awt.Color(255, 255, 255));
@@ -72,19 +95,14 @@ public class PanelDistribucionDeProductos extends javax.swing.JPanel {
         lblCantidadYaAsignada.setForeground(new java.awt.Color(0, 0, 0));
         lblCantidadYaAsignada.setText("0");
 
+        separadorLinea.setForeground(new java.awt.Color(0, 0, 0));
+
         javax.swing.GroupLayout panelHeaderLayout = new javax.swing.GroupLayout(panelHeader);
         panelHeader.setLayout(panelHeaderLayout);
         panelHeaderLayout.setHorizontalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHeaderLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelHeaderLayout.createSequentialGroup()
-                        .addComponent(lblTextoProducto)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPrecioPorProducto))
-                    .addComponent(lblTextoCategoriaDelProducto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 272, Short.MAX_VALUE)
+                .addGap(31, 430, Short.MAX_VALUE)
                 .addComponent(lblTextoTotal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTotalPorAsignarDelProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -93,26 +111,34 @@ public class PanelDistribucionDeProductos extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblCantidadYaAsignada, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addComponent(separadorLinea, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(panelHeaderLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTextoCategoriaDelProducto)
+                    .addGroup(panelHeaderLayout.createSequentialGroup()
+                        .addComponent(lblTextoProducto)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPrecioPorProducto)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelHeaderLayout.setVerticalGroup(
             panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelHeaderLayout.createSequentialGroup()
                 .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelHeaderLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTextoProducto)
-                            .addComponent(lblPrecioPorProducto))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTextoCategoriaDelProducto))
-                    .addGroup(panelHeaderLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                        .addGap(16, 16, 16)
                         .addGroup(panelHeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblTextoTotal)
                             .addComponent(lblTotalPorAsignarDelProducto)
                             .addComponent(lblTextoAsignadas)
-                            .addComponent(lblCantidadYaAsignada))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lblCantidadYaAsignada)
+                            .addComponent(lblPrecioPorProducto)
+                            .addComponent(lblTextoProducto)))
+                    .addComponent(separadorLinea, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblTextoCategoriaDelProducto)
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -128,12 +154,72 @@ public class PanelDistribucionDeProductos extends javax.swing.JPanel {
                 .addComponent(panelHeader, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelListaPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setProducto(Producto producto,
+            int total,
+            DivisionCuenta division,
+            int personas,
+            PanelDividirCuenta parent) {
+
+        this.producto = producto;
+        this.total = total;
+        this.division = division;
+        this.personas = personas;
+        this.parent = parent;
+
+        lblTextoProducto.setText(producto.getNombre());
+        lblPrecioPorProducto.setText("₡" + producto.getPrecio());
+
+        construirPersonas();
+        actualizarContadores();
+    }
+
+    private void construirPersonas() {
+
+        panelListaPersonas.removeAll();
+
+        for (int i = 1; i <= personas; i++) {
+
+            PanelPersonaDentroDeDistribucion p = new PanelPersonaDentroDeDistribucion();
+
+            p.configurar(i, producto, division, this);
+
+            panelListaPersonas.add(p);
+        }
+
+        panelListaPersonas.revalidate();
+        panelListaPersonas.repaint();
+    }
+
+    public boolean puedeAsignar() {
+        return asignadas < total;
+    }
+
+    public void actualizarContadores() {
+
+        if (division == null || producto == null) {
+            return;
+        }
+
+        asignadas = division.totalAsignadoProducto(producto.getId());
+
+        lblCantidadYaAsignada.setText(String.valueOf(asignadas));
+        
+        int porAsignar = Math.max(0, total - asignadas);
+        lblTotalPorAsignarDelProducto.setText(String.valueOf(porAsignar));
+
+        parent.actualizarCuentasSeparadas();
+    }
+
+    public PanelDividirCuenta getParentDividir() {
+        return parent;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel lblCantidadYaAsignada;
     private javax.swing.JLabel lblPrecioPorProducto;
     private javax.swing.JLabel lblTextoAsignadas;
@@ -143,5 +229,6 @@ public class PanelDistribucionDeProductos extends javax.swing.JPanel {
     private javax.swing.JLabel lblTotalPorAsignarDelProducto;
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelListaPersonas;
+    private javax.swing.JSeparator separadorLinea;
     // End of variables declaration//GEN-END:variables
 }

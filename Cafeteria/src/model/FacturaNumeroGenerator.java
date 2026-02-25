@@ -17,7 +17,7 @@ public class FacturaNumeroGenerator {
 
         guardarNuevo(nuevo);
 
-        return String.format("%06d", nuevo); // 000001 formato profesional
+        return String.format("%06d", nuevo);
     }
 
     private static int leerUltimo() {

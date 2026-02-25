@@ -5,6 +5,7 @@
 package view;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -47,6 +48,7 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         btnNumero9 = new javax.swing.JButton();
         btnNumero0 = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        btnPunto = new javax.swing.JButton();
         labelFondoImagen = new javax.swing.JLabel();
 
         panelFondoTotal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -83,8 +85,8 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         panelEntradaDigitarLayout.setHorizontalGroup(
             panelEntradaDigitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEntradaDigitarLayout.createSequentialGroup()
-                .addComponent(entradaMontoDigitadoDigitado, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
-                .addGap(110, 110, 110)
+                .addComponent(entradaMontoDigitadoDigitado, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(lblTextoMontoRecibido)
                 .addGap(18, 18, 18)
                 .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -92,11 +94,11 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         panelEntradaDigitarLayout.setVerticalGroup(
             panelEntradaDigitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEntradaDigitarLayout.createSequentialGroup()
-                .addGroup(panelEntradaDigitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelEntradaDigitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(entradaMontoDigitadoDigitado, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelEntradaDigitarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnPagar, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                        .addComponent(lblTextoMontoRecibido))
-                    .addComponent(entradaMontoDigitadoDigitado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTextoMontoRecibido)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -126,7 +128,6 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         btnNumero1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero1.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero1.setText("1");
-        btnNumero1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero1ActionPerformed(evt);
@@ -137,7 +138,6 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         btnNumero2.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero2.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero2.setText("2");
-        btnNumero2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero2ActionPerformed(evt);
@@ -148,7 +148,6 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         btnNumero3.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero3.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero3.setText("3");
-        btnNumero3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero3ActionPerformed(evt);
@@ -159,7 +158,6 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         btnNumero4.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero4.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero4.setText("4");
-        btnNumero4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero4ActionPerformed(evt);
@@ -170,7 +168,6 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         btnNumero5.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero5.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero5.setText("5");
-        btnNumero5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero5ActionPerformed(evt);
@@ -181,7 +178,6 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         btnNumero6.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero6.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero6.setText("6");
-        btnNumero6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero6ActionPerformed(evt);
@@ -192,7 +188,6 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         btnNumero7.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero7.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero7.setText("7");
-        btnNumero7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero7ActionPerformed(evt);
@@ -203,7 +198,6 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         btnNumero8.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero8.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero8.setText("8");
-        btnNumero8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero8ActionPerformed(evt);
@@ -214,7 +208,6 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         btnNumero9.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero9.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero9.setText("9");
-        btnNumero9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero9ActionPerformed(evt);
@@ -225,7 +218,6 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         btnNumero0.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnNumero0.setForeground(new java.awt.Color(0, 0, 0));
         btnNumero0.setText("0");
-        btnNumero0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnNumero0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNumero0ActionPerformed(evt);
@@ -236,10 +228,19 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         btnClear.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         btnClear.setForeground(new java.awt.Color(255, 255, 255));
         btnClear.setText("C");
-        btnClear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
+            }
+        });
+
+        btnPunto.setBackground(new java.awt.Color(255, 255, 255));
+        btnPunto.setFont(new java.awt.Font("Segoe UI Black", 0, 48)); // NOI18N
+        btnPunto.setForeground(new java.awt.Color(0, 0, 0));
+        btnPunto.setText(".");
+        btnPunto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPuntoActionPerformed(evt);
             }
         });
 
@@ -255,18 +256,17 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
                     .addComponent(btnNumero7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelFondoPadNumericoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelFondoPadNumericoLayout.createSequentialGroup()
-                        .addGroup(panelFondoPadNumericoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnNumero5, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
-                            .addComponent(btnNumero2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnNumero8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(12, 12, 12)
-                        .addGroup(panelFondoPadNumericoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnNumero3, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                            .addComponent(btnNumero6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnNumero9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(panelFondoPadNumericoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnNumero5, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                    .addComponent(btnNumero2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNumero8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNumero0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addGroup(panelFondoPadNumericoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnNumero3, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                    .addComponent(btnNumero6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNumero9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPunto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(39, 39, 39))
         );
         panelFondoPadNumericoLayout.setVerticalGroup(
@@ -287,11 +287,13 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
                     .addComponent(btnNumero7, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNumero8, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNumero9, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelFondoPadNumericoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNumero0, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelFondoPadNumericoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelFondoPadNumericoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnNumero0, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPunto, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         panelFondoTotal.add(panelFondoPadNumerico, new org.netbeans.lib.awtextra.AbsoluteConstraints(93, 143, 837, 587));
@@ -327,6 +329,10 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
             javax.swing.JOptionPane.showMessageDialog(this, "No hay factura en proceso");
             return;
         }
+        if (factura.isPagada()) {
+            JOptionPane.showMessageDialog(this, "Esta factura ya fue pagada");
+            return;
+        }
 
         String metodo = frame.getMetodoPagoSeleccionado();
         double total = factura.getTotal();
@@ -345,7 +351,6 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         factura.setMontoRecibido(recibido);
         factura.setVuelto(Math.max(diferencia, 0));
 
-        // ===== VALIDACIONES =====
         if ("EFECTIVO".equals(metodo)) {
 
             if (recibido < total) {
@@ -362,10 +367,7 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
             }
 
             if (recibido > total) {
-                javax.swing.JOptionPane.showMessageDialog(
-                        this,
-                        "Monto a devolver: ₡" + diferencia
-                );
+                javax.swing.JOptionPane.showMessageDialog(this, "Monto a devolver: ₡" + diferencia);
             }
 
         } else {
@@ -391,7 +393,6 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
             }
         }
 
-        // ===== CONFIRMACION FINAL =====
         int confirmar = javax.swing.JOptionPane.showConfirmDialog(
                 this,
                 "Confirmar pago y cerrar factura?",
@@ -403,23 +404,75 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
             return;
         }
 
-        // ===== FINALIZAR =====
         factura.setMetodoPago(metodo);
         factura.marcarComoPagada();
 
+        descontarStockReal(factura);
         frame.getFacturaDAO().guardar(factura);
 
-        var manager = frame.getPedidoActivoManager();
-        manager.eliminar(factura.getMesa());
-        manager.guardarSnapshot();
+        PanelFactura pf = frame.getPanelFactura();
 
-        frame.getPanelMesas().liberarMesa(factura.getMesa());
+        if (pf.getPersonaDivision() != 0) {
 
-        frame.setFacturaEnProceso(null);
+            frame.getDivisionManager().marcarPersonaPagada(
+                    pf.getMesaDivision(),
+                    pf.getPersonaDivision()
+            );
+            
+            var persistida = frame.getDivisionManager().obtener(pf.getMesaDivision());
+            if (persistida != null) {
+                var division = persistida.getDivision();
+                var productos = division.getProductosPersona(pf.getPersonaDivision());
+                var productoIds = new java.util.ArrayList<>(productos.keySet());
+                for (var productoId : productoIds) {
+                    division.quitar(pf.getPersonaDivision(), productoId, productos.get(productoId));
+                }
+            }
+            
+            eliminarConsumoPersonaDelPedido(frame, pf);
 
-        javax.swing.JOptionPane.showMessageDialog(this, "Venta finalizada");
+            var managerDivision = frame.getDivisionManager();
 
-        frame.mostrar("mesas");
+            if (managerDivision.todasPagadas(pf.getMesaDivision())) {
+
+                frame.getPedidoActivoManager().eliminar(pf.getMesaDivision());
+                frame.getPedidoActivoManager().guardarSnapshot();
+
+                frame.getPanelMesas().liberarMesa(pf.getMesaDivision());
+
+                managerDivision.eliminar(pf.getMesaDivision());
+
+                frame.setFacturaEnProceso(null);
+
+                javax.swing.JOptionPane.showMessageDialog(this, "Mesa cerrada");
+
+                frame.mostrar("mesas");
+
+            } else {
+
+                frame.setFacturaEnProceso(null);
+
+                frame.getPanelDividirCuenta().reconstruirCuentas();
+                frame.getPanelDividirCuenta().reconstruirDistribucion();
+                frame.getPanelDividirCuenta().actualizarCuentasSeparadas();
+
+                frame.mostrar("dividir");
+            }
+
+        } else {
+
+            var manager = frame.getPedidoActivoManager();
+            manager.eliminar(factura.getMesa());
+            manager.guardarSnapshot();
+
+            frame.getPanelMesas().liberarMesa(factura.getMesa());
+
+            frame.setFacturaEnProceso(null);
+
+            javax.swing.JOptionPane.showMessageDialog(this, "Venta finalizada");
+
+            frame.mostrar("mesas");
+        }
     }//GEN-LAST:event_btnPagarActionPerformed
 
     private void btnNumero1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNumero1ActionPerformed
@@ -481,6 +534,11 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_entradaMontoDigitadoDigitadoActionPerformed
 
+    private void btnPuntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPuntoActionPerformed
+        // TODO add your handling code here:
+        agregarNumero(".");
+    }//GEN-LAST:event_btnPuntoActionPerformed
+
     public JButton getBtnIr() {
         return btnPagar;
     }
@@ -493,6 +551,63 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
         entradaMontoDigitadoDigitado.setText(
                 entradaMontoDigitadoDigitado.getText() + numero
         );
+    }
+
+    private void descontarStockReal(model.Factura factura) {
+
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
+
+        var productoController = frame.getProductoController();
+
+        for (var d : factura.getDetalles()) {
+
+            var producto = productoController.buscarProducto(d.getProductoId());
+
+            if (producto != null) {
+                producto.setStock(producto.getStock() - d.getCantidad());
+            }
+        }
+
+        productoController.guardarCambios();
+    }
+
+    private void eliminarConsumoPersonaDelPedido(MainFrame frame, PanelFactura pf) {
+
+        var pedidoManager = frame.getPedidoActivoManager();
+
+        var pedido = pedidoManager.getPedidos().get(pf.getMesaDivision());
+
+        if (pedido == null) {
+            return;
+        }
+        var persistida = frame.getDivisionManager().obtener(pf.getMesaDivision());
+
+        if (persistida == null) {
+            return;
+        }
+
+        var division = persistida.getDivision();
+
+        var productos = division.getProductosPersona(pf.getPersonaDivision());
+
+        for (var entry : productos.entrySet()) {
+
+            String idProducto = entry.getKey();
+            int cantidadARestar = entry.getValue();
+
+            // Restar la cantidad exacta de items que esa persona consumió
+            var iterator = pedido.getItems().iterator();
+            
+            while (iterator.hasNext() && cantidadARestar > 0) {
+                var item = iterator.next();
+                if (item.getProducto().getId().equals(idProducto)) {
+                    iterator.remove();
+                    cantidadARestar--;
+                }
+            }
+        }
+
+        pedidoManager.guardarSnapshot();
     }
 
 
@@ -510,6 +625,7 @@ public class PanelPadMontoAPagar extends javax.swing.JPanel {
     private javax.swing.JButton btnNumero8;
     private javax.swing.JButton btnNumero9;
     private javax.swing.JButton btnPagar;
+    private javax.swing.JButton btnPunto;
     private javax.swing.JButton btnRegresar;
     private javax.swing.JTextField entradaMontoDigitadoDigitado;
     private javax.swing.JLabel labelFondoImagen;

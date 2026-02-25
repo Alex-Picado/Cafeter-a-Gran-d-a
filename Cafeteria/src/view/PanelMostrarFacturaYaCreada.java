@@ -5,9 +5,6 @@
 package view;
 
 import model.Descuento;
-import model.Factura;
-import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author eidan
@@ -24,7 +21,6 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
         descuentoComboBoxSoloMostrar.addItem(new Descuento("5%", 5));
         descuentoComboBoxSoloMostrar.addItem(new Descuento("10%", 10));
         descuentoComboBoxSoloMostrar.addItem(new Descuento("15%", 15));
-
         descuentoComboBoxSoloMostrar.setEnabled(false);
     }
 
@@ -333,7 +329,7 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
     private void btnVolverFacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverFacturaActionPerformed
         // TODO add your handling code here:
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        frame.mostrar("reportes");
+        frame.abrirHistorial();
     }//GEN-LAST:event_btnVolverFacturaActionPerformed
 
     public void setFactura(model.Factura factura) {
@@ -347,8 +343,6 @@ public class PanelMostrarFacturaYaCreada extends javax.swing.JPanel {
         lblSubtotalDeLaFactura.setText("₡" + factura.getSubtotal());
         lblIVAAplicado.setText("₡" + factura.getIva());
         
-//        System.out.println("Subtotal recibido: " + factura.getSubtotal());
-//        System.out.println("IVA recibido: " + factura.getIva());
         lblTotalDeLaFactura.setText("₡" + factura.getTotal());
 
         lblMontoQueSeRecibio.setText("₡" + factura.getMontoRecibido());

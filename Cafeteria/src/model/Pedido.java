@@ -18,7 +18,7 @@ import java.util.List;
 public class Pedido {
 
     private List<DetallePedido> items = new ArrayList<>();
-    private int numeroPedido = 0;
+    private int numeroPedido;
     private LocalDateTime fechaCreacion;
 
     public Pedido() {
@@ -49,10 +49,9 @@ public class Pedido {
     }
 
     public void inicializarSiEsNuevo(PedidoActivoManager manager) {
-
         if (numeroPedido == 0) {
             numeroPedido = manager.generarNumeroDisponible();
-            fechaCreacion = LocalDateTime.now();
+            fechaCreacion = java.time.LocalDateTime.now();
         }
     }
 
@@ -61,6 +60,14 @@ public class Pedido {
             numeroPedido = 0;
             fechaCreacion = null;
         }
+    }
+
+    public void setNumeroPedido(int numeroPedido) {
+        this.numeroPedido = numeroPedido;
+    }
+
+    public void setFechaCreacion(LocalDateTime fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
 }

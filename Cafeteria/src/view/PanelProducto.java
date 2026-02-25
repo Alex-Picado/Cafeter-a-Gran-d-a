@@ -49,8 +49,7 @@ public class PanelProducto extends javax.swing.JPanel {
         lblIdProducto = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
 
-        panelFondo.setBackground(new java.awt.Color(255, 255, 255));
-        panelFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelFondo.setBackground(new java.awt.Color(204, 204, 204));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblPrecioProducto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -124,7 +123,6 @@ public class PanelProducto extends javax.swing.JPanel {
     }
 
     public void setImagen(String nombreArchivo) {
-
         java.net.URL url
                 = getClass().getResource("/imagenesProductos/" + nombreArchivo);
 
@@ -137,7 +135,6 @@ public class PanelProducto extends javax.swing.JPanel {
 
     public void setProducto(model.Producto producto) {
         this.producto = producto;
-
         setNombre(producto.getNombre());
         setPrecio(producto.getPrecio());
         setStock(producto.getStock());
@@ -146,19 +143,15 @@ public class PanelProducto extends javax.swing.JPanel {
     }
 
     private void agregarAlPedido() {
-
         MainFrame frame = (MainFrame) SwingUtilities.getWindowAncestor(this);
         if (frame == null) {
             return;
         }
-
         var panelProductos = frame.getPanelProductos();
 
-        
         if (!panelProductos.isModoSeleccion()) {
             return;
         }
-
         var panelPedido = frame.getPanelPedido();
 
         panelPedido.agregarProducto(producto);

@@ -10,6 +10,12 @@ package view;
  */
 public class PanelPersonaDentroDeDistribucion extends javax.swing.JPanel {
 
+    private int personaIndex;
+    private model.Producto producto;
+    private model.DivisionCuenta division;
+    private PanelDistribucionDeProductos parent;
+    private int cantidad = 0;
+
     /**
      * Creates new form PanelPersonaDentroDeDistribucion
      */
@@ -45,6 +51,11 @@ public class PanelPersonaDentroDeDistribucion extends javax.swing.JPanel {
         btnMenos.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         btnMenos.setForeground(new java.awt.Color(51, 51, 51));
         btnMenos.setText("-");
+        btnMenos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenosActionPerformed(evt);
+            }
+        });
 
         btnMas.setBackground(new java.awt.Color(204, 204, 204));
         btnMas.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
@@ -105,8 +116,49 @@ public class PanelPersonaDentroDeDistribucion extends javax.swing.JPanel {
 
     private void btnMasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasActionPerformed
         // TODO add your handling code here:
+        if (!parent.puedeAsignar()) {
+            return;
+        }
+        cantidad++;
+        division.asignar(personaIndex, producto.getId(), 1);
+        
+        lblProductosLlevados.setText(String.valueOf(cantidad));
+        parent.actualizarContadores();
+        parent.getParentDividir().guardarDivision();
     }//GEN-LAST:event_btnMasActionPerformed
 
+    private void btnMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenosActionPerformed
+        // TODO add your handling code here:
+        if (cantidad <= 0) {
+            return;
+        }
+        cantidad--;
+        division.quitar(personaIndex, producto.getId(), 1);
+        
+        lblProductosLlevados.setText(String.valueOf(cantidad));
+
+        parent.actualizarContadores();
+        parent.getParentDividir().guardarDivision();
+    }//GEN-LAST:event_btnMenosActionPerformed
+    public void setPersona(String nombre) {
+        lblPersona.setText(nombre);
+    }
+
+    public void configurar(int personaIndex,
+            model.Producto producto,
+            model.DivisionCuenta division,
+            view.PanelDistribucionDeProductos parent) {
+
+        this.personaIndex = personaIndex;
+        this.producto = producto;
+        this.division = division;
+        this.parent = parent;
+
+        lblPersona.setText("Persona " + (personaIndex));
+        int existente = division.getCantidad(personaIndex, producto.getId());
+        cantidad = existente;
+        lblProductosLlevados.setText(String.valueOf(existente));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMas;

@@ -120,9 +120,6 @@ public class ClienteDAO {
         return clientes.size();
     }
 
-    /**
-     * Guarda todos los clientes en archivo.
-     */
     private void guardarEnArchivo() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARCHIVO))) {
             for (Cliente cliente : clientes.values()) {
@@ -141,16 +138,16 @@ public class ClienteDAO {
         File file = new File(ARCHIVO);
 
         if (!file.exists()) {
-            return; // Si no existe el archivo, simplemente no carga nada
+            return;
         }
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String linea;
 
             while ((linea = reader.readLine()) != null) {
-                if (linea.trim().isEmpty()) continue; // Ignora líneas vacías
+                if (linea.trim().isEmpty()) continue;
 
-                String[] datos = linea.split(";", -1); // -1 para mantener campos vacíos
+                String[] datos = linea.split(";", -1);
 
                 if (datos.length >= 5) {
                     try {
@@ -166,7 +163,6 @@ public class ClienteDAO {
                         );
                         clientes.put(cliente.getId(), cliente);
                     } catch (IllegalArgumentException e) {
-                        // Ignora líneas con datos inválidos
                         System.err.println("Línea ignorada (datos inválidos): " + linea);
                     }
                 }

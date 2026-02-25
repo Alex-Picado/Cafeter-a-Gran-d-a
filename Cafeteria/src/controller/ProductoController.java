@@ -8,6 +8,7 @@ import view.PanelProducto;
 
 import javax.swing.*;
 import java.util.List;
+import view.MainFrame;
 
 /**
  * Controlador encargado de coordinar operaciones sobre productos. Maneja la
@@ -27,7 +28,6 @@ public class ProductoController {
         this.panelProductos = panelProductos;
     }
 
-    // ================= CARGAR LISTA =================
     public void cargarProductosEnVista() {
 
         List<Producto> productos = productoDAO.listarActivos();
@@ -36,10 +36,17 @@ public class ProductoController {
 
         listaPanel.removeAll();
 
+        MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(panelProductos);
+        var pedidoManager = frame.getPedidoActivoManager();
+
         for (Producto p : productos) {
+
+            int reservado = pedidoManager.cantidadReservada(p.getId());
+            int disponible = p.getStock() - reservado;
 
             PanelProducto tarjeta = new PanelProducto();
             tarjeta.setProducto(p);
+            tarjeta.setStock(Math.max(disponible, 0));
 
             listaPanel.add(tarjeta);
         }
@@ -108,7 +115,6 @@ public class ProductoController {
                 .toList();
     }
 
-    // ================= AGREGAR =================
     public void agregarProducto(Producto producto) {
 
         aplicarImagenDefaultSiNecesario(producto);
@@ -117,7 +123,6 @@ public class ProductoController {
         cargarProductosEnVista();
     }
 
-    // ================= ACTUALIZAR =================
     public void actualizarProducto(Producto producto) {
 
         aplicarImagenDefaultSiNecesario(producto);
@@ -126,7 +131,10 @@ public class ProductoController {
         cargarProductosEnVista();
     }
 
-    // ================= BUSCAR =================
+    public void guardarCambios() {
+        productoDAO.guardarCambios();
+    }
+
     public Producto buscarProducto(String id) {
         return productoDAO.buscarPorId(id);
     }
@@ -136,7 +144,6 @@ public class ProductoController {
         cargarProductosEnVista();
     }
 
-    // ================= LOGICA IMAGEN =================
     private void aplicarImagenDefaultSiNecesario(Producto producto) {
 
         if (producto.getRutaImagen() == null || producto.getRutaImagen().isBlank()) {

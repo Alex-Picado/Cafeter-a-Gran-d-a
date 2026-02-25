@@ -19,8 +19,6 @@ public class CategoriaDAO {
         categorias = cargarDesdeArchivo();
     }
 
-    // ================= CARGA =================
-
     private List<CategoriaProducto> cargarDesdeArchivo() {
         List<CategoriaProducto> lista = new ArrayList<>();
         File file = new File(ARCHIVO);
@@ -48,8 +46,6 @@ public class CategoriaDAO {
         return lista;
     }
 
-    // ================= GUARDAR =================
-
     private void guardarEnArchivo() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(ARCHIVO))) {
             for (CategoriaProducto c : categorias) {
@@ -60,8 +56,6 @@ public class CategoriaDAO {
             System.out.println("Error guardando categorias: " + e.getMessage());
         }
     }
-
-    // ================= CRUD =================
 
     public void agregarCategoria(String nombre) {
         String nuevoId = generarId();
@@ -100,8 +94,6 @@ public class CategoriaDAO {
     public List<CategoriaProducto> listarTodas() {
         return new ArrayList<>(categorias);
     }
-
-    // ================= UTILIDAD =================
 
     private String generarId() {
         int max = 0;

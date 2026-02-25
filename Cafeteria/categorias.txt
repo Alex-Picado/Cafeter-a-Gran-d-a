@@ -1,4 +1,7 @@
 1|Cafe|true
 2|Reposteria|true
 3|Bebidas Frias|false
-4|Testing|true
+4|Testing|false
+5|ChupapiMuñaño|false
+6|Bebidas frias|true
+7|Flan|false

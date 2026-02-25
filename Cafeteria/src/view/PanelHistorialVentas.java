@@ -7,6 +7,8 @@ package view;
 import java.util.List;
 import model.Factura;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -27,7 +29,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
                 int fila = historialVentasTable.getSelectedRow();
                 int columna = historialVentasTable.getSelectedColumn();
 
-                if (columna == 8 && fila >= 0) { // columna Acciones
+                if (columna == 8 && fila >= 0) {
 
                     Factura factura = facturasCargadas.get(fila);
 
@@ -35,6 +37,23 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
 
                     frame.abrirFacturaDesdeHistorial(factura);
                 }
+            }
+        });
+        
+        textFieldFacturaABuscarPorCoincidencia.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                filtrarTabla();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                filtrarTabla();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                filtrarTabla();
             }
         });
     }
@@ -104,6 +123,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
         add(panelHistorialVentasAzul, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 50));
 
         historialVentasTable.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        historialVentasTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         historialVentasTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -131,7 +151,7 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
     private void btnRegresarPanelHistorialVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarPanelHistorialVentasActionPerformed
         // TODO add your handling code here:
         MainFrame frame = (MainFrame) javax.swing.SwingUtilities.getWindowAncestor(this);
-        frame.abrirHistorial();
+        frame.mostrar("reportes");
     }//GEN-LAST:event_btnRegresarPanelHistorialVentasActionPerformed
 
     public void cargarHistorial(List<Factura> facturas) {
@@ -153,6 +173,48 @@ public class PanelHistorialVentas extends javax.swing.JPanel {
                 f.getCedulaCliente(),
                 "Ver"
             });
+        }
+        
+        textFieldFacturaABuscarPorCoincidencia.setText("");
+    }
+    
+    private void filtrarTabla() {
+        String textoBusqueda = textFieldFacturaABuscarPorCoincidencia.getText().trim().toLowerCase();
+        DefaultTableModel model = (DefaultTableModel) historialVentasTable.getModel();
+        model.setRowCount(0);
+        
+        if (textoBusqueda.isEmpty()) {
+            for (Factura f : facturasCargadas) {
+                model.addRow(new Object[]{
+                    f.getNumeroFactura(),
+                    f.getFechaHora(),
+                    f.getMesa(),
+                    "₡" + f.getTotal(),
+                    f.getMetodoPago(),
+                    "₡" + f.getMontoRecibido(),
+                    "₡" + f.getVuelto(),
+                    f.getCedulaCliente(),
+                    "Ver"
+                });
+            }
+        } else {
+            for (Factura f : facturasCargadas) {
+                String numeroFactura = f.getNumeroFactura().toLowerCase();
+                
+                if (numeroFactura.contains(textoBusqueda)) {
+                    model.addRow(new Object[]{
+                        f.getNumeroFactura(),
+                        f.getFechaHora(),
+                        f.getMesa(),
+                        "₡" + f.getTotal(),
+                        f.getMetodoPago(),
+                        "₡" + f.getMontoRecibido(),
+                        "₡" + f.getVuelto(),
+                        f.getCedulaCliente(),
+                        "Ver"
+                    });
+                }
+            }
         }
     }
 

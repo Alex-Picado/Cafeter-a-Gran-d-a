@@ -26,7 +26,6 @@ public class ProductoDAO {
         productos = cargarDesdeArchivo();
     }
 
-    // ================= CARGAR =================
     private List<Producto> cargarDesdeArchivo() {
         List<Producto> lista = new ArrayList<>();
         File file = new File(ARCHIVO);
@@ -70,7 +69,6 @@ public class ProductoDAO {
         return lista;
     }
 
-    // ================= GUARDAR =================
     private void guardarEnArchivo() {
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(ARCHIVO))) {
@@ -97,7 +95,10 @@ public class ProductoDAO {
         }
     }
 
-    // ================= CRUD =================
+    public void guardarCambios() {
+        guardarEnArchivo();
+    }
+
     public void agregarProducto(Producto producto) {
 
         if (buscarPorIdIncluyendoInactivos(producto.getId()) != null) {
@@ -159,7 +160,6 @@ public class ProductoDAO {
     }
 
     public void borrarProducto(String id) {
-
         for (Producto p : productos) {
 
             if (p.getId().equals(id)) {

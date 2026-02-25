@@ -1,3 +1,13 @@
-3|Dona|2|1000.0|4|imgProductoReposteriaDona.jpg|true
-2205|Capuccino|1|2000.0|5|imgProductoCafeCappuccino.png|true
-2006|Testing|4|5000.0|40|imgProductoCafeCappuccino.png|true
+2|Iced coffee|1|1200.0|1|imgProductoBebidasFriasIcedCoffee.jpg|true
+3|Smoothie fresas|6|1500.0|2|imgProductoBebidasFriasSmoothieFresas.jpg|true
+4|Flan|2|1000.0|12|imgProductoReposteriaFlan.jpg|true
+1|Expresso|1|1500.0|15|imgProductoCafeExpreso.jpg|true
+5|Queque|2|15000.0|5|imgProductoReposteriaQueque.jpg|true
+6|Mocha|1|1500.0|10|imgProductoCafeMocha.png|true
+7|Latte|1|1500.0|10|imgProductoCafeLatte.jpg|true
+8|Smoothie Mango|6|2500.0|12|imgProductoBebidasFriasSmoothieMango.jpg|true
+9|Dona|2|500.0|10|imgProductoReposteriaDona.jpg|true
+10|Pan de Banano|2|5000.0|4|imgProductoReposteriaPanBanano.jpg|true
+11|Muffin|2|500.0|12|imgProductoReposteriaMuffin.jpg|true
+12|Tres Leches|2|12000.0|5|imgProductoReposteriaTresLeches.jpg|true
+7441003501560|coca|6|350.0|29|imgBebidasFriasCocaCola.jpg|true

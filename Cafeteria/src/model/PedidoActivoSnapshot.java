@@ -5,6 +5,7 @@
 package model;
 
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -14,7 +15,8 @@ import java.util.*;
  * @author Eidan Alexandre Picado Leiva - C4I410
  */
 public class PedidoActivoSnapshot {
-private static final String ARCHIVO = "pedidos_activos.txt";
+
+    private static final String ARCHIVO = "pedidos_activos.txt";
 
     public void guardar(Map<String, Pedido> pedidos) {
 
@@ -25,14 +27,27 @@ private static final String ARCHIVO = "pedidos_activos.txt";
                 String mesa = entry.getKey();
                 Pedido pedido = entry.getValue();
 
+                if (pedido.getItems().isEmpty()) {
+                    continue;
+                }
+
+                bw.write("PEDIDO|" + mesa + "|"
+                        + pedido.getNumeroPedido() + "|"
+                        + pedido.getFechaCreacion());
+
+                bw.newLine();
+
                 for (DetallePedido item : pedido.getItems()) {
 
-                    bw.write(mesa + "|"
+                    bw.write("ITEM|"
                             + item.getProducto().getId() + "|"
                             + item.getCantidad());
 
                     bw.newLine();
                 }
+
+                bw.write("END");
+                bw.newLine();
             }
 
         } catch (IOException e) {
@@ -40,32 +55,58 @@ private static final String ARCHIVO = "pedidos_activos.txt";
         }
     }
 
-    public Map<String, List<String[]>> cargarRaw() {
 
-        Map<String, List<String[]>> data = new HashMap<>();
+
+    public Map<String, Pedido> cargar(ProductoDAO productoDAO) {
+
+        Map<String, Pedido> pedidos = new HashMap<>();
 
         File file = new File(ARCHIVO);
-
-        if (!file.exists()) return data;
+        if (!file.exists()) {
+            return pedidos;
+        }
 
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 
             String linea;
+            Pedido pedidoActual = null;
+            String mesaActual = null;
 
             while ((linea = br.readLine()) != null) {
 
                 String[] partes = linea.split("\\|");
 
-                if (partes.length != 3) continue;
+                if (partes[0].equals("PEDIDO")) {
 
-                data.computeIfAbsent(partes[0], k -> new ArrayList<>())
-                        .add(partes);
+                    mesaActual = partes[1];
+
+                    pedidoActual = new Pedido();
+
+                    pedidoActual.setNumeroPedido(Integer.parseInt(partes[2]));
+                    pedidoActual.setFechaCreacion(LocalDateTime.parse(partes[3]));
+
+                    pedidos.put(mesaActual, pedidoActual);
+                } else if (partes[0].equals("ITEM")) {
+
+                    String productoId = partes[1];
+                    int cantidad = Integer.parseInt(partes[2]);
+
+                    Producto producto = productoDAO.buscarPorId(productoId);
+
+                    for (int i = 0; i < cantidad; i++) {
+                        pedidoActual.agregarProducto(producto);
+                    }
+                } else if (partes[0].equals("END")) {
+
+                    pedidoActual = null;
+                    mesaActual = null;
+                }
             }
 
         } catch (IOException e) {
-            System.out.println("Error leyendo snapshot");
+            System.out.println("Error cargando snapshot");
         }
 
-        return data;
+        return pedidos;
     }
 }

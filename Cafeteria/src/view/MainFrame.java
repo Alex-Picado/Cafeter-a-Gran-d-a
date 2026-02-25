@@ -11,8 +11,10 @@ import controller.ProductoController;
 import controller.RecuperacionController;
 import java.awt.CardLayout;
 import model.CategoriaDAO;
+import model.DivisionManager;
 import model.Factura;
 import model.FacturaDAO;
+import model.Pedido;
 import model.PedidoActivoSnapshot;
 import model.ProductoDAO;
 import service.FacturaService;
@@ -31,6 +33,7 @@ public class MainFrame extends javax.swing.JFrame {
     private PanelPadNumerico panelPadNumerico;
     private PanelPedido panelPedido;
     private PanelMesas panelMesas;
+    private PanelDividirCuenta panelDividirCuenta;
     private PanelFactura panelFactura;
     private ClienteController clienteController;
     private PedidoActivoManager pedidoActivoManager = new PedidoActivoManager();
@@ -45,6 +48,7 @@ public class MainFrame extends javax.swing.JFrame {
     private PanelHistorialVentas panelHistorialVentas;
     private PanelPadMontoAPagar panelPadMontoAPagar;
     private PanelVentasMesasYGlobales panelVentasMesasYGlobales;
+    private DivisionManager divisionManager = new DivisionManager();
 
     /**
      * Creates new form MainFrame
@@ -58,7 +62,9 @@ public class MainFrame extends javax.swing.JFrame {
         panelAgregarProducto = new PanelAgregarProducto();
         panelPadNumerico = new PanelPadNumerico();
         panelPedido = new PanelPedido();
+
         panelMesas = new PanelMesas();
+        panelDividirCuenta = new PanelDividirCuenta();
         clienteController = new ClienteController();
         panelFactura = new PanelFactura();
         panelGestionarClientes = new PanelGestionarClientes(clienteController);
@@ -103,14 +109,13 @@ public class MainFrame extends javax.swing.JFrame {
         panelContenedor.add(panelAgregarProducto, "agregarProducto");
         panelContenedor.add(new PanelReportesYEstadisticas(), "reportes");
         panelContenedor.add(panelPedido, "pedidos");
-        panelContenedor.add(new PanelHistorialVentas(), "historial");
+        panelContenedor.add(panelDividirCuenta, "dividir");
         panelContenedor.add(panelPadNumerico, "padNumerico");
         panelContenedor.add(panelFactura, "factura");
         panelContenedor.add(panelPadMontoAPagar, "padMonto");
         panelContenedor.add(panelSeleccionPago, "seleccionPago");
         panelContenedor.add(panelMostrarFacturaYaCreada, "mostrarFactura");
         panelContenedor.add(panelHistorialVentas, "historial");
-        panelContenedor.add(panelPadMontoAPagar, "padMonto");
         panelContenedor.add(panelVentasMesasYGlobales, "ventasMesas");
         productoController.cargarProductosEnVista();
     }
@@ -287,6 +292,31 @@ public class MainFrame extends javax.swing.JFrame {
 
     public PanelHistorialVentas getPanelHistorialVentas() {
         return panelHistorialVentas;
+    }
+
+    public PanelDividirCuenta getPanelDividirCuenta() {
+        return panelDividirCuenta;
+    }
+
+    public DivisionManager getDivisionManager() {
+        return divisionManager;
+
+    }
+
+    public void mostrarFacturaDesdeDivision(model.Factura factura) {
+
+        panelFactura.setFactura(factura);
+
+        mostrar("factura");
+    }
+
+    public void mostrarPanelFacturaDesdeDivision(model.Pedido pedido,
+            String mesa,
+            int persona) {
+
+        panelFactura.cargarPedidoDesdeDivision(pedido, mesa, persona);
+
+        mostrar("factura");
     }
 
     /**

@@ -40,7 +40,7 @@ public class PedidoActivoManager {
 
     public int generarNumeroDisponible() {
 
-        boolean[] usados = new boolean[10]; // hasta 9 pedidos
+        boolean[] usados = new boolean[10];
 
         for (Pedido p : pedidosPorMesa.values()) {
             if (p.getNumeroPedido() > 0 && p.getNumeroPedido() < usados.length) {
@@ -54,6 +54,26 @@ public class PedidoActivoManager {
             }
         }
 
-        return usados.length; // fallback
+        return usados.length;
+    }
+
+    public int cantidadReservada(String productoId) {
+        int total = 0;
+
+        for (Pedido pedido : pedidosPorMesa.values()) {
+
+            if (pedido == null) {
+                continue;
+            }
+
+            for (var item : pedido.getItems()) {
+
+                if (item.getProducto().getId().equals(productoId)) {
+                    total += item.getCantidad();
+                }
+            }
+        }
+
+        return total;
     }
 }

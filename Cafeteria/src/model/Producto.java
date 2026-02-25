@@ -3,11 +3,10 @@ package model;
 import java.io.Serializable;
 
 /**
- * Representa un producto del sistema POS.
- * Contiene información necesaria para venta, inventario y visualización.
+ * Representa un producto del sistema POS. Contiene información necesaria para
+ * venta, inventario y visualización.
  *
- * Incluye categoría, precio, stock e imagen.
- * Permite edición y persistencia.
+ * Incluye categoría, precio, stock e imagen. Permite edición y persistencia.
  *
  * @author Eidan Alexandre Picado Leiva - C4I410
  */
@@ -18,13 +17,11 @@ public class Producto implements Serializable {
     private CategoriaProducto categoria;
     private double precio;
     private int stock;
-    private String rutaImagen; // solo nombre archivo
+    private String rutaImagen;
     private boolean activo;
 
-    // ================= CONSTRUCTORES =================
-
     public Producto(String id, String nombre, CategoriaProducto categoria,
-                    double precio, int stock, String rutaImagen, boolean activo) {
+            double precio, int stock, String rutaImagen, boolean activo) {
 
         this.id = id;
         this.nombre = nombre;
@@ -36,7 +33,7 @@ public class Producto implements Serializable {
     }
 
     public Producto(String id, String nombre, CategoriaProducto categoria,
-                    double precio, int stock, String rutaImagen) {
+            double precio, int stock, String rutaImagen) {
 
         this(id, nombre, categoria, precio, stock, rutaImagen, true);
     }
@@ -44,8 +41,6 @@ public class Producto implements Serializable {
     public Producto() {
         this.activo = true;
     }
-
-    // ================= GETTERS =================
 
     public String getId() {
         return id;
@@ -75,8 +70,6 @@ public class Producto implements Serializable {
         return activo;
     }
 
-    // ================= SETTERS =================
-
     public void setId(String id) {
         this.id = id;
     }
@@ -105,8 +98,6 @@ public class Producto implements Serializable {
         this.activo = activo;
     }
 
-    // ================= UTILIDADES =================
-
     public void desactivar() {
         this.activo = false;
     }
@@ -115,13 +106,23 @@ public class Producto implements Serializable {
         this.activo = true;
     }
 
-    // ================= VALIDACION BASICA =================
-
     public boolean tieneImagen() {
         return rutaImagen != null && !rutaImagen.isBlank();
     }
 
-    // ================= OVERRIDES =================
+    public boolean tieneStock() {
+        return stock > 0;
+    }
+
+    public void disminuirStock() {
+        if (stock > 0) {
+            stock--;
+        }
+    }
+
+    public void aumentarStock() {
+        stock++;
+    }
 
     @Override
     public String toString() {
@@ -130,8 +131,12 @@ public class Producto implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Producto)) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (!(obj instanceof Producto)) {
+            return false;
+        }
 
         Producto other = (Producto) obj;
         return id != null && id.equals(other.id);
